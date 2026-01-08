@@ -1,26 +1,33 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function LoginPage() {
   //state
-
-  const inputRef = useRef("");
-
+  const [inputValue, setInputValue] = useState("");
   //comportements
   const handleSubmit = (e) => {
-    let prenom = inputRef.current.value;
     e.preventDefault();
-    prenom = "";
-    alert(`Bonjour ${prenom}`);
+    alert(`Bonjour ${inputValue}`);
+    setInputValue("");
   };
 
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
   //render
   return (
     <div>
       <h1>Bienvenue chez nous ! </h1>
-      <p>Connectez vous</p>
-      <form action="">
-        <input ref={inputRef} type="text" placeholder="Entrez votre prénom" />
-        <button onClick={handleSubmit}>Accéder à votre espace</button>
+      <br />
+      <h2>Connectez vous</h2>
+      <form action="submit" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Entrez votre prénom"
+          value={inputValue}
+          onChange={handleChange}
+          required
+        />
+        <button>Accéder à votre espace</button>
       </form>
     </div>
   );
