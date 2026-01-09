@@ -1,11 +1,11 @@
+import { Link } from "react-router";
 export default function ErrorPage() {
-  const handleClick = () => {
-    document.location.href = "/";
-  };
   return (
     <div>
       <h1>ErrorPage</h1>
-      <button onClick={handleClick}>Retourner à la page d'accueil</button>
+      <Link to="/">
+        <button>Retourner à la page d'accueil</button>
+      </Link>
     </div>
   );
 }
