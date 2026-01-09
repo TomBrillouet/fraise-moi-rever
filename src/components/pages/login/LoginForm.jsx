@@ -6,6 +6,7 @@ export default function LoginForm() {
   //comportements
   const handleSubmit = (e) => {
     e.preventDefault();
+    document.location.href = "/order";
     setInputValue("");
   };
 
@@ -25,7 +26,6 @@ export default function LoginForm() {
         required
       />
       <button>Accéder à votre espace</button>
-      {/* Redirection vers la page OrderPage */}
     </form>
   );
 }
