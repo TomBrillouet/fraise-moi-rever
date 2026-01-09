@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router";
 
 export default function LoginForm() {
   //state
@@ -6,7 +7,6 @@ export default function LoginForm() {
   //comportements
   const handleSubmit = (e) => {
     e.preventDefault();
-    document.location.href = "/order";
     setInputValue("");
   };
 
@@ -25,7 +25,9 @@ export default function LoginForm() {
         onChange={handleChange}
         required
       />
-      <button>Accéder à votre espace</button>
+      <Link to="/order">
+        <button>Accéder à votre espace</button>
+      </Link>
     </form>
   );
 }
