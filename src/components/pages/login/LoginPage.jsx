@@ -26,7 +26,6 @@ const LoginPageStyled = styled.div`
     z-index: -1;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url("/src/assets/images/F03 burger-background.jpg");
-
     background-size: cover;
     background-position: center;
   }
