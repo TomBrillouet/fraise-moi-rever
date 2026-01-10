@@ -3,6 +3,10 @@
 }
 body {
   margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .amatic-sc-bold {
