@@ -109,8 +109,8 @@ const LoginFormStyled = styled.form`
       cursor: pointer;
     }
     &:active {
-      background-color: ${theme.colors.primary_burger};
-      color: ${theme.colors.white};
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary_burger};
       border: 1px solid ${theme.colors.primary_burger};
     }
   }
