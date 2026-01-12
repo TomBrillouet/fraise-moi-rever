@@ -3,7 +3,7 @@ import { useNavigate } from "react-router"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import { BsPersonCircle } from "react-icons/bs"
-import { GoChevronRight } from "react-icons/go"
+import { IoChevronForward } from "react-icons/io5"
 
 export default function LoginForm() {
   //state
@@ -36,8 +36,8 @@ export default function LoginForm() {
         />
       </div>
       <button>
-        Accéder à mon espace
-        <GoChevronRight />
+        <span>Accéder à mon espace</span>
+        <IoChevronForward className="icon" />
       </button>
     </LoginFormStyled>
   )
@@ -47,8 +47,12 @@ const LoginFormStyled = styled.form`
   color: ${theme.colors.white};
   display: flex;
   flex-direction: column;
-  padding: 40px 32px;
+  min-width: 400px;
+  max-width: 500px;
+  margin: 0px auto;
+  padding: 2.5rem 2rem;
   text-align: center;
+  font-family: "Amatic SC", cursive;
   h1 {
     font-size: ${theme.fonts.P5};
     margin: 0;
@@ -84,16 +88,30 @@ const LoginFormStyled = styled.form`
   button {
     background-color: ${theme.colors.primary_burger};
     color: ${theme.colors.white};
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    width: 100%;
     font-size: ${theme.fonts.P0};
-    padding: 18px 106.2px;
+    padding: 18px 24px;
     border-radius: ${theme.borderRadius.round};
-    border: none;
+    border: 1px solid ${theme.colors.primary_burger};
     &:hover {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary_burger};
+      transition: all 200ms ease-out;
+      border: 1px solid ${theme.colors.primary_burger};
       cursor: pointer;
+    }
+    &:active {
+      background-color: ${theme.colors.primary_burger};
+      color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.primary_burger};
     }
   }
 `
