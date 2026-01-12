@@ -1,4 +1,3 @@
-import { IoChevronForward } from "react-icons/io5"
 import { theme } from "../../theme"
 import styled from "styled-components"
 
