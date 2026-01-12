@@ -76,10 +76,10 @@ const LoginFormStyled = styled.form`
     display: flex;
     .icon {
       color: ${theme.colors.greyDark};
+      margin-right: 8px;
     }
     input {
       border: none;
-      margin-left: 12.8px;
       &::placeholder {
         color: #d3d3d3;
       }
@@ -112,6 +112,9 @@ const LoginFormStyled = styled.form`
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary_burger};
       border: 1px solid ${theme.colors.primary_burger};
+    }
+    .icon {
+      margin-left: 8px;
     }
   }
 `
