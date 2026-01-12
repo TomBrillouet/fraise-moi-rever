@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
-import TextInput from "./TextInput"
+import TextInput from "../../reusable/TextInput"
 
 export default function LoginForm() {
   //state
