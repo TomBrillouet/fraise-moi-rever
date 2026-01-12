@@ -21,14 +21,22 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 110px;
+  transform: scale(2);
   p {
     color: ${theme.colors.primary_burger};
-    margin: 0;
+    display: inline;
+    text-align: center;
+    font-size: 36px;
+    line-height: 1em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
   img {
-    width: 200px;
-    height: 150px;
+    width: 80px;
+    height: 60px;
+    margin: 0 5px;
+    object-fit: contain;
+    object-position: center;
   }
 `
