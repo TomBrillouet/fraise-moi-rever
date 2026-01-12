@@ -26,6 +26,7 @@ export default function LoginForm() {
       <hr />
       <h2 className="amatic-sc-bold">Connectez vous</h2>
       <div>
+        <BsPersonCircle />
         <input
           type="text"
           placeholder="Entrez votre prénom"
@@ -46,8 +47,8 @@ const LoginFormStyled = styled.form`
   color: ${theme.colors.white};
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 40px 32px;
+  text-align: center;
   h1 {
     font-size: ${theme.fonts.P5};
     margin: 0;
@@ -61,11 +62,24 @@ const LoginFormStyled = styled.form`
   h2 {
     font-size: ${theme.fonts.P4};
   }
-  input {
+  div {
     margin-bottom: 18px;
     padding: 18px 24px;
     border-radius: ${theme.borderRadius.round};
     border: none;
+    background-color: ${theme.colors.white};
+    text-align: left;
+    display: flex;
+    svg {
+      fill: ${theme.colors.greyDark};
+    }
+    input {
+      border: none;
+      margin-left: 12.8px;
+      &::placeholder {
+        color: #d3d3d3;
+      }
+    }
   }
   button {
     background-color: ${theme.colors.primary_burger};
