@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Logo from "../../Logo"
 import LoginForm from "./LoginForm"
+import Logo from "../../reusable/Logo"
 
 export default function LoginPage() {
   //render
