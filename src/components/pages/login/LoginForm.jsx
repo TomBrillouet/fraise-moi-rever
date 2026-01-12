@@ -113,6 +113,10 @@ const LoginFormStyled = styled.form`
       color: ${theme.colors.primary_burger};
       border: 1px solid ${theme.colors.primary_burger};
     }
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allwoed;
+    }
     .icon {
       margin-left: 8px;
     }
