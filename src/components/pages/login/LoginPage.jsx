@@ -6,7 +6,6 @@ export default function LoginPage() {
   //render
   return (
     <LoginPageStyled>
-      <div className="background"></div>
       <Logo />
       <LoginForm />
     </LoginPageStyled>
@@ -19,14 +18,18 @@ const LoginPageStyled = styled.div`
   align-items: center;
   height: 100vh;
   justify-content: center;
-  div.background {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("/src/assets/images/F03 burger-background.jpg");
+  ::before {
+    content: "";
+    background: url("/src/assets/images/F03 burger-background.jpg"),
+      rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
+    background-blend-mode: darken;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
   }
 `
