@@ -22,6 +22,7 @@ const TextInputStyled = styled.div`
     margin-right: 8px;
   }
   input {
+    width: 100%;
     border: none;
     &::placeholder {
       color: #d3d3d3;
