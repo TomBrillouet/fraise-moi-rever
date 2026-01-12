@@ -26,7 +26,7 @@ export default function LoginForm() {
       <hr />
       <h2 className="amatic-sc-bold">Connectez vous</h2>
       <div>
-        <BsPersonCircle />
+        <BsPersonCircle className="icon" />
         <input
           type="text"
           placeholder="Entrez votre prénom"
@@ -70,8 +70,8 @@ const LoginFormStyled = styled.form`
     background-color: ${theme.colors.white};
     text-align: left;
     display: flex;
-    svg {
-      fill: ${theme.colors.greyDark};
+    .icon {
+      color: ${theme.colors.greyDark};
     }
     input {
       border: none;
