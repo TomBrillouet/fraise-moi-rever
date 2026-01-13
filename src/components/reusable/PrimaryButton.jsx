@@ -42,7 +42,4 @@ const PrimaryButtonStyled = styled.button`
     opacity: 0.6;
     cursor: not-allwoed;
   }
-  .icon {
-    margin-left: 8px;
-  }
 `

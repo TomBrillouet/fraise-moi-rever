@@ -65,4 +65,11 @@ const LoginFormStyled = styled.form`
   h2 {
     font-size: ${theme.fonts.P4};
   }
+  .icon {
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
 `
