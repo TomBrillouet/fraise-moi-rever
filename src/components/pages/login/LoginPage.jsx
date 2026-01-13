@@ -20,7 +20,7 @@ const LoginPageStyled = styled.div`
   justify-content: center;
   &::before {
     content: "";
-    background: url("/src/assets/images/F03 burger-background.jpg"),
+    background: url("/public/images/F03 burger-background.jpg"),
       rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
