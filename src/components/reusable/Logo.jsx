@@ -9,10 +9,7 @@ export default function Logo() {
   return (
     <LogoStyled className="amatic-sc-bold">
       <p>Crazee</p>
-      <img
-        src="/src/assets/images/F03 logo-orange.png"
-        alt="Logo Crazee Burger"
-      />
+      <img src="/public/images/F03 logo-orange.png" alt="Logo Crazee Burger" />
       <p>Burger</p>
     </LogoStyled>
   )
