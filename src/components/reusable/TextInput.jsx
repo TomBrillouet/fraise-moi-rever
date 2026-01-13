@@ -10,22 +10,25 @@ export default function TextInput({ value, onChange, Icon, ...extraProps }) {
 }
 
 const TextInputStyled = styled.div`
-  margin-bottom: 18px;
+  margin: 18px 0;
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
-  border: none;
   background-color: ${theme.colors.white};
-  text-align: left;
+  align-items: center;
   display: flex;
   .icon {
-    color: ${theme.colors.greyDark};
+    font-size: ${theme.fonts.size.P0};
     margin-right: 8px;
+    color: ${theme.colors.greySemiDark};
   }
   input {
     width: 100%;
+    font-size: ${theme.fonts.size.P0};
+    color: ${theme.colors.dark};
     border: none;
     &::placeholder {
-      color: #d3d3d3;
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyMedium};
     }
   }
 `

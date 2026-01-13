@@ -23,12 +23,12 @@ const LogoStyled = styled.div`
   align-items: center;
   transform: scale(2);
   p {
-    color: ${theme.colors.primary_burger};
+    color: ${theme.colors.primary};
     display: inline;
     text-align: center;
-    font-size: 36px;
+    font-size: ${theme.fonts.size.P4};
     line-height: 1em;
-    font-weight: 700;
+    font-weight: ${theme.fonts.weights.bold};
     letter-spacing: 1.5px;
     font-family: "Amatic SC", cursive;
   }
