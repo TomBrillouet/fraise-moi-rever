@@ -7,7 +7,7 @@ export default function Main() {
 
 const MainStyled = styled.div`
   background: #f5f5f7;
-  height: 80vh;
+  flex: 1;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   border-radius: 0 0 ${theme.borderRadius.extraRound}
     ${theme.borderRadius.extraRound};
