@@ -21,7 +21,6 @@ export default function Profile() {
 const ProfileStyled = styled.div`
   display: flex;
   gap: 10px;
-  font-family: "Open Sans", sans-serif;
   font-weight: ${theme.fonts.weights.regular};
   font-size: 16px;
   color: ${theme.colors.greyBlue};
@@ -36,6 +35,10 @@ const ProfileStyled = styled.div`
     cursor: pointer;
     font-size: ${theme.fonts.size.XXS};
     color: ${theme.colors.greyBlue};
+    &:hover {
+      text-decoration: underline;
+      color: ${theme.colors.greyDark};
+    }
   }
   svg {
     height: ${theme.fonts.size.P4};
