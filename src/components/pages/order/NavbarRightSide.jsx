@@ -9,5 +9,5 @@ export default function NavbarRightSide() {
   )
 }
 const NavbarRightSideStyled = styled.div`
-  margin-right: 50px;
+  padding-right: 50px;
 `
