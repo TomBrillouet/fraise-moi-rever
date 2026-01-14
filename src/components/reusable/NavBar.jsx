@@ -12,9 +12,7 @@ export default function NavBar() {
   }
   return (
     <NavBarStyled>
-      <a href="/">
-        <Logo />
-      </a>
+      <Logo />
       <div className="user-info">
         <div>
           <p>
