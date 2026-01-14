@@ -6,7 +6,7 @@ export default function LoginPage() {
   //render
   return (
     <LoginPageStyled>
-      <Logo className="loginLogo" />
+      <Logo className={"loginLogo"} />
       <LoginForm />
     </LoginPageStyled>
   )
