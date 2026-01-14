@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Logo() {
+export default function Logo({ className }) {
   //state
   //comportenements
   //render
 
   return (
-    <LogoStyled className="amatic-sc-bold">
+    <LogoStyled className={className}>
       <p>Crazee</p>
       <img src="/images/F03 logo-orange.png" alt="Logo Crazee Burger" />
       <p>Burger</p>
@@ -18,7 +18,6 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  transform: scale(2);
   p {
     color: ${theme.colors.primary};
     display: inline;
