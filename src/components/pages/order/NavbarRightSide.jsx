@@ -23,6 +23,7 @@ const NavbarRightSideStyled = styled.div`
   font-weight: ${theme.fonts.weights.regular};
   font-size: 16px;
   color: ${theme.colors.greyBlue};
+  margin-right: 50px;
   display: flex;
   gap: 10px;
   p {
