@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import NavBar from "../../reusable/NavBar"
 import Main from "./Main"
 import { theme } from "../../../theme"
+import NavBar from "./NavBar"
 export default function OrderPage() {
   return (
     <OrderPageStyled>

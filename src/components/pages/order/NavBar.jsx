@@ -1,8 +1,8 @@
-import Logo from "./Logo"
+import Logo from "../../reusable/Logo"
 import styled from "styled-components"
-import { theme } from "../../theme"
-import NavbarRightSide from "../pages/order/NavbarRightSide"
-import { refreshPage } from "../../utils/window"
+import { theme } from "../../../theme"
+import NavbarRightSide from "./NavbarRightSide"
+import { refreshPage } from "../../../utils/window"
 
 export default function NavBar() {
   return (
