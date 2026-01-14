@@ -2,12 +2,12 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 
 export default function Logo({ className }) {
-  //state
-  //comportenements
-  //render
+  const handleClick = () => {
+    window.location.reload()
+  }
 
   return (
-    <LogoStyled className={className}>
+    <LogoStyled onClick={handleClick} className={className}>
       <p>Crazee</p>
       <img src="/images/F03 logo-orange.png" alt="Logo Crazee Burger" />
       <p>Burger</p>
@@ -18,6 +18,7 @@ export default function Logo({ className }) {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
   p {
     color: ${theme.colors.primary};
     display: inline;
