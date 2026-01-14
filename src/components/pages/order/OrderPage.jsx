@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import NavBar from "../../reusable/NavBar"
-import Container from "./Container"
+import Main from "./Main"
 import { theme } from "../../../theme"
 export default function OrderPage() {
   return (
     <OrderPageStyled>
-      <div>
+      <div className="container">
         <NavBar />
-        <Container />
+        <Main />
       </div>
     </OrderPageStyled>
   )
@@ -15,12 +15,13 @@ export default function OrderPage() {
 
 const OrderPageStyled = styled.div`
   background: orange;
-  height: 100%;
-  width: 100%;
-  padding: 19px 0;
-  > div:first-child {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .container {
     width: 1400px;
-    justify-self: center;
+    height: 95vh;
     border-radius: ${theme.borderRadius.extraRound};
   }
 `
