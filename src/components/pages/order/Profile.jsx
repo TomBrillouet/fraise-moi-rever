@@ -33,6 +33,7 @@ const ProfileStyled = styled.div`
   }
   a {
     cursor: pointer;
+    text-decoration: none;
     font-size: ${theme.fonts.size.XXS};
     color: ${theme.colors.greyBlue};
     &:hover {
