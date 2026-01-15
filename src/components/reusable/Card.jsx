@@ -1,23 +1,22 @@
 import styled from "styled-components"
-import { formatPrice } from "../../../utils/maths"
-import PrimaryButton from "../../reusable/PrimaryButton.jsx"
-import { theme } from "../../../theme/index.js"
+import PrimaryButton from "./PrimaryButton.jsx"
+import { theme } from "../../theme/index.js"
 
-export default function Product({ product }) {
+export default function Card({ title, image, leftDescription }) {
   return (
-    <ProductStyled key={product.id} className="product">
-      <img src={product.imageSource} alt={product.title} />
+    <CardStyled className="Card">
+      <img src={image} alt={title} />
       <div className="info">
-        <span className="title">{product.title}</span>
+        <span className="title">{title}</span>
         <div className="addcart">
-          <span className="price">{formatPrice(product.price)}</span>
+          <span className="left-description">{leftDescription}</span>
           <PrimaryButton label={"Ajouter"} />
         </div>
       </div>
-    </ProductStyled>
+    </CardStyled>
   )
 }
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -40,7 +39,7 @@ const ProductStyled = styled.div`
     overflow: hidden;
     white-space: nowrap;
   }
-  .price {
+  .left-description {
     color: ${theme.colors.primary};
   }
   .info {
