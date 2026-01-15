@@ -4,10 +4,10 @@ import { fakeMenu2 } from "../../../../../datas/fakeMenu"
 import Product from "../../Product"
 
 export default function Catalog() {
-  const [datas] = useState(fakeMenu2)
-  const products = datas.map((product) => <Product product={product} />)
+  const [products] = useState(fakeMenu2)
+  const catalog = products.map((product) => <Product product={product} />)
 
-  return <CatalogStyled className="catalog">{products}</CatalogStyled>
+  return <CatalogStyled className="catalog">{catalog}</CatalogStyled>
 }
 
 const CatalogStyled = styled.div`
