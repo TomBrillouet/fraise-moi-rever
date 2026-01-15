@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router"
 import { BsPersonCircle } from "react-icons/bs"
-import { theme } from "../../../theme"
+import { theme } from "../../../../theme"
 import styled from "styled-components"
 
 export default function Profile() {
