@@ -24,7 +24,7 @@ const ProductStyled = styled.div`
   height: 280px;
   width: 200px;
   padding: 50px 20px 10px 20px;
-  border-radius: 15px;
+  border-radius: ${theme.borderRadius.extraRound};
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
   img {
@@ -34,8 +34,8 @@ const ProductStyled = styled.div`
   }
   .title {
     font-family: "Amatic SC", cursive;
-    font-size: 36px;
-    font-weight: 700;
+    font-size: ${theme.fonts.size.P4};
+    font-weight: ${theme.fonts.weights.bold};
   }
   .price {
     color: ${theme.colors.primary};
