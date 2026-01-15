@@ -8,9 +8,9 @@ export default function Product({ product }) {
     <ProductStyled key={product.id} className="product">
       <img src={product.imageSource} alt={product.title} />
       <div className="info">
-        <div className="title">{product.title}</div>
+        <span className="title">{product.title}</span>
         <div className="addcart">
-          <div className="price">{formatPrice(product.price)}</div>
+          <span className="price">{formatPrice(product.price)}</span>
           <PrimaryButton label={"Ajouter"} />
         </div>
       </div>
@@ -36,6 +36,9 @@ const ProductStyled = styled.div`
     font-family: "Amatic SC", cursive;
     font-size: ${theme.fonts.size.P4};
     font-weight: ${theme.fonts.weights.bold};
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .price {
     color: ${theme.colors.primary};
@@ -43,7 +46,6 @@ const ProductStyled = styled.div`
   .info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 0 5px 5px 5px;
     width: 190px;
     height: 105px;
