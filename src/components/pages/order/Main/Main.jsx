@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { theme } from "../../../theme"
+import { theme } from "../../../../theme/index.js"
 import { useState } from "react"
-import { fakeMenu2 } from "../../../datas/fakeMenu.js"
-import Product from "./Product.jsx"
+import { fakeMenu2 } from "../../../../datas/fakeMenu.js"
+import Product from "../Product.jsx"
 
 export default function Main() {
   //state
@@ -12,13 +12,16 @@ export default function Main() {
   //render
   return (
     <MainStyled>
-      <div className="grid-products">{products}</div>
+      {/*<div className="basket"></div>*/}
+      <div className="catalog">{products}</div>
     </MainStyled>
   )
 }
 
 const MainStyled = styled.div`
   background: ${theme.colors.background_white};
+  display: grid;
+  grid-template-columns: /*25%*/ 1fr;
   flex: 1;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: auto;
@@ -26,7 +29,7 @@ const MainStyled = styled.div`
     ${theme.borderRadius.extraRound};
   scrollbar-color: grey transparent;
 
-  .grid-products {
+  .catalog {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
