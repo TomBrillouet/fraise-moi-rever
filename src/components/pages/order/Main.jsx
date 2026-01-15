@@ -13,7 +13,7 @@ export default function Main() {
       <div className="info">
         <div className="title">{product.title}</div>
         <div className="addcart">
-          <div className="price">{product.price}</div>
+          <div className="price">{product.price} €</div>
           <PrimaryButton label={"Ajouter"} />
         </div>
       </div>
@@ -47,26 +47,40 @@ const MainStyled = styled.div`
     justify-items: center;
     .product {
       display: flex;
-      border: solid black 1px;
       flex-direction: column;
       justify-content: space-around;
-      height: 330px;
-      width: 240px;
+      height: 280px;
+      width: 200px;
       padding: 50px 20px 10px 20px;
       border-radius: 15px;
+      box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+
       img {
-        height: 200px;
         object-fit: contain;
+        height: 145px;
+        width: 200px;
       }
       .title {
-        height: 20px;
+        font-family: "Amatic SC", cursive;
+        font-size: 36px;
+        font-weight: 700;
       }
       .price {
-        height: 20px;
+        color: ${theme.colors.primary};
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5px 5px 5px;
+        width: 190px;
+        height: 105px;
+        justify-content: space-around;
       }
       .addcart {
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
       button {
         padding: 12px 26px;
