@@ -24,6 +24,7 @@ const MainStyled = styled.div`
   overflow-y: auto;
   border-radius: 0 0 ${theme.borderRadius.extraRound}
     ${theme.borderRadius.extraRound};
+  scrollbar-color: grey transparent;
 
   .grid-products {
     display: grid;
