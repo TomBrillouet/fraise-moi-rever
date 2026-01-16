@@ -1,11 +1,11 @@
 import { useState } from "react"
 import styled from "styled-components"
-import { fakeMenu2 } from "../../../../../datas/fakeMenu"
+import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
 
 export default function Catalog() {
-  const [products, setProducts] = useState(fakeMenu2)
+  const [products, setProducts] = useState(fakeMenu)
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
       image={imageSource}

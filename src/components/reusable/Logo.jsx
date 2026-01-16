@@ -4,9 +4,8 @@ import { theme } from "../../theme"
 export default function Logo({ className, onClick }) {
   return (
     <LogoStyled onClick={onClick} className={className}>
-      <p>Crazee</p>
-      <img src="/images/F03 logo-orange.png" alt="Logo Crazee Burger" />
-      <p>Burger</p>
+      <img src="/images/logo.png" alt="Logo Fraise moi rêver " />
+      <p>Fraise moi rêver</p>
     </LogoStyled>
   )
 }
@@ -27,8 +26,7 @@ const LogoStyled = styled.div`
   img {
     width: 80px;
     height: 60px;
-    margin: 0 5px;
     object-fit: contain;
-    object-position: center;
+    object-position: left;
   }
 `
