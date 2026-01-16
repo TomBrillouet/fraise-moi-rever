@@ -25,6 +25,7 @@ const CardStyled = styled.div`
   padding: 50px 20px 10px 20px;
   border-radius: ${theme.borderRadius.extraRound};
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  background-color: ${theme.colors.white};
 
   img {
     object-fit: contain;
