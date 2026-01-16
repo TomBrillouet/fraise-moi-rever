@@ -40,7 +40,7 @@ export default function NavbarRightSide() {
 }
 const NavbarRightSideStyled = styled.div`
   padding-right: 50px;
-  gap: 25px;
+  gap: 20px;
   display: flex;
   .toaster {
     max-width: 300px;
