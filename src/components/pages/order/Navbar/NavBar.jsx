@@ -2,12 +2,13 @@ import Logo from "../../../reusable/Logo"
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import NavbarRightSide from "./NavbarRightSide"
-import { refreshPage } from "../../../../utils/window"
+import { useRefreshPage } from "../../../../utils/window"
 
 export default function NavBar() {
+  const refreshPage = useRefreshPage()
   return (
     <NavBarStyled>
-      <Logo onClick={() => refreshPage()} className={"logo-order"} />
+      <Logo onClick={refreshPage} className={"logo-order"} />
       <NavbarRightSide />
     </NavBarStyled>
   )
