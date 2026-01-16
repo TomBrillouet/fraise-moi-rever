@@ -9,7 +9,6 @@ export default function NavbarRightSide() {
   const [checked, setChecked] = useState(false)
 
   const toggle = (e) => {
-    setChecked(e.target.checked)
     if (!checked) {
       toast.info("Mode admin activé", {
         //icon: <FaUserSecret size={30} />,
@@ -23,6 +22,7 @@ export default function NavbarRightSide() {
         progress: undefined,
       })
     }
+    setChecked(e.target.checked)
   }
 
   return (
