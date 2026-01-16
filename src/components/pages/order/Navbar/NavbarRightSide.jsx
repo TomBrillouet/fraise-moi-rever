@@ -1,20 +1,19 @@
 import styled from "styled-components"
 import Profile from "./Profile"
-import ToggleButton from "./ToggleButton"
-import { toast, ToastContainer } from "react-toastify"
-import { theme } from "../../../../theme"
+import { toast } from "react-toastify"
 import { useState } from "react"
+import ToggleButton from "../../../reusable/ToggleButton"
+import ToastAdmin from "./ToastAdmin"
 
-export default function NavbarRightSide() {
-  const [checked, setChecked] = useState(false)
+export default function NavbarRightSide({ username }) {
+  const [isAdmin, setChecked] = useState(false)
 
-  const toggle = (e) => {
-    if (!checked) {
+  const displayToastNotification = () => {
+    if (!isAdmin) {
       toast.info("Mode admin activé", {
-        //icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -22,19 +21,18 @@ export default function NavbarRightSide() {
         progress: undefined,
       })
     }
-    setChecked(e.target.checked)
+    setChecked(!isAdmin)
   }
 
   return (
     <NavbarRightSideStyled>
       <ToggleButton
-        isChecked={checked}
-        onToggle={toggle}
-        labelIfChecked="Désactiver le mode admin"
-        labelIfUnchecked="Activer le mode admin"
+        onToggle={displayToastNotification}
+        labelIfChecked={"Désactiver le mode admin"}
+        labelIfUnchecked={"Activer le mode admin"}
       />
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
-      <Profile />
+      <Profile username={username} />
+      <ToastAdmin />
     </NavbarRightSideStyled>
   )
 }
@@ -42,21 +40,4 @@ const NavbarRightSideStyled = styled.div`
   padding-right: 50px;
   gap: 20px;
   display: flex;
-  .toaster {
-    max-width: 300px;
-  }
-
-  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background: ${theme.colors.background_dark};
-  }
-
-  .body-toast {
-    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-      margin-right: 20px;
-      margin-left: 5px;
-    }
-    div {
-      line-height: 1.3em;
-    }
-  }
 `

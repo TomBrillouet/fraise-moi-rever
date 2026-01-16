@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../../../theme"
+import { theme } from "../../theme"
 
 export default function ToggleButton({
   isChecked,
@@ -45,7 +45,6 @@ const ToggleButtonStyled = styled.div`
       font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
       border: 2px solid ${theme.colors.background_dark};
-      text-transform: uppercase;
       padding: 0;
       margin: 0;
       cursor: pointer;
