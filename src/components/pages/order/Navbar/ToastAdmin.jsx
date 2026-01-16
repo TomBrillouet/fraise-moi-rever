@@ -3,22 +3,13 @@ import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 
 export default function ToastAdmin() {
-  return (
-    <ToastAdminStyled>
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
-    </ToastAdminStyled>
-  )
+  return <ToastAdminStyled bodyClassName="body-toast"></ToastAdminStyled>
 }
 
-const ToastAdminStyled = styled.div`
-  .toaster {
-    max-width: 300px;
-  }
-
+const ToastAdminStyled = styled(ToastContainer)`
   .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
     background: ${theme.colors.background_dark};
   }
-
   .body-toast {
     .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
       margin-right: 20px;
