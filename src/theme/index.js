@@ -57,13 +57,11 @@ const borderRadius = {
   extraRound: "15px",
   circle: "50%",
 }
-const shadows = {}
 
 export const theme = {
   colors,
   fonts,
   gridUnit,
   borderRadius,
-  shadows,
   spacing,
 }
