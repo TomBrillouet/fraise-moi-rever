@@ -5,7 +5,7 @@ import { useState } from "react"
 import ToggleButton from "../../../reusable/ToggleButton"
 import ToastAdmin from "./ToastAdmin"
 
-export default function NavbarRightSide({ username }) {
+export default function NavbarRightSide() {
   const [isAdmin, setChecked] = useState(false)
 
   const displayToastNotification = () => {
@@ -31,7 +31,7 @@ export default function NavbarRightSide({ username }) {
         labelIfChecked={"Désactiver le mode admin"}
         labelIfUnchecked={"Activer le mode admin"}
       />
-      <Profile username={username} />
+      <Profile />
       <ToastAdmin />
     </NavbarRightSideStyled>
   )

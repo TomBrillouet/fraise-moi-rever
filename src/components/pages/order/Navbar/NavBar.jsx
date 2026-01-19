@@ -4,11 +4,11 @@ import { theme } from "../../../../theme"
 import NavbarRightSide from "./NavbarRightSide"
 import { refreshPage } from "../../../../utils/window"
 
-export default function NavBar({ username }) {
+export default function NavBar() {
   return (
     <NavBarStyled>
       <Logo onClick={() => refreshPage()} className={"logo-order"} />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide />
     </NavBarStyled>
   )
 }
