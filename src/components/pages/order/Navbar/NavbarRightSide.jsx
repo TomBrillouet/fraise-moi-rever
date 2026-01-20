@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import Profile from "./Profile"
 import { toast } from "react-toastify"
-import { useState } from "react"
 import ToggleButton from "../../../reusable/ToggleButton"
 import ToastAdmin from "./ToastAdmin"
+import { useContext } from "react"
+import InfoContext from "../../../../context/InfoContext"
 
 export default function NavbarRightSide() {
-  const [isAdmin, setChecked] = useState(false)
+  const { isAdmin, setIsAdmin } = useContext(InfoContext)
 
   const displayToastNotification = () => {
     if (!isAdmin) {
@@ -21,7 +22,7 @@ export default function NavbarRightSide() {
         progress: undefined,
       })
     }
-    setChecked(!isAdmin)
+    setIsAdmin(!isAdmin)
   }
 
   return (

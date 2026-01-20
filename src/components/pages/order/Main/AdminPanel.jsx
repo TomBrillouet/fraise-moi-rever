@@ -1,31 +1,37 @@
+import { useContext } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
+import InfoContext from "../../../../context/InfoContext"
 
 export default function AdminPanel() {
-  return (
-    <AdminPanelStyled>
-      <div className="header">
-        <button>
-          <FiChevronDown />
-        </button>
-        <button className="add">
-          <AiOutlinePlus />
-          Ajouter un produit
-        </button>
-        <button>
-          <MdModeEditOutline />
-          Modifier un produit
-        </button>
-      </div>
-      <div className="body">Ajouter un produit</div>
-    </AdminPanelStyled>
-  )
-}
+  const { isAdmin } = useContext(InfoContext)
 
+  if (isAdmin) {
+    return (
+      <AdminPanelStyled>
+        <div className="header">
+          <button>
+            <FiChevronDown />
+          </button>
+          <button className="add">
+            <AiOutlinePlus />
+            Ajouter un produit
+          </button>
+          <button>
+            <MdModeEditOutline />
+            Modifier un produit
+          </button>
+        </div>
+        <div className="body">Ajouter un produit</div>
+      </AdminPanelStyled>
+    )
+  }
+}
 const AdminPanelStyled = styled.div`
   position: sticky;
+  display: block;
   bottom: 0;
   .header {
     height: 44px;
