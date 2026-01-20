@@ -8,6 +8,16 @@ import InfoContext from "../../../../context/InfoContext"
 export default function AdminPanel() {
   const { isAdmin } = useContext(InfoContext)
 
+  const handleClick = (e) => {
+    if (e.target.className != "active") {
+      const buttons = document.querySelectorAll("button")
+      buttons.forEach(function (bouton) {
+        bouton.classList.remove("active")
+      })
+      e.target.className = "active"
+    }
+  }
+
   if (isAdmin) {
     return (
       <AdminPanelStyled>
@@ -15,11 +25,11 @@ export default function AdminPanel() {
           <button>
             <FiChevronDown />
           </button>
-          <button className="add">
+          <button onClick={handleClick} className="active">
             <AiOutlinePlus />
             Ajouter un produit
           </button>
-          <button>
+          <button onClick={handleClick}>
             <MdModeEditOutline />
             Modifier un produit
           </button>
@@ -47,7 +57,7 @@ const AdminPanelStyled = styled.div`
       border-radius: 5px 5px 0 0;
       gap: 1em;
       cursor: pointer;
-      &.add {
+      &.active {
         background-color: #292729;
         color: #ffffff;
         border: #292729 1px solid;
