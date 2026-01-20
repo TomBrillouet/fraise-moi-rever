@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
-import AdminPanel from "../AdminPanel"
+import AdminPanel from "../Admin"
 
 export default function Catalog() {
   const [products, setProducts] = useState(fakeMenu)
@@ -28,7 +28,7 @@ const CatalogStyled = styled.div`
   position: relative;
   .catalog {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: auto;
     padding: 50px 0;
     row-gap: 60px;
