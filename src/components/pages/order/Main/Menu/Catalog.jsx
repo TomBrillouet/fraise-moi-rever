@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
+import AdminPanel from "../../AdminPanel"
 
 export default function Catalog() {
   const [products, setProducts] = useState(fakeMenu)
@@ -15,14 +16,22 @@ export default function Catalog() {
     />
   ))
 
-  return <CatalogStyled className="catalog">{catalog}</CatalogStyled>
+  return (
+    <CatalogStyled>
+      <div className="catalog">{catalog}</div>
+      <AdminPanel />
+    </CatalogStyled>
+  )
 }
 
 const CatalogStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  padding: 50px 0;
-  row-gap: 60px;
-  justify-items: center;
+  position: relative;
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    padding: 50px 0;
+    row-gap: 60px;
+    justify-items: center;
+  }
 `
