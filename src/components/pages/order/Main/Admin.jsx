@@ -5,45 +5,36 @@ import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
 import InfoContext from "../../../../context/InfoContext"
 
-export default function AdminPanel() {
+export default function Admin() {
   const { isAdmin } = useContext(InfoContext)
-
-  const handleClick = (e) => {
-    if (e.target.className != "active") {
-      const buttons = document.querySelectorAll("button")
-      buttons.forEach(function (bouton) {
-        bouton.classList.remove("active")
-      })
-      e.target.className = "active"
-    }
-  }
 
   if (isAdmin) {
     return (
-      <AdminPanelStyled>
-        <div className="header">
+      <AdminStyled>
+        <div className="AdminTabs">
           <button>
             <FiChevronDown />
           </button>
-          <button onClick={handleClick} className="active">
+          <button className="active">
             <AiOutlinePlus />
             Ajouter un produit
           </button>
-          <button onClick={handleClick}>
+          <button>
             <MdModeEditOutline />
             Modifier un produit
           </button>
         </div>
-        <div className="body">Ajouter un produit</div>
-      </AdminPanelStyled>
+        <div className="AdminPanel">Ajouter un produit</div>
+      </AdminStyled>
     )
   }
 }
-const AdminPanelStyled = styled.div`
+
+const AdminStyled = styled.div`
   position: sticky;
   display: block;
   bottom: 0;
-  .header {
+  .AdminTabs {
     height: 44px;
     padding: 0 71px;
     display: flex;
@@ -70,7 +61,7 @@ const AdminPanelStyled = styled.div`
       }
     }
   }
-  .body {
+  .AdminPanel {
     height: 250px;
     background: #ffffff;
     border: solid 1px #e4e5e9;
