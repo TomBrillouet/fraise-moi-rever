@@ -1,34 +1,28 @@
-import { useContext } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
-import InfoContext from "../../../../../context/InfoContext"
 import { theme } from "../../../../../theme"
 
 export default function Admin() {
-  const { isAdmin } = useContext(InfoContext)
-
-  if (isAdmin) {
-    return (
-      <AdminStyled>
-        <div className="AdminTabs">
-          <button>
-            <FiChevronDown />
-          </button>
-          <button className="active">
-            <AiOutlinePlus />
-            Ajouter un produit
-          </button>
-          <button>
-            <MdModeEditOutline />
-            Modifier un produit
-          </button>
-        </div>
-        <div className="AdminPanel">Ajouter un produit</div>
-      </AdminStyled>
-    )
-  }
+  return (
+    <AdminStyled>
+      <div className="AdminTabs">
+        <button>
+          <FiChevronDown />
+        </button>
+        <button className="active">
+          <AiOutlinePlus />
+          Ajouter un produit
+        </button>
+        <button>
+          <MdModeEditOutline />
+          Modifier un produit
+        </button>
+      </div>
+      <div className="AdminPanel">Ajouter un produit</div>
+    </AdminStyled>
+  )
 }
 
 const AdminStyled = styled.div`

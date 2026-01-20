@@ -2,17 +2,19 @@ import styled from "styled-components"
 import { theme } from "../../../../theme/index.js"
 import Admin from "./Admin/Admin.jsx"
 import Catalog from "./Catalog/Catalog.jsx"
+import { useContext } from "react"
+import InfoContext from "../../../../context/InfoContext.jsx"
 
 export default function Main() {
   //state
-
+  const { isAdmin } = useContext(InfoContext)
   //render
   return (
     <MainStyled>
       {/*<div className="basket">basket</div>*/}
       <div>
         <Catalog />
-        <Admin />
+        {isAdmin && <Admin />}
       </div>
     </MainStyled>
   )
