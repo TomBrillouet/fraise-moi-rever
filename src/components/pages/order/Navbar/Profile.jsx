@@ -1,12 +1,10 @@
-import { Link } from "react-router"
+import { Link, useParams } from "react-router"
 import { BsPersonCircle } from "react-icons/bs"
 import { theme } from "../../../../theme"
 import styled from "styled-components"
-import { useContext } from "react"
-import InfoContext from "../../../../context/InfoContext"
 
 export default function Profile() {
-  const { username } = useContext(InfoContext)
+  const { username } = useParams()
 
   return (
     <ProfileStyled>

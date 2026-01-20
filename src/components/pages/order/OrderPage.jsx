@@ -2,13 +2,11 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
-import { useParams } from "react-router"
 import { useState } from "react"
 import InfoContext from "../../../context/InfoContext"
 export default function OrderPage() {
-  const { username } = useParams()
   const [isAdmin, setIsAdmin] = useState(false)
-  const infoContextValue = { username, isAdmin, setIsAdmin }
+  const infoContextValue = { isAdmin, setIsAdmin }
 
   return (
     <OrderPageStyled>
