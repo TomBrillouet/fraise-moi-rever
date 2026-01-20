@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
-import InfoContext from "../../../../context/InfoContext"
+import InfoContext from "../../../../../context/InfoContext"
 
 export default function Admin() {
   const { isAdmin } = useContext(InfoContext)

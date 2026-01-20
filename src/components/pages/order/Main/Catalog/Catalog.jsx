@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
-import AdminPanel from "../Admin"
 
 export default function Catalog() {
   const [products, setProducts] = useState(fakeMenu)
@@ -19,7 +18,6 @@ export default function Catalog() {
   return (
     <CatalogStyled>
       <div className="catalog">{catalog}</div>
-      <AdminPanel />
     </CatalogStyled>
   )
 }
