@@ -3,10 +3,10 @@ import { BsPersonCircle } from "react-icons/bs"
 import { theme } from "../../../../theme"
 import styled from "styled-components"
 import { useContext } from "react"
-import UsernameContext from "../../../../context/UsernameContext"
+import InfoContext from "../../../../context/InfoContext"
 
 export default function Profile() {
-  const { username } = useContext(UsernameContext)
+  const { username } = useContext(InfoContext)
 
   return (
     <ProfileStyled>

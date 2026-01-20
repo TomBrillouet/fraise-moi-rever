@@ -3,19 +3,20 @@ import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
 import { useParams } from "react-router"
-import UsernameContext from "../../../context/UsernameContext"
+import { useState } from "react"
+import InfoContext from "../../../context/InfoContext"
 export default function OrderPage() {
   const { username } = useParams()
-
-  const usernameContextValue = { username }
+  const [isAdmin, setIsAdmin] = useState(false)
+  const infoContextValue = { username, isAdmin, setIsAdmin }
 
   return (
     <OrderPageStyled>
       <div className="container">
-        <UsernameContext.Provider value={usernameContextValue}>
+        <InfoContext.Provider value={infoContextValue}>
           <NavBar />
-        </UsernameContext.Provider>
-        <Main />
+          <Main />
+        </InfoContext.Provider>
       </div>
     </OrderPageStyled>
   )
