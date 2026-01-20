@@ -4,6 +4,7 @@ import { FiChevronDown } from "react-icons/fi"
 import { MdModeEditOutline } from "react-icons/md"
 import styled from "styled-components"
 import InfoContext from "../../../../../context/InfoContext"
+import { theme } from "../../../../../theme"
 
 export default function Admin() {
   const { isAdmin } = useContext(InfoContext)
@@ -42,16 +43,16 @@ const AdminStyled = styled.div`
       height: 100%;
       display: flex;
       padding: 14px 22px;
-      color: #93a2b1;
-      background-color: #ffffff;
-      border: #e4e5e9 solid 1px;
+      color: ${theme.colors.greySemiDark};
+      background-color: ${theme.colors.white};
+      border: ${theme.colors.greyLight} solid 1px;
       border-radius: 5px 5px 0 0;
       gap: 1em;
       cursor: pointer;
       &.active {
-        background-color: #292729;
-        color: #ffffff;
-        border: #292729 1px solid;
+        background-color: ${theme.colors.background_dark};
+        color: ${theme.colors.white};
+        border: ${theme.colors.background_dark} 1px solid;
       }
       &:hover {
         text-decoration: underline;
@@ -63,9 +64,10 @@ const AdminStyled = styled.div`
   }
   .AdminPanel {
     height: 250px;
-    background: #ffffff;
-    border: solid 1px #e4e5e9;
+    background: ${theme.colors.white};
+    border: solid 1px ${theme.colors.greyLight};
     padding: 17px;
     box-sizing: border-box;
+    box-shadow: ${theme.shadows.subtle};
   }
 `
