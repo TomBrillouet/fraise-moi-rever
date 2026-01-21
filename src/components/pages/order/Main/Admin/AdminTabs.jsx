@@ -4,15 +4,15 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import Tab from "../../../../reusable/Tab"
 
-export default function AdminTabs() {
+export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
   return (
     <AdminTabsStyled>
-      <Tab icon={<FiChevronDown />} />
       <Tab
-        className={"active"}
-        icon={<AiOutlinePlus />}
-        label={"Ajouter un produit"}
+        icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
       />
+      <Tab icon={<AiOutlinePlus />} label={"Ajouter un produit"} />
       <Tab icon={<MdModeEditOutline />} label={"Modifier un produit"} />
     </AdminTabsStyled>
   )

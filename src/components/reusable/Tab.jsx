@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Tab({ label, icon, className }) {
+export default function Tab({ label, icon, className, onClick }) {
   return (
-    <TabStyled className={className}>
+    <TabStyled onClick={onClick} className={className}>
       <div className="icon">{icon}</div>
       {label}
     </TabStyled>
@@ -36,10 +36,10 @@ const TabStyled = styled.button`
   border-bottom-left-radius: 0;
 
   cursor: pointer;
-  &.active {
-    background-color: ${theme.colors.background_dark};
+  &.is-active {
+    background: ${theme.colors.background_dark};
     color: ${theme.colors.white};
-    border: ${theme.colors.background_dark} 1px solid;
+    border-color: ${theme.colors.background_dark};
   }
   &:hover {
     text-decoration: underline;
