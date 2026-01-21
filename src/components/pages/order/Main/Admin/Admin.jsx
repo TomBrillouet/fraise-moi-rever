@@ -13,6 +13,5 @@ export default function Admin() {
 
 const AdminStyled = styled.div`
   position: sticky;
-  display: block;
   bottom: 0;
 `
