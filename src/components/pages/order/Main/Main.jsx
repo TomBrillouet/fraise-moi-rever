@@ -3,11 +3,11 @@ import { theme } from "../../../../theme/index.js"
 import Admin from "./Admin/Admin.jsx"
 import Catalog from "./Catalog/Catalog.jsx"
 import { useContext } from "react"
-import InfoContext from "../../../../context/InfoContext.jsx"
+import OrderContext from "../../../../context/OrderContext.jsx"
 
 export default function Main() {
   //state
-  const { isAdmin } = useContext(InfoContext)
+  const { isAdmin } = useContext(OrderContext)
   //render
   return (
     <MainStyled>

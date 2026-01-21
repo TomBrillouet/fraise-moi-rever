@@ -4,10 +4,10 @@ import { toast } from "react-toastify"
 import ToggleButton from "../../../reusable/ToggleButton"
 import ToastAdmin from "./ToastAdmin"
 import { useContext } from "react"
-import InfoContext from "../../../../context/InfoContext"
+import OrderContext from "../../../../context/OrderContext"
 
 export default function NavbarRightSide() {
-  const { isAdmin, setIsAdmin } = useContext(InfoContext)
+  const { isAdmin, setIsAdmin } = useContext(OrderContext)
 
   const displayToastNotification = () => {
     if (!isAdmin) {

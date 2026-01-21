@@ -3,18 +3,31 @@ import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
 import { useState } from "react"
-import InfoContext from "../../../context/InfoContext"
+import OrderContext from "../../../context/OrderContext"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
-  const infoContextValue = { isAdmin, setIsAdmin }
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isAddSelected, setisAddSelected] = useState(true)
+  const [isEditSelected, setisEditSelected] = useState(false)
+
+  const OrderContextValue = {
+    isAdmin,
+    setIsAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    isAddSelected,
+    setisAddSelected,
+    isEditSelected,
+    setisEditSelected,
+  }
 
   return (
     <OrderPageStyled>
       <div className="container">
-        <InfoContext.Provider value={infoContextValue}>
+        <OrderContext.Provider value={OrderContextValue}>
           <NavBar />
           <Main />
-        </InfoContext.Provider>
+        </OrderContext.Provider>
       </div>
     </OrderPageStyled>
   )
