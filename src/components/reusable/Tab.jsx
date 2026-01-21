@@ -5,7 +5,7 @@ export default function Tab({ label, icon, className, onClick }) {
   return (
     <TabStyled onClick={onClick} className={className}>
       <div className="icon">{icon}</div>
-      {label}
+      {label && <span>{label}</span>}
     </TabStyled>
   )
 }
@@ -20,7 +20,7 @@ const TabStyled = styled.button`
 
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 13px;
 
   font-size: ${theme.fonts.size.P0};
   color: ${theme.colors.greySemiDark};

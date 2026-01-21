@@ -20,4 +20,9 @@ export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
 
 const AdminTabsStyled = styled.div`
   display: flex;
+  padding: 0 20px;
+
+  button {
+    margin-left: 1px;
+  }
 `
