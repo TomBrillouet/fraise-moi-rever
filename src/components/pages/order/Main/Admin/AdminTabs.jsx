@@ -33,7 +33,7 @@ const AdminTabsStyled = styled.div`
     color: ${theme.colors.greySemiDark};
     background-color: ${theme.colors.white};
     border: ${theme.colors.greyLight} solid 1px;
-    border-radius: 5px 5px 0 0;
+    border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0 0;
     gap: 1em;
     cursor: pointer;
     &.active {
@@ -45,7 +45,7 @@ const AdminTabsStyled = styled.div`
       text-decoration: underline;
     }
     svg {
-      font-size: 16px;
+      font-size: ${theme.fonts.size.P0};
     }
   }
 `
