@@ -16,16 +16,18 @@ export default function AdminTabs() {
     setisEditSelected,
   } = useContext(OrderContext)
 
-  const selectAddTab = () => {
+  const selectTab = (tabSelected) => {
     setIsCollapsed(false)
-    setisEditSelected(false)
-    setisAddSelected(true)
-  }
 
-  const selectEditTab = () => {
-    setIsCollapsed(false)
-    setisEditSelected(true)
-    setisAddSelected(false)
+    if (tabSelected === "add") {
+      setisEditSelected(false)
+      setisAddSelected(true)
+    }
+
+    if (tabSelected === "edit") {
+      setisEditSelected(true)
+      setisAddSelected(false)
+    }
   }
 
   return (
@@ -38,13 +40,13 @@ export default function AdminTabs() {
       <Tab
         icon={<AiOutlinePlus />}
         label={"Ajouter un produit"}
-        onClick={selectAddTab}
+        onClick={() => selectTab("add")}
         className={isAddSelected ? "is-active" : ""}
       />
       <Tab
         icon={<MdModeEditOutline />}
         label={"Modifier un produit"}
-        onClick={selectEditTab}
+        onClick={() => selectTab("edit")}
         className={isEditSelected ? "is-active" : ""}
       />
     </AdminTabsStyled>
