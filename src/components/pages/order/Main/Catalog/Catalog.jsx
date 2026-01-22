@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
+import { theme } from "../../../../../theme"
 
 export default function Catalog() {
   const [products, setProducts] = useState(fakeMenu)
@@ -31,5 +32,6 @@ const CatalogStyled = styled.div`
     padding: 50px 0;
     row-gap: 60px;
     justify-items: center;
+    box-shadow: ${theme.shadows.strong};
   }
 `
