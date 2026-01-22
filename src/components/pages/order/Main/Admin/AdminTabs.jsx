@@ -1,68 +1,40 @@
 import styled from "styled-components"
-import { MdModeEditOutline } from "react-icons/md"
-import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import Tab from "../../../../reusable/Tab"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
+import { getTabsConfig } from "./getTabsConfig"
 
 export default function AdminTabs() {
   const {
-    isAddSelected,
     isCollapsed,
-    isEditSelected,
     setIsCollapsed,
-    setisAddSelected,
-    setisEditSelected,
+    setCurrentTabSelected,
+    currentTabSelected,
   } = useContext(OrderContext)
 
   const selectTab = (tabSelected) => {
     setIsCollapsed(false)
-
-    if (tabSelected === "add") {
-      setisEditSelected(false)
-      setisAddSelected(true)
-    }
-
-    if (tabSelected === "edit") {
-      setisEditSelected(true)
-      setisAddSelected(false)
-    }
+    setCurrentTabSelected(tabSelected)
   }
 
-  const tabsConfig = [
-    {
-      label: "",
-      icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-      onClick: () => setIsCollapsed(!isCollapsed),
-      className: isCollapsed ? "is-active" : "",
-    },
-    {
-      label: "Ajouter un produit",
-      icon: <AiOutlinePlus />,
-      onClick: () => selectTab("add"),
-      className: isAddSelected ? "is-active" : "",
-    },
-    {
-      label: "Modifier un produit",
-      icon: <MdModeEditOutline />,
-      onClick: () => selectTab("edit"),
-      className: isEditSelected ? "is-active" : "",
-    },
-  ]
+  const tabs = getTabsConfig(currentTabSelected)
 
   return (
     <AdminTabsStyled>
-      {tabsConfig.map((tab) => {
-        return (
-          <Tab
-            label={tab.label}
-            icon={tab.icon}
-            onClick={tab.onClick}
-            className={tab.className}
-          />
-        )
-      })}
+      <Tab
+        icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
+      />
+      {tabs.map((tab) => (
+        <Tab
+          label={tab.label}
+          icon={tab.icon}
+          onClick={() => selectTab(tab.index)}
+          className={tab.className}
+        />
+      ))}
     </AdminTabsStyled>
   )
 }
