@@ -32,6 +32,5 @@ const CatalogStyled = styled.div`
     padding: 50px 0;
     row-gap: 60px;
     justify-items: center;
-    box-shadow: ${theme.shadows.strong};
   }
 `
