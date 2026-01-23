@@ -4,9 +4,13 @@ import Card from "../../../../reusable/Card"
 import orderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import PrimaryButton from "../../../../reusable/PrimaryButton.jsx"
+import { fakeMenu } from "../../../../../datas/fakeMenu"
 
 export default function Catalog() {
-  const { products, isAdmin } = useContext(orderContext)
+  const { products, isAdmin, setProducts } = useContext(orderContext)
+  const handleClick = () => {
+    setProducts(fakeMenu.LARGE)
+  }
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
       image={imageSource}
@@ -20,7 +24,10 @@ export default function Catalog() {
     <div className="noproduct">
       Le menu est vide ? <br />
       Cliquez ci-dessous pour le réinitialiser <br />
-      <PrimaryButton label={"Générer de nouveaux produits"} />
+      <PrimaryButton
+        label={"Générer de nouveaux produits"}
+        onClick={handleClick}
+      />
     </div>
   ) : (
     <div className="noproduct">
