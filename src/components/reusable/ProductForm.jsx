@@ -4,6 +4,9 @@ import TextInput from "./TextInput"
 import PrimaryButton from "./PrimaryButton"
 import orderContext from "../../context/OrderContext.jsx"
 import { toast } from "react-toastify"
+import { RiDrinksFill } from "react-icons/ri"
+import { BsFillCameraFill } from "react-icons/bs"
+import { MdOutlineEuro } from "react-icons/md"
 
 export default function ProductForm() {
   const initialFormValue = {
@@ -64,6 +67,7 @@ export default function ProductForm() {
             value={formValue.name}
             onChange={handleChange}
             placeholder="Nom du produit (ex: Super Smoothie)"
+            Icon={<RiDrinksFill />}
           />
           <TextInput
             className={"input"}
@@ -71,6 +75,7 @@ export default function ProductForm() {
             name="link"
             onChange={handleChange}
             placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+            Icon={<BsFillCameraFill />}
           />
           <TextInput
             className={"input"}
@@ -78,6 +83,7 @@ export default function ProductForm() {
             name="price"
             onChange={handleChange}
             placeholder="Prix"
+            Icon={<MdOutlineEuro />}
           />
         </div>
         <PrimaryButton
@@ -119,9 +125,10 @@ const ProductFormStyled = styled.div`
       margin: 0;
       background: #f5f5f7;
       padding: 8px 16px 8px 24px;
+      flex-direction: row;
+      color: #a7a8ad;
       input {
         background: #f5f5f7;
-        color: #a7a8ad;
         &::placeholder {
           background: #f5f5f7;
           color: #a7a8ad;
