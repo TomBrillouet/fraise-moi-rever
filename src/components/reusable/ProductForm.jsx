@@ -1,27 +1,67 @@
+import { useState } from "react"
 import styled from "styled-components"
+import TextInput from "./TextInput"
+import PrimaryButton from "./PrimaryButton"
 
 export default function ProductForm() {
+  const initialFormValue = {
+    name: "",
+    link: "",
+    price: "",
+  }
+
+  const [formValue, setFormValue] = useState(initialFormValue)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setFormValue(initialFormValue)
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+
+    const formValueCopy = {
+      ...formValue,
+    }
+
+    formValueCopy[name] = value
+
+    setFormValue(formValueCopy)
+  }
+
   return (
     <ProductFormStyled>
-      <div>
-        <img
-          src="http://localhost:5173/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.png"
-          alt=""
-        />
+      <div className="img-container">
+        <img src={formValue.link} alt="" />
       </div>
-      <form action="submit">
-        <input
-          type="text"
-          name="name"
-          placeholder="Nom du produit (ex: Super Smoothie)"
+      <form action="submit" onSubmit={handleSubmit}>
+        <div>
+          <TextInput
+            className={"input"}
+            name="name"
+            value={formValue.name}
+            onChange={handleChange}
+            placeholder="Nom du produit (ex: Super Smoothie)"
+          />
+          <TextInput
+            className={"input"}
+            value={formValue.link}
+            name="link"
+            onChange={handleChange}
+            placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+          />
+          <TextInput
+            className={"input"}
+            value={formValue.price}
+            name="price"
+            onChange={handleChange}
+            placeholder="Prix"
+          />
+        </div>
+        <PrimaryButton
+          label={"Ajouter un nouveau produit au menu"}
+          className={"add-button"}
         />
-        <input
-          type="text"
-          name="link"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-        />
-        <input type="text" name="price" placeholder="Prix" />
-        <button>Ajouter un nouveau produit au menu</button>
       </form>
     </ProductFormStyled>
   )
@@ -29,10 +69,12 @@ export default function ProductForm() {
 
 const ProductFormStyled = styled.div`
   display: flex;
-  div {
-    border: solid 1px red;
-    width: 100px;
-    height: 100px;
+  gap: 20px;
+  padding: 30px 70px;
+  div.img-container {
+    width: 20%;
+    height: 120px;
+    border: 1px solid #e4e5e9;
     img {
       width: 100%;
       height: 100%;
@@ -40,8 +82,39 @@ const ProductFormStyled = styled.div`
     }
   }
   form {
-    border: 1px blue solid;
-    display: flex;
-    flex-direction: column;
+    width: 50%;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .input {
+      margin: 0;
+      background: #f5f5f7;
+      padding: 8px 16px 8px 24px;
+      input {
+        background: #f5f5f7;
+        color: #a7a8ad;
+        &::placeholder {
+          background: #f5f5f7;
+          color: #a7a8ad;
+        }
+      }
+    }
+    .add-button {
+      background: #60bd4f;
+      border-color: #60bd4f;
+      width: 45%;
+      padding: 10px 30px;
+      &:hover {
+        background: white;
+        color: #60bd4f;
+      }
+      &:active {
+        background: #60bd4f;
+        color: white;
+      }
+    }
   }
 `

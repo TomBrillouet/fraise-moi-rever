@@ -1,8 +1,14 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  ...extraProps
+}) {
   return (
-    <TextInputStyled>
+    <TextInputStyled className={className}>
       {Icon && Icon}
       <input type="text" value={value} onChange={onChange} {...extraProps} />
     </TextInputStyled>
