@@ -11,4 +11,6 @@ export default createContext({
   setisEditSelected: () => {},
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
+  products: [],
+  setProducts: () => {},
 })

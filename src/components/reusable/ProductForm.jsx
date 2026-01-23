@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import TextInput from "./TextInput"
 import PrimaryButton from "./PrimaryButton"
+import orderContext from "../../context/OrderContext.jsx"
 
 export default function ProductForm() {
   const initialFormValue = {
@@ -11,9 +12,22 @@ export default function ProductForm() {
   }
 
   const [formValue, setFormValue] = useState(initialFormValue)
+  const { products, setProducts } = useContext(orderContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const newproduct = {
+      title: formValue.name,
+      imageSource: formValue.link ? formValue.link : "/images/coming-soon.png",
+      price: formValue.price,
+      quantity: 0,
+      isAvailable: true,
+      isAdvertised: false,
+    }
+
+    const productsCopy = [...products]
+    productsCopy.push(newproduct)
+    setProducts(productsCopy)
     setFormValue(initialFormValue)
   }
 

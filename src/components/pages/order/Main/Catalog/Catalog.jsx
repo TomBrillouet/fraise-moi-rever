@@ -1,11 +1,11 @@
-import { useState } from "react"
 import styled from "styled-components"
-import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
+import orderContext from "../../../../../context/OrderContext.jsx"
+import { useContext } from "react"
 
 export default function Catalog() {
-  const [products, setProducts] = useState(fakeMenu.LARGE)
+  const { products } = useContext(orderContext)
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
       image={imageSource}
