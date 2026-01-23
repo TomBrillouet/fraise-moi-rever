@@ -8,8 +8,7 @@ import { TiDelete } from "react-icons/ti"
 export default function Card({ title, image, leftDescription, id }) {
   const { isAdmin, products, setProducts } = useContext(ordercontext)
 
-  const handleClick = (e) => {
-    console.log(e)
+  const handleClick = () => {
     const productsCopy = [...products]
     const productFiltered = productsCopy.filter((product) => product.id != id)
     setProducts(productFiltered)

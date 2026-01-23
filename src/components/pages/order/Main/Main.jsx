@@ -29,7 +29,7 @@ const MainStyled = styled.div`
   border-radius: 0 0 ${theme.borderRadius.extraRound};
   ${theme.borderRadius.extraRound};
   scrollbar-color: grey transparent;
-  overflow-y: auto;
+  overflow-y: scroll;
   .basket {
     background-color: pink;
   }
