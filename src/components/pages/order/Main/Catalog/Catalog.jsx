@@ -3,10 +3,9 @@ import styled from "styled-components"
 import { fakeMenu } from "../../../../../datas/fakeMenu"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
-import { theme } from "../../../../../theme"
 
 export default function Catalog() {
-  const [products, setProducts] = useState(fakeMenu)
+  const [products, setProducts] = useState(fakeMenu.LARGE)
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
       image={imageSource}
