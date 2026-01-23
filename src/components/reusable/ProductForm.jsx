@@ -3,6 +3,7 @@ import styled from "styled-components"
 import TextInput from "./TextInput"
 import PrimaryButton from "./PrimaryButton"
 import orderContext from "../../context/OrderContext.jsx"
+import { toast } from "react-toastify"
 
 export default function ProductForm() {
   const initialFormValue = {
@@ -19,7 +20,7 @@ export default function ProductForm() {
     const newproduct = {
       title: formValue.name,
       imageSource: formValue.link ? formValue.link : "/images/coming-soon.png",
-      price: formValue.price,
+      price: formValue.price ? formValue.price : 0,
       quantity: 0,
       isAvailable: true,
       isAdvertised: false,
@@ -28,6 +29,16 @@ export default function ProductForm() {
     const productsCopy = [...products]
     productsCopy.push(newproduct)
     setProducts(productsCopy)
+    toast.info("Ajouté avec succès !", {
+      theme: "dark",
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
     setFormValue(initialFormValue)
   }
 
