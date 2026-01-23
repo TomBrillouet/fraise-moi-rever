@@ -1,10 +1,23 @@
 import styled from "styled-components"
 import PrimaryButton from "./PrimaryButton.jsx"
 import { theme } from "../../theme/index.js"
+import { useContext } from "react"
+import ordercontext from "../../context/OrderContext.jsx"
+import { TiDelete } from "react-icons/ti"
 
-export default function Card({ title, image, leftDescription }) {
+export default function Card({ title, image, leftDescription, id }) {
+  const { isAdmin, products, setProducts } = useContext(ordercontext)
+
+  const handleClick = (e) => {
+    console.log(e)
+    const productsCopy = [...products]
+    const productFiltered = productsCopy.filter((product) => product.id != id)
+    setProducts(productFiltered)
+  }
+
   return (
     <CardStyled className="Card">
+      {isAdmin && <TiDelete className="delete" onClick={handleClick} />}
       <img src={image} alt={title} />
       <div className="info">
         <span className="title">{title}</span>
@@ -19,13 +32,27 @@ export default function Card({ title, image, leftDescription }) {
 const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: space-around;
   height: 280px;
   width: 200px;
-  padding: 50px 20px 10px 20px;
+  padding: 20px;
   border-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.medium};
   background-color: ${theme.colors.white};
+
+  .delete {
+    align-self: flex-end;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    width: 30px;
+    color: ${theme.colors.primary};
+    cursor: pointer;
+    &:hover {
+      color: ${theme.colors.background_dark};
+    }
+  }
 
   img {
     object-fit: contain;

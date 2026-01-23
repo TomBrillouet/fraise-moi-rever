@@ -12,6 +12,7 @@ export default function Catalog() {
       title={title}
       leftDescription={formatPrice(price)}
       key={id}
+      id={id}
     />
   ))
 

@@ -23,6 +23,7 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const newproduct = {
+      id: Date.now(),
       title: formValue.name,
       imageSource: formValue.link ? formValue.link : "/images/coming-soon.png",
       price: formValue.price ? formValue.price : 0,
