@@ -3,10 +3,11 @@ import styled from "styled-components"
 import TextInput from "./TextInput"
 import PrimaryButton from "./PrimaryButton"
 import orderContext from "../../context/OrderContext.jsx"
-import { toast } from "react-toastify"
 import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
+import { FiCheck } from "react-icons/fi"
+import { theme } from "../../theme/index.js"
 
 export default function ProductForm() {
   const initialFormValue = {
@@ -16,6 +17,7 @@ export default function ProductForm() {
   }
 
   const [formValue, setFormValue] = useState(initialFormValue)
+  const [showMessage, setShowMessage] = useState(false)
   const { products, setProducts } = useContext(orderContext)
 
   const handleSubmit = (e) => {
@@ -28,21 +30,15 @@ export default function ProductForm() {
       isAvailable: true,
       isAdvertised: false,
     }
-
     const productsCopy = [...products]
     productsCopy.push(newproduct)
     setProducts(productsCopy)
-    toast.info("Ajouté avec succès !", {
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
     setFormValue(initialFormValue)
+    setShowMessage(true)
+
+    setTimeout(() => {
+      setShowMessage(false)
+    }, 2000)
   }
 
   const handleChange = (event) => {
@@ -60,7 +56,7 @@ export default function ProductForm() {
         {formValue.link ? <img src={formValue.link} /> : "Aucune image"}
       </div>
       <form action="submit" onSubmit={handleSubmit}>
-        <div>
+        <div className="inputs">
           <TextInput
             className={"input"}
             name="name"
@@ -86,10 +82,20 @@ export default function ProductForm() {
             Icon={<MdOutlineEuro />}
           />
         </div>
-        <PrimaryButton
-          label={"Ajouter un nouveau produit au menu"}
-          className={"add-button"}
-        />
+        <div className="submission">
+          <PrimaryButton
+            label={"Ajouter un nouveau produit au menu"}
+            className={"add-button"}
+          />
+          {showMessage && (
+            <div className="success">
+              <span className="round">
+                <FiCheck />
+              </span>
+              Ajouté avec succès !
+            </div>
+          )}
+        </div>
       </form>
     </ProductFormStyled>
   )
@@ -115,7 +121,7 @@ const ProductFormStyled = styled.div`
   }
   form {
     width: 50%;
-    div {
+    .inputs {
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -126,6 +132,7 @@ const ProductFormStyled = styled.div`
       background: #f5f5f7;
       padding: 8px 16px 8px 24px;
       flex-direction: row;
+      gap: 13px;
       color: #a7a8ad;
       input {
         background: #f5f5f7;
@@ -135,18 +142,40 @@ const ProductFormStyled = styled.div`
         }
       }
     }
-    .add-button {
-      background: #60bd4f;
-      border-color: #60bd4f;
-      width: 45%;
-      padding: 10px 30px;
-      &:hover {
-        background: white;
-        color: #60bd4f;
-      }
-      &:active {
+    .submission {
+      display: flex;
+      gap: 5px;
+      flex-direction: row;
+      align-items: center;
+      .add-button {
         background: #60bd4f;
-        color: white;
+        border-color: #60bd4f;
+        width: 45%;
+        padding: 10px 30px;
+        &:hover {
+          background: white;
+          color: #60bd4f;
+        }
+        &:active {
+          background: #60bd4f;
+          color: white;
+        }
+      }
+      .success {
+        color: #60bd4f;
+        font-size: 15px;
+        align-items: center;
+        gap: 5px;
+        display: flex;
+        .round {
+          border: solid #60bd4f 1px;
+          height: 18px;
+          width: 18px;
+          border-radius: ${theme.borderRadius.circle};
+          svg {
+            font-size: 18px;
+          }
+        }
       }
     }
   }
