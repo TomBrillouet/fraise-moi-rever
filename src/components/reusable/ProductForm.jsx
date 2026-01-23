@@ -44,13 +44,10 @@ export default function ProductForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-
     const formValueCopy = {
       ...formValue,
     }
-
     formValueCopy[name] = value
-
     setFormValue(formValueCopy)
   }
 

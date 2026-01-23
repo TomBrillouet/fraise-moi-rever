@@ -9,7 +9,7 @@ import OrderContext from "../../../../context/OrderContext"
 export default function NavbarRightSide() {
   const { isAdmin, setIsAdmin } = useContext(OrderContext)
 
-  const displayToastNotification = () => {
+  const toggleAdmin = () => {
     if (!isAdmin) {
       toast.info("Mode admin activé", {
         theme: "dark",
@@ -29,7 +29,7 @@ export default function NavbarRightSide() {
     <NavbarRightSideStyled>
       <ToggleButton
         isChecked={isAdmin}
-        onToggle={displayToastNotification}
+        onToggle={toggleAdmin}
         labelIfChecked={"Désactiver le mode admin"}
         labelIfUnchecked={"Activer le mode admin"}
       />
