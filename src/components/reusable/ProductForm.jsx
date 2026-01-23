@@ -32,7 +32,7 @@ export default function ProductForm() {
   return (
     <ProductFormStyled>
       <div className="img-container">
-        <img src={formValue.link} alt="" />
+        {formValue.link ? <img src={formValue.link} /> : "Aucune image"}
       </div>
       <form action="submit" onSubmit={handleSubmit}>
         <div>
@@ -75,6 +75,10 @@ const ProductFormStyled = styled.div`
     width: 20%;
     height: 120px;
     border: 1px solid #e4e5e9;
+    color: #a7a8ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
       width: 100%;
       height: 100%;
