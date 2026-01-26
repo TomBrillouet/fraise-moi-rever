@@ -7,7 +7,7 @@ import { getTabsConfig, getTabSelected } from "./getTabsConfig.jsx"
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext)
 
-  const tabs = getTabsConfig(currentTabSelected)
+  const tabs = getTabsConfig()
 
   const tabSelected = getTabSelected(tabs, currentTabSelected)
   return (
