@@ -1,15 +1,15 @@
 import { useContext, useState } from "react"
 import styled from "styled-components"
-import TextInput from "./TextInput"
-import PrimaryButton from "./PrimaryButton"
-import orderContext from "../../context/OrderContext.jsx"
 import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
-import { theme } from "../../theme/index.js"
+import { theme } from "../../../../../../theme"
+import TextInput from "../../../../../reusable/TextInput.jsx"
+import PrimaryButton from "../../../../../reusable/PrimaryButton.jsx"
+import OrderContext from "../../../../../../context/OrderContext.jsx"
 
-export default function ProductForm() {
+export default function AddForm() {
   const initialFormValue = {
     name: "",
     link: "",
@@ -18,7 +18,7 @@ export default function ProductForm() {
 
   const [formValue, setFormValue] = useState(initialFormValue)
   const [showMessage, setShowMessage] = useState(false)
-  const { products, setProducts } = useContext(orderContext)
+  const { products, setProducts } = useContext(OrderContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -52,7 +52,7 @@ export default function ProductForm() {
   }
 
   return (
-    <ProductFormStyled>
+    <AddFormStyled>
       <div className="img-container">
         {formValue.link ? <img src={formValue.link} /> : "Aucune image"}
       </div>
@@ -98,11 +98,11 @@ export default function ProductForm() {
           )}
         </div>
       </form>
-    </ProductFormStyled>
+    </AddFormStyled>
   )
 }
 
-const ProductFormStyled = styled.div`
+const AddFormStyled = styled.div`
   display: flex;
   gap: 20px;
   padding: 30px 70px;
