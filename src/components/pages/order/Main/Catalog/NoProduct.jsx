@@ -1,14 +1,13 @@
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
-import { fakeMenu } from "../../../../../datas/fakeMenu"
 import styled from "styled-components"
 import PrimaryButton from "../../../../reusable/PrimaryButton"
 
 export default function NoProduct() {
-  const { isAdmin, setProducts } = useContext(OrderContext)
+  const { isAdmin, handleNewCatalog } = useContext(OrderContext)
 
   const handleClick = () => {
-    setProducts(fakeMenu.LARGE)
+    handleNewCatalog()
   }
   const noproduct = isAdmin ? (
     <NoProductStyled>
