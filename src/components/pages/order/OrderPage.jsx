@@ -19,13 +19,15 @@ export default function OrderPage() {
     const productsCopy = [...products]
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
-    setIsSubmitted(true)
+    displaySucessMessage()
+  }
 
+  const displaySucessMessage = () => {
+    setIsSubmitted(true)
     setTimeout(() => {
       setIsSubmitted(false)
     }, 2000)
   }
-
   const handleDelete = (id) => {
     const productsCopy = [...products]
     const productFiltered = productsCopy.filter((product) => product.id != id)
