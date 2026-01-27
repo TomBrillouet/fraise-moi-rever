@@ -5,12 +5,14 @@ import orderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import NoProduct from "./NoProduct.jsx"
 
+const DEFAULT_IMAGE = "/images/coming-soon.png"
+
 export default function Catalog() {
   const { products } = useContext(orderContext)
 
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
-      image={imageSource}
+      image={imageSource ? imageSource : DEFAULT_IMAGE}
       title={title}
       leftDescription={formatPrice(price)}
       key={id}
