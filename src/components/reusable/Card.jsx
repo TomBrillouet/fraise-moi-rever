@@ -14,7 +14,15 @@ export default function Card({ title, image, leftDescription, id }) {
 
   return (
     <CardStyled className="Card">
-      {isAdmin && <TiDelete className="delete" onClick={handleClick} />}
+      {isAdmin && (
+        <button
+          className="delete"
+          onClick={handleClick}
+          aria-label="delete-button"
+        >
+          <TiDelete className="icon" />
+        </button>
+      )}
       <img src={image} alt={title} />
       <div className="info">
         <span className="title">{title}</span>
@@ -42,12 +50,27 @@ const CardStyled = styled.div`
     align-self: flex-end;
     height: 30px;
     position: absolute;
-    top: 20px;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    padding: 0;
+    background: none;
     width: 30px;
     color: ${theme.colors.primary};
+    border: none;
     cursor: pointer;
+
+    .icon {
+      height: 100%;
+      width: 100%;
+    }
+
     &:hover {
       color: ${theme.colors.background_dark};
+    }
+
+    &:active {
+      color: ${theme.colors.primary};
     }
   }
 
