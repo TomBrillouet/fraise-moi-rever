@@ -38,7 +38,7 @@ export default function AddForm() {
     <AddFormStyled action="submit" onSubmit={handleSubmit}>
       <div className="img-container">
         {newProduct.imageSource ? (
-          <img src={newProduct.imageSource && newProduct.imageSource} />
+          <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
           "Aucune image"
         )}
