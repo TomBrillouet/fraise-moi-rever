@@ -28,10 +28,12 @@ export default function OrderPage() {
       setIsSubmitted(false)
     }, 2000)
   }
-  const handleDelete = (id) => {
+  const handleDelete = (idOfProductToDelete) => {
     const productsCopy = [...products]
-    const productFiltered = productsCopy.filter((product) => product.id != id)
-    setProducts(productFiltered)
+    const productsUpdated = productsCopy.filter(
+      (product) => product.id !== idOfProductToDelete,
+    )
+    setProducts(productsUpdated)
   }
 
   const handleNewCatalog = () => {

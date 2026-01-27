@@ -1,29 +1,21 @@
 import styled from "styled-components"
 import PrimaryButton from "./PrimaryButton.jsx"
 import { theme } from "../../theme/index.js"
-import { useContext } from "react"
-import ordercontext from "../../context/OrderContext.jsx"
 import { TiDelete } from "react-icons/ti"
 
 export default function Card({
   title,
   image,
   leftDescription,
-  id,
   hasDeleteButton,
+  onDelete,
 }) {
-  const { handleDelete } = useContext(ordercontext)
-
-  const handleClick = () => {
-    handleDelete(id)
-  }
-
   return (
     <CardStyled className="Card">
       {hasDeleteButton && (
         <button
           className="delete"
-          onClick={handleClick}
+          onClick={onDelete}
           aria-label="delete-button"
         >
           <TiDelete className="icon" />

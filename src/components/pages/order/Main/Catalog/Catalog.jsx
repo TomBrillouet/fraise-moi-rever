@@ -8,7 +8,7 @@ import NoProduct from "./NoProduct.jsx"
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
-  const { products, isAdmin } = useContext(orderContext)
+  const { products, isAdmin, handleDelete } = useContext(orderContext)
 
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
@@ -18,6 +18,7 @@ export default function Catalog() {
       key={id}
       id={id}
       hasDeleteButton={isAdmin}
+      onDelete={() => handleDelete(id)}
     />
   ))
 
