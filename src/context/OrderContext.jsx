@@ -14,8 +14,6 @@ export default createContext({
   products: [],
   setProducts: () => {},
   handleAdd: () => {},
-  formValue: {},
-  setFormValue: () => {},
   showMessage: false,
   setShowMessage: () => {},
 })

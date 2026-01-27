@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
@@ -9,79 +9,78 @@ import TextInput from "../../../../../reusable/TextInput.jsx"
 import PrimaryButton from "../../../../../reusable/PrimaryButton.jsx"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 
-export default function AddForm() {
-  const { formValue, setFormValue, showMessage, handleAdd } =
-    useContext(OrderContext)
+const EMPTY_PRODUCT = {
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+}
 
-  const newproduct = {
-    id: Date.now(),
-    title: formValue.name,
-    imageSource: formValue.link ? formValue.link : "/images/coming-soon.png",
-    price: formValue.price ? formValue.price : 0,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  }
+export default function AddForm() {
+  const { showMessage, handleAdd } = useContext(OrderContext)
+
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleAdd(newproduct)
+    const id = crypto.randomUUID()
+    const newProductToAdd = { ...newProduct, id }
+    handleAdd(newProductToAdd)
+    setNewProduct(EMPTY_PRODUCT)
   }
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    const formValueCopy = {
-      ...formValue,
-    }
-    formValueCopy[name] = value
-    setFormValue(formValueCopy)
+    setNewProduct({ ...newProduct, [name]: value })
   }
 
   return (
     <AddFormStyled action="submit" onSubmit={handleSubmit}>
       <div className="img-container">
-        {formValue.link ? <img src={formValue.link} /> : "Aucune image"}
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource && newProduct.imageSource} />
+        ) : (
+          "Aucune image"
+        )}
       </div>
       <div className="inputs">
         <TextInput
           className={"input"}
-          name="name"
-          value={formValue.name}
+          name="title"
+          value={newProduct.title}
           onChange={handleChange}
           placeholder="Nom du produit (ex: Super Smoothie)"
           Icon={<RiDrinksFill />}
         />
         <TextInput
           className={"input"}
-          value={formValue.link}
-          name="link"
+          value={newProduct.imageSource}
+          name="imageSource"
           onChange={handleChange}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           Icon={<BsFillCameraFill />}
         />
         <TextInput
           className={"input"}
-          value={formValue.price}
+          value={newProduct.price > 0 ? newProduct.price : ""}
           name="price"
           onChange={handleChange}
           placeholder="Prix"
           Icon={<MdOutlineEuro />}
         />
       </div>
-      <div className="submission">
-        <PrimaryButton
-          label={"Ajouter un nouveau produit au menu"}
-          className={"add-button"}
-        />
-        {showMessage && (
-          <div className="success">
-            <span className="round">
-              <FiCheck />
-            </span>
-            Ajouté avec succès !
-          </div>
-        )}
-      </div>
+      <PrimaryButton
+        label={"Ajouter un nouveau produit au menu"}
+        className={"add-button"}
+      />
+      {showMessage && (
+        <div className="success">
+          <span className="round">
+            <FiCheck />
+          </span>
+          Ajouté avec succès !
+        </div>
+      )}
     </AddFormStyled>
   )
 }

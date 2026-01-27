@@ -15,18 +15,10 @@ export default function OrderPage() {
 
   const [showMessage, setShowMessage] = useState(false)
 
-  const initialFormValue = {
-    name: "",
-    link: "",
-    price: "",
-  }
-  const [formValue, setFormValue] = useState(initialFormValue)
-
   const handleAdd = (newproduct) => {
     const productsCopy = [...products]
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
-    setFormValue(initialFormValue)
     setShowMessage(true)
 
     setTimeout(() => {
@@ -40,7 +32,7 @@ export default function OrderPage() {
     setProducts(productFiltered)
   }
 
-  const handleNewCatalog = (second) => {
+  const handleNewCatalog = () => {
     setProducts(fakeMenu.LARGE)
   }
 
@@ -59,9 +51,6 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     handleNewCatalog,
-    formValue,
-    setFormValue,
-    initialFormValue,
     showMessage,
     setShowMessage,
   }
