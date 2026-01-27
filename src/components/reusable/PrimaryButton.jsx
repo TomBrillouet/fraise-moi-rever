@@ -5,7 +5,7 @@ export default function PrimaryButton({ label, icon, className, onClick }) {
   return (
     <PrimaryButtonStyled className={className} onClick={onClick}>
       <span>{label}</span>
-      {icon && icon}
+      <div className="icon">{icon && icon}</div>
     </PrimaryButtonStyled>
   )
 }
@@ -40,5 +40,12 @@ const PrimaryButtonStyled = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .icon {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `

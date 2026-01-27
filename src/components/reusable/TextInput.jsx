@@ -9,7 +9,7 @@ export default function TextInput({
 }) {
   return (
     <TextInputStyled className={className}>
-      {Icon && Icon}
+      <div className="icon">{Icon && Icon}</div>
       <input type="text" value={value} onChange={onChange} {...extraProps} />
     </TextInputStyled>
   )
@@ -23,7 +23,11 @@ const TextInputStyled = styled.div`
   align-items: center;
   display: flex;
   .icon {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
     font-size: ${theme.fonts.size.P0};
+    margin-left: 10px;
     margin-right: 8px;
     color: ${theme.colors.greySemiDark};
   }
