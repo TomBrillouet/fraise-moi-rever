@@ -5,8 +5,14 @@ import { useContext } from "react"
 import ordercontext from "../../context/OrderContext.jsx"
 import { TiDelete } from "react-icons/ti"
 
-export default function Card({ title, image, leftDescription, id }) {
-  const { isAdmin, handleDelete } = useContext(ordercontext)
+export default function Card({
+  title,
+  image,
+  leftDescription,
+  id,
+  hasDeleteButton,
+}) {
+  const { handleDelete } = useContext(ordercontext)
 
   const handleClick = () => {
     handleDelete(id)
@@ -14,7 +20,7 @@ export default function Card({ title, image, leftDescription, id }) {
 
   return (
     <CardStyled className="Card">
-      {isAdmin && (
+      {hasDeleteButton && (
         <button
           className="delete"
           onClick={handleClick}
