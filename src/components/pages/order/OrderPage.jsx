@@ -36,7 +36,7 @@ export default function OrderPage() {
     setProducts(productsUpdated)
   }
 
-  const handleNewCatalog = () => {
+  const resetMenu = () => {
     setProducts(fakeMenu.LARGE)
   }
 
@@ -54,7 +54,7 @@ export default function OrderPage() {
     products,
     handleAdd,
     handleDelete,
-    handleNewCatalog,
+    resetMenu,
     isSubmitted,
   }
 

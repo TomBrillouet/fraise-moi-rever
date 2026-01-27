@@ -3,12 +3,14 @@ import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable/Card"
 import orderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
-import NoProduct from "./NoProduct.jsx"
+import EmptyCatalogAdmin from "./EmptyCatalogAdmin.jsx"
+import EmptyCatalogClient from "./EmptyCatalogClient.jsx"
 
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
-  const { products, isAdmin, handleDelete } = useContext(orderContext)
+  const { products, isAdmin, handleDelete, resetMenu } =
+    useContext(orderContext)
 
   const catalog = products.map(({ imageSource, title, price, id }) => (
     <Card
@@ -22,13 +24,23 @@ export default function Catalog() {
     />
   ))
 
+  if (catalog.length === 0) {
+    if (isAdmin)
+      return (
+        <CatalogStyled>
+          <EmptyCatalogAdmin onReset={resetMenu} />
+        </CatalogStyled>
+      )
+    return (
+      <CatalogStyled>
+        <EmptyCatalogClient />
+      </CatalogStyled>
+    )
+  }
+
   return (
     <CatalogStyled>
-      {catalog.length >= 1 ? (
-        <div className="catalog">{catalog}</div>
-      ) : (
-        <NoProduct />
-      )}
+      <div className="catalog">{catalog}</div>
     </CatalogStyled>
   )
 }
