@@ -17,7 +17,7 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AddForm() {
-  const { showMessage, handleAdd } = useContext(OrderContext)
+  const { isSubmitted, handleAdd } = useContext(OrderContext)
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
@@ -73,7 +73,7 @@ export default function AddForm() {
         label={"Ajouter un nouveau produit au menu"}
         className={"add-button"}
       />
-      {showMessage && (
+      {isSubmitted && (
         <div className="success">
           <span className="round">
             <FiCheck />

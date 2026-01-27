@@ -13,16 +13,16 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.LARGE)
 
-  const [showMessage, setShowMessage] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleAdd = (newproduct) => {
     const productsCopy = [...products]
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
-    setShowMessage(true)
+    setIsSubmitted(true)
 
     setTimeout(() => {
-      setShowMessage(false)
+      setIsSubmitted(false)
     }, 2000)
   }
 
@@ -51,8 +51,8 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     handleNewCatalog,
-    showMessage,
-    setShowMessage,
+    isSubmitted,
+    setIsSubmitted,
   }
 
   return (
