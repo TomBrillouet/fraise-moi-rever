@@ -16,19 +16,16 @@ export default function TextInput({
 }
 
 const TextInputStyled = styled.div`
-  margin: 18px 0;
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
   background-color: ${theme.colors.white};
   align-items: center;
   display: flex;
   .icon {
-    margin-left: 10px;
     display: flex;
     justify-content: center;
     font-size: ${theme.fonts.size.P0};
-    margin-left: 10px;
-    margin-right: 8px;
+    margin: 0 8px 0 10px;
     color: ${theme.colors.greySemiDark};
   }
   input {

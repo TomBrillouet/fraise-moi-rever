@@ -40,7 +40,7 @@ export default function AddForm() {
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
-          "Aucune image"
+          <div className="empty-image">Aucune image</div>
         )}
       </div>
       <div className="inputs">
@@ -69,18 +69,20 @@ export default function AddForm() {
           Icon={<MdOutlineEuro />}
         />
       </div>
-      <PrimaryButton
-        label={"Ajouter un nouveau produit au menu"}
-        className={"add-button"}
-      />
-      {isSubmitted && (
-        <div className="success">
-          <span className="round">
-            <FiCheck />
-          </span>
-          Ajouté avec succès !
-        </div>
-      )}
+      <div className="submit">
+        <PrimaryButton
+          label={"Ajouter un nouveau produit au menu"}
+          className={"add-button"}
+        />
+        {isSubmitted && (
+          <div className="success">
+            <span className="round">
+              <FiCheck />
+            </span>
+            Ajouté avec succès !
+          </div>
+        )}
+      </div>
     </AddFormStyled>
   )
 }
@@ -91,14 +93,27 @@ const AddFormStyled = styled.form`
   grid-template-rows: repeat(4, 1fr);
   height: 100%;
   width: 70%;
-  div.img-container {
+  grid-row-gap: 8px;
+  grid-column-gap: 20px;
+
+  .img-container {
     grid-area: 1 / 1 / 4 / 2;
     border: 1px solid #e4e5e9;
     color: #a7a8ad;
+    
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    .empty-image {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $(theme.colors.greyLight);
     }
   }
     .inputs {
@@ -118,8 +133,9 @@ const AddFormStyled = styled.form`
         }
       }
     }
-    .add-button {
+    .submit {
       grid-area: 4 / -2 / -1 / -1;
+      button {
       background: #60bd4f;
       border-color: #60bd4f;
       width: 50%;
@@ -131,7 +147,7 @@ const AddFormStyled = styled.form`
         background: #60bd4f;
         color: white;
       }
-    }
+    }}
     .success {
       color: #60bd4f;
       font-size: 15px;
