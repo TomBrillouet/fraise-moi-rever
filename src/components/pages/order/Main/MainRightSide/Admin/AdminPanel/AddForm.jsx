@@ -4,10 +4,10 @@ import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
-import { theme } from "../../../../../../theme"
-import TextInput from "../../../../../reusable/TextInput.jsx"
-import PrimaryButton from "../../../../../reusable/PrimaryButton.jsx"
-import OrderContext from "../../../../../../context/OrderContext.jsx"
+import { theme } from "../../../../../../../theme/index.js"
+import TextInput from "../../../../../../reusable/TextInput.jsx"
+import PrimaryButton from "../../../../../../reusable/PrimaryButton.jsx"
+import OrderContext from "../../../../../../../context/OrderContext.jsx"
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -72,7 +72,7 @@ export default function AddForm() {
       <div className="submit">
         <PrimaryButton
           label={"Ajouter un nouveau produit au menu"}
-          className={"add-button"}
+          version={"success"}
         />
         {isSubmitted && (
           <div className="success">

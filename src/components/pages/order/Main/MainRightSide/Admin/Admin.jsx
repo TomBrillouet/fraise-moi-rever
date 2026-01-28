@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useContext } from "react"
-import OrderContext from "../../../../../context/OrderContext"
-import AdminPanel from "./AdminPanel/AdminPanel"
+import OrderContext from "../../../../../../context/OrderContext.jsx"
+import AdminPanel from "./AdminPanel/AdminPanel.jsx"
 import AdminTabs from "./AdminTabs.jsx"
 
 export default function Admin() {
@@ -15,7 +15,9 @@ export default function Admin() {
 }
 
 const AdminStyled = styled.div`
-  position: sticky;
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 2;
 `
