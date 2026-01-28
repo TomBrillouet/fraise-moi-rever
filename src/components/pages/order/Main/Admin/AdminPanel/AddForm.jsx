@@ -45,28 +45,28 @@ export default function AddForm() {
       </div>
       <div className="inputs">
         <TextInput
-          className={"input"}
           name="title"
           value={newProduct.title}
           onChange={handleChange}
           placeholder="Nom du produit (ex: Super Smoothie)"
           Icon={<RiDrinksFill />}
+          version={"minimalist"}
         />
         <TextInput
-          className={"input"}
           value={newProduct.imageSource}
           name="imageSource"
           onChange={handleChange}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           Icon={<BsFillCameraFill />}
+          version={"minimalist"}
         />
         <TextInput
-          className={"input"}
           value={newProduct.price > 0 ? newProduct.price : ""}
           name="price"
           onChange={handleChange}
           placeholder="Prix"
           Icon={<MdOutlineEuro />}
+          version={"minimalist"}
         />
       </div>
       <div className="submit">
@@ -100,11 +100,15 @@ const AddFormStyled = styled.form`
     grid-area: 1 / 1 / 4 / 2;
     border: 1px solid #e4e5e9;
     color: #a7a8ad;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: center;
     }
 
     .empty-image {
@@ -113,50 +117,34 @@ const AddFormStyled = styled.form`
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid $(theme.colors.greyLight);
+      border: 1px solid ${theme.colors.greyLight};
+      line-height: 1.5;
+      colors: ${theme.colors.greySemiDark};
+      border-radius: ${theme.borderRadius.round};
     }
   }
-    .inputs {
-      grid-area: 1 / 2 / -2 / -1;
-      display: grid;
-      .input {
-        background: #f5f5f7;
-        color: #a7a8ad;
-        margin: 0;
-        padding: 0;
-        input {
-          background: #f5f5f7;
-          &::placeholder {
-            background: #f5f5f7;
-            color: #a7a8ad;
-          }
-        }
-      }
-    }
-    .submit {
-      grid-area: 4 / -2 / -1 / -1;
-      button {
-      background: #60bd4f;
-      border-color: #60bd4f;
+  .inputs {
+    grid-area: 1 / 2 / -2 / -1;
+    display: grid;
+    grid-row-gap: 8px;
+  }
+  .submit {
+    grid-area: 4 / -2 / -1 / -1;
+    display: flex;
+    align-items: center;
+
+    button {
       width: 50%;
-      &:hover {
-        background: white;
-        color: #60bd4f;
-      }
-      &:active {
-        background: #60bd4f;
-        color: white;
-      }
-    }}
-    .success {
-      color: #60bd4f;
-      font-size: 15px;
-      .round {
-        border: solid #60bd4f 1px;
-        border-radius: ${theme.borderRadius.circle};
-        svg {
-          font-size: 18px;
-        }
+    }
+  }
+  .success {
+    color: #60bd4f;
+    font-size: 15px;
+    .round {
+      border: solid #60bd4f 1px;
+      border-radius: ${theme.borderRadius.circle};
+      svg {
+        font-size: 18px;
       }
     }
   }
