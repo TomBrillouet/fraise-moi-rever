@@ -4,11 +4,11 @@ import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
-import { theme } from "../../../../../../../theme/index.js"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
 import OrderContext from "../../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
+import SubmitMessage from "./SubmitMessage.jsx"
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -71,12 +71,7 @@ export default function AddForm() {
           label={"Ajouter un nouveau produit au menu"}
           version={"success"}
         />
-        {isSubmitted && (
-          <div className="success">
-            <FiCheck className="icon" />
-            <span className="message">Ajouté avec succès !</span>
-          </div>
-        )}
+        {isSubmitted && <SubmitMessage />}
       </div>
     </AddFormStyled>
   )
@@ -105,28 +100,6 @@ const AddFormStyled = styled.form`
 
     button {
       width: 50%;
-    }
-  }
-  .success {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
-
-    .icon {
-      color: ${theme.colors.success};
-      margin-left: 10px;
-      width: 1em;
-      height: 1em;
-      border: 1px solid ${theme.colors.success};
-      border-radius: 50%;
-      vertical-align: middle;
-    }
-
-    .message {
-      margin-left: 5px;
-      color: ${theme.colors.success};
-      font-size: ${theme.fonts.size.P0};
     }
   }
 `
