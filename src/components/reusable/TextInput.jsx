@@ -42,6 +42,7 @@ const TextInputStyled = styled.div`
 const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
+  margin-bottom: 18px;
   color: ${theme.colors.greySemiDark};
 
   input {
