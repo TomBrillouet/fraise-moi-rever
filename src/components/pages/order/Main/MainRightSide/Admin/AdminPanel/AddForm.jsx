@@ -8,6 +8,7 @@ import { theme } from "../../../../../../../theme/index.js"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
 import OrderContext from "../../../../../../../context/OrderContext.jsx"
+import ImagePreview from "./ImagePreview.jsx"
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -35,13 +36,10 @@ export default function AddForm() {
 
   return (
     <AddFormStyled action="submit" onSubmit={handleSubmit}>
-      <div className="img-container">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          <div className="empty-image">Aucune image</div>
-        )}
-      </div>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="inputs">
         <TextInput
           name="title"
@@ -93,33 +91,6 @@ const AddFormStyled = styled.form`
   grid-row-gap: 8px;
   grid-column-gap: 20px;
 
-  .img-container {
-    grid-area: 1 / 1 / 4 / 2;
-    border: 1px solid #e4e5e9;
-    color: #a7a8ad;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .empty-image {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid ${theme.colors.greyLight};
-      line-height: 1.5;
-      color: ${theme.colors.greySemiDark};
-      border-radius: ${theme.borderRadius.round};
-    }
-  }
   .inputs {
     grid-area: 1 / 2 / -2 / -1;
     display: grid;
