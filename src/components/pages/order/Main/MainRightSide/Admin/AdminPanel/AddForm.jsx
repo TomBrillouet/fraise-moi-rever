@@ -76,10 +76,8 @@ export default function AddForm() {
         />
         {isSubmitted && (
           <div className="success">
-            <span className="round">
-              <FiCheck />
-            </span>
-            Ajouté avec succès !
+            <FiCheck className="icon" />
+            <span className="message">Ajouté avec succès !</span>
           </div>
         )}
       </div>
@@ -119,7 +117,7 @@ const AddFormStyled = styled.form`
       align-items: center;
       border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      colors: ${theme.colors.greySemiDark};
+      color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
     }
   }
@@ -132,20 +130,33 @@ const AddFormStyled = styled.form`
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 3px;
 
     button {
       width: 50%;
     }
   }
   .success {
-    color: #60bd4f;
-    font-size: 15px;
-    .round {
-      border: solid #60bd4f 1px;
-      border-radius: ${theme.borderRadius.circle};
-      svg {
-        font-size: 18px;
-      }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+
+    .icon {
+      color: ${theme.colors.success};
+      margin-left: 10px;
+      width: 1em;
+      height: 1em;
+      border: 1px solid ${theme.colors.success};
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    .message {
+      margin-left: 5px;
+      color: ${theme.colors.success};
+      font-size: ${theme.fonts.size.P0};
     }
   }
 `
