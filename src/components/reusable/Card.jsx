@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import PrimaryButton from "./PrimaryButton.jsx"
+import Button from "./Button.jsx"
 import { theme } from "../../theme/index.js"
 import { TiDelete } from "react-icons/ti"
 
@@ -26,7 +26,7 @@ export default function Card({
         <span className="title">{title}</span>
         <div className="addcart">
           <span className="left-description">{leftDescription}</span>
-          <PrimaryButton label={"Ajouter"} />
+          <Button label={"Ajouter"} />
         </div>
       </div>
     </CardStyled>

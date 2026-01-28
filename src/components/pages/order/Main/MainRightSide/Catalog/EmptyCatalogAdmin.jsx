@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import PrimaryButton from "../../../../../reusable/PrimaryButton"
+import Button from "../../../../../reusable/Button"
 import { theme } from "../../../../../../theme"
 
 export default function EmptyCatalogAdmin({ onReset }) {
@@ -9,7 +9,7 @@ export default function EmptyCatalogAdmin({ onReset }) {
       <span className="description">
         Cliquez ci-dessous pour le réinitialiser
       </span>
-      <PrimaryButton label={"Générer de nouveaux produits"} onClick={onReset} />
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} />
     </EmptyCatalogAdminStyled>
   )
 }

@@ -1,30 +1,26 @@
 import { theme } from "../../theme"
 import styled, { css } from "styled-components"
 
-export default function PrimaryButton({
+export default function Button({
   label,
   icon,
   className,
   onClick,
-  version = "normal",
+  version = "primary",
 }) {
   return (
-    <PrimaryButtonStyled
-      className={className}
-      onClick={onClick}
-      version={version}
-    >
+    <ButtonStyled className={className} onClick={onClick} version={version}>
       <span>{label}</span>
       {icon && <div className="icon">{icon}</div>}
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   )
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
   ${({ version }) => extraStyle[version]}
 `
 
-const extraStyleNormal = css`
+const extraStylePrimary = css`
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
   font-weight: ${theme.fonts.weights.bold};
@@ -86,6 +82,6 @@ const extraStyleSuccess = css`
 `
 
 const extraStyle = {
-  normal: extraStyleNormal,
+  primary: extraStylePrimary,
   success: extraStyleSuccess,
 }

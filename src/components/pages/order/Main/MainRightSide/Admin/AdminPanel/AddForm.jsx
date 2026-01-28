@@ -6,7 +6,7 @@ import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
 import { theme } from "../../../../../../../theme/index.js"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
-import PrimaryButton from "../../../../../../reusable/PrimaryButton.jsx"
+import Button from "../../../../../../reusable/Button.jsx"
 import OrderContext from "../../../../../../../context/OrderContext.jsx"
 
 const EMPTY_PRODUCT = {
@@ -70,7 +70,7 @@ export default function AddForm() {
         />
       </div>
       <div className="submit">
-        <PrimaryButton
+        <Button
           label={"Ajouter un nouveau produit au menu"}
           version={"success"}
         />
