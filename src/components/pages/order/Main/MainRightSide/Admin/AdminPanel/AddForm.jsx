@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
 import { RiDrinksFill } from "react-icons/ri"
 import { BsFillCameraFill } from "react-icons/bs"
@@ -9,7 +9,7 @@ import TextInput from "../../../../../../reusable/TextInput.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
 import OrderContext from "../../../../../../../context/OrderContext.jsx"
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
@@ -17,9 +17,8 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AddForm() {
-  const { isSubmitted, handleAdd } = useContext(OrderContext)
-
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const { isSubmitted, handleAdd, newProduct, setNewProduct } =
+    useContext(OrderContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()

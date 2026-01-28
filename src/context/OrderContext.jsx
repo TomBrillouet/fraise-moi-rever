@@ -7,12 +7,6 @@ export default createContext({
   isCollapsed: false,
   setIsCollapsed: () => {},
 
-  isAddSelected: false,
-  setisAddSelected: () => {},
-
-  isEditSelected: false,
-  setisEditSelected: () => {},
-
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
 
@@ -20,4 +14,7 @@ export default createContext({
   handleAdd: () => {},
   handleDelete: () => {},
   resetMenu: () => {},
+
+  newProduct: [],
+  setNewProduct: () => {},
 })

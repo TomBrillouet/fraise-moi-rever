@@ -5,13 +5,13 @@ import Main from "./Main/Main"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../datas/fakeMenu"
+import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isAddSelected, setisAddSelected] = useState(true)
-  const [isEditSelected, setisEditSelected] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.LARGE)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -45,10 +45,6 @@ export default function OrderPage() {
     setIsAdmin,
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setisAddSelected,
-    isEditSelected,
-    setisEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
     products,
@@ -56,6 +52,8 @@ export default function OrderPage() {
     handleDelete,
     resetMenu,
     isSubmitted,
+    newProduct,
+    setNewProduct,
   }
 
   return (
