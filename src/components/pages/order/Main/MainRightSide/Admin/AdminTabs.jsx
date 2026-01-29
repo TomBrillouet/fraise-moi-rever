@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import Tab from "../../../../reusable/Tab"
+import Tab from "../../../../../reusable/Tab"
 import { useContext } from "react"
-import OrderContext from "../../../../../context/OrderContext"
+import OrderContext from "../../../../../../context/OrderContext"
 import { getTabsConfig } from "./getTabsConfig"
 
 export default function AdminTabs() {
@@ -29,8 +29,9 @@ export default function AdminTabs() {
       />
       {tabs.map((tab) => (
         <Tab
+          key={tab.label}
           label={tab.label}
-          icon={tab.icon}
+          icon={tab.Icon}
           onClick={() => selectTab(tab.index)}
           className={currentTabSelected === tab.index ? "is-active" : ""}
         />

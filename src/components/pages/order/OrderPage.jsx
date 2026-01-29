@@ -4,24 +4,46 @@ import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
+import { fakeMenu } from "../../../datas/fakeMenu"
+import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isAddSelected, setisAddSelected] = useState(true)
-  const [isEditSelected, setisEditSelected] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [products, setProducts] = useState(fakeMenu.LARGE)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
+  const handleAdd = (newproduct) => {
+    const productsCopy = [...products]
+    const productsUpdated = [newproduct, ...productsCopy]
+    setProducts(productsUpdated)
+  }
+
+  const handleDelete = (idOfProductToDelete) => {
+    const productsCopy = [...products]
+    const productsUpdated = productsCopy.filter(
+      (product) => product.id !== idOfProductToDelete,
+    )
+    setProducts(productsUpdated)
+  }
+
+  const resetMenu = () => {
+    setProducts(fakeMenu.LARGE)
+  }
 
   const OrderContextValue = {
     isAdmin,
     setIsAdmin,
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setisAddSelected,
-    isEditSelected,
-    setisEditSelected,
     currentTabSelected,
     setCurrentTabSelected,
+    products,
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    newProduct,
+    setNewProduct,
   }
 
   return (
