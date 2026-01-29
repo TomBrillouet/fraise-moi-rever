@@ -6,13 +6,7 @@ import OrderContext from "../../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 import SubmitMessage from "./SubmitMessage.jsx"
 import { getInputTextsConfig } from "./inputTextsConfig.jsx"
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: 0,
-}
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx"
 
 export default function AddForm() {
   //state

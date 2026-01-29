@@ -5,13 +5,14 @@ import Main from "./Main/Main"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../datas/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm"
+import { EMPTY_PRODUCT } from "../../../enums/product"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.LARGE)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
   const handleAdd = (newproduct) => {
     const productsCopy = [...products]
@@ -44,6 +45,8 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
   }
 
   return (

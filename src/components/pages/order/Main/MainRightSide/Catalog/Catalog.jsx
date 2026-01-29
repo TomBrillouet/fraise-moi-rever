@@ -10,12 +10,19 @@ import { theme } from "../../../../../../theme/index.js"
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
-  const { products, isAdmin, handleDelete, resetMenu } =
+  const { products, isAdmin, handleDelete, resetMenu, setProductSelected } =
     useContext(OrderContext)
 
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
+  }
+
+  const handleClick = (idProductClicked) => {
+    const productSelected = products.find(
+      (product) => product.id === idProductClicked,
+    )
+    setProductSelected(productSelected)
   }
 
   return (
@@ -29,6 +36,7 @@ export default function Catalog() {
           id={id}
           hasDeleteButton={isAdmin}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         />
       ))}
     </CatalogStyled>
