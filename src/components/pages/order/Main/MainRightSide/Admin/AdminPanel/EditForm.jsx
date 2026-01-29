@@ -1,25 +1,29 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import OrderContext from "../../../../../../../context/OrderContext"
 import styled from "styled-components"
 import ImagePreview from "./ImagePreview.jsx"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
 import { getInputTextsConfig } from "./inputTextsConfig.jsx"
-import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx"
 
 export default function EditForm() {
-  const { productSelected } = useContext(OrderContext)
-  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
+  //state
+  const { productSelected, setProductSelected, handleEdit } =
+    useContext(OrderContext)
 
   const inputTexts = getInputTextsConfig(productSelected)
 
+  //comportements
   const handleChange = (e) => {
     const { name, value } = e.target
-    setProductBeingEdited({
-      ...productBeingEdited,
+    const productBeingUpdated = {
+      ...productSelected,
       [name]: value,
-    })
+    }
+    setProductSelected(productBeingUpdated)
+    handleEdit(productBeingUpdated)
   }
 
+  //affichage
   return (
     <EditFormStyled action="submit">
       <ImagePreview

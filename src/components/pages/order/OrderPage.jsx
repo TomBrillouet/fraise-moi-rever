@@ -15,15 +15,23 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
   const handleAdd = (newproduct) => {
-    const productsCopy = [...products]
+    const productsCopy = JSON.parse(JSON.stringify(products))
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
   }
 
   const handleDelete = (idOfProductToDelete) => {
-    const productsCopy = [...products]
+    const productsCopy = JSON.parse(JSON.stringify(products))
     const productsUpdated = productsCopy.filter(
       (product) => product.id !== idOfProductToDelete,
+    )
+    setProducts(productsUpdated)
+  }
+
+  const handleEdit = (productBeingEdited) => {
+    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsUpdated = productsCopy.map((product) =>
+      product.id === productBeingEdited.id ? productBeingEdited : product,
     )
     setProducts(productsUpdated)
   }
@@ -47,6 +55,7 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,
     setProductSelected,
+    handleEdit,
   }
 
   return (
