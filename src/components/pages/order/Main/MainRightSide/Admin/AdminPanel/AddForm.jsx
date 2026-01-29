@@ -94,6 +94,7 @@ const AddFormStyled = styled.form`
 
     button {
       width: 50%;
+      height: 100%;
     }
   }
 `
