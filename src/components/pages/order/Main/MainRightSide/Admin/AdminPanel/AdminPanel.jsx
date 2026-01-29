@@ -18,7 +18,7 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  height: 250px;
+  height: 240px;
   padding: 30px 5%;
   background: ${theme.colors.white};
   border: solid 1px ${theme.colors.greyLight};
