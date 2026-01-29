@@ -49,6 +49,9 @@ const fonts = {
     bold: 700,
     heavy: 800,
   },
+  family: {
+    stylish: `"Amatic SC", cursive`,
+  },
 }
 const gridUnit = 8
 const borderRadius = {
