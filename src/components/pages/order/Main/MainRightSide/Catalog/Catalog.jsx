@@ -19,17 +19,17 @@ export default function Catalog() {
     selectTab,
   } = useContext(OrderContext)
 
+  const handleClick = (idProductClicked) => {
+    const productClickedOn = products.find(
+      (product) => product.id === idProductClicked,
+    )
+    setProductSelected(productClickedOn)
+    selectTab("edit")
+  }
+
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
-  }
-
-  const handleClick = (idProductClicked) => {
-    const productSelected = products.find(
-      (product) => product.id === idProductClicked,
-    )
-    setProductSelected(productSelected)
-    selectTab("edit")
   }
 
   return (
