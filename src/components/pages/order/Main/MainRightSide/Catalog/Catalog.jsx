@@ -22,6 +22,7 @@ export default function Catalog() {
   } = useContext(OrderContext)
 
   const handleClick = (idProductClicked) => {
+    if (!isAdmin) return
     const productClickedOn = products.find(
       (product) => product.id === idProductClicked,
     )
