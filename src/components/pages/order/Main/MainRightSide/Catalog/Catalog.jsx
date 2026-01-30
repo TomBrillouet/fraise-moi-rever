@@ -30,10 +30,14 @@ export default function Catalog() {
   }
 
   //render
-
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
+  }
+
+  const handleCardDelete = (e, id) => {
+    e.stopPropagation(id)
+    handleDelete(id)
   }
 
   return (
@@ -46,7 +50,7 @@ export default function Catalog() {
           key={id}
           id={id}
           hasDeleteButton={isAdmin}
-          onDelete={() => handleDelete(id)}
+          onDelete={(e) => handleCardDelete(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
