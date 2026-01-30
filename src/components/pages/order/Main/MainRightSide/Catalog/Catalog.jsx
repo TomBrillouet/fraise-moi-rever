@@ -45,6 +45,7 @@ export default function Catalog() {
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
+          isSelected={false}
         />
       ))}
     </CatalogStyled>
