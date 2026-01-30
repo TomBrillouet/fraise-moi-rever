@@ -14,6 +14,11 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
+  const selectTab = (tabSelected) => {
+    setIsCollapsed(false)
+    setCurrentTabSelected(tabSelected)
+  }
+
   const handleAdd = (newproduct) => {
     const productsCopy = JSON.parse(JSON.stringify(products))
     const productsUpdated = [newproduct, ...productsCopy]
@@ -56,6 +61,7 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     handleEdit,
+    selectTab,
   }
 
   return (

@@ -10,8 +10,14 @@ import { theme } from "../../../../../../theme/index.js"
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
-  const { products, isAdmin, handleDelete, resetMenu, setProductSelected } =
-    useContext(OrderContext)
+  const {
+    products,
+    isAdmin,
+    handleDelete,
+    resetMenu,
+    setProductSelected,
+    selectTab,
+  } = useContext(OrderContext)
 
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
@@ -23,6 +29,7 @@ export default function Catalog() {
       (product) => product.id === idProductClicked,
     )
     setProductSelected(productSelected)
+    selectTab("edit")
   }
 
   return (
