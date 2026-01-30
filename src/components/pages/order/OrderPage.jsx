@@ -6,6 +6,7 @@ import { useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../datas/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
+import { deepClone } from "../../../utils/array"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -20,13 +21,13 @@ export default function OrderPage() {
   }
 
   const handleAdd = (newproduct) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
   }
 
   const handleDelete = (idOfProductToDelete) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const productsUpdated = productsCopy.filter(
       (product) => product.id !== idOfProductToDelete,
     )
@@ -34,7 +35,7 @@ export default function OrderPage() {
   }
 
   const handleEdit = (productBeingEdited) => {
-    const productsCopy = JSON.parse(JSON.stringify(products))
+    const productsCopy = deepClone(products)
     const productsUpdated = productsCopy.map((product) =>
       product.id === productBeingEdited.id ? productBeingEdited : product,
     )
