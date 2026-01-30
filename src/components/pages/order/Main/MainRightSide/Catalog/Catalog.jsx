@@ -6,6 +6,7 @@ import EmptyCatalogClient from "./EmptyCatalogClient.jsx"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import Card from "../../../../../reusable/Card.jsx"
 import { theme } from "../../../../../../theme/index.js"
+import { checkIfProductIsClicked } from "./helper.jsx"
 
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
@@ -17,6 +18,7 @@ export default function Catalog() {
     resetMenu,
     setProductSelected,
     selectTab,
+    productSelected,
   } = useContext(OrderContext)
 
   const handleClick = (idProductClicked) => {
@@ -26,6 +28,8 @@ export default function Catalog() {
     setProductSelected(productClickedOn)
     selectTab("edit")
   }
+
+  //render
 
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
@@ -45,7 +49,7 @@ export default function Catalog() {
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
-          isSelected={false}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         />
       ))}
     </CatalogStyled>
