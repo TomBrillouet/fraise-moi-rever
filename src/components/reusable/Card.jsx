@@ -19,7 +19,7 @@ export default function Card({
       isHoverable={isHoverable}
       isSelected={isSelected}
     >
-      <div className="card" style={isSelected ? { background: "red" } : {}}>
+      <div className="card">
         {hasDeleteButton && (
           <button
             className="delete"
@@ -34,7 +34,7 @@ export default function Card({
           <span className="title">{title}</span>
           <div className="addcart">
             <span className="left-description">{leftDescription}</span>
-            <Button label={"Ajouter"} />
+            <Button className="add-button" label={"Ajouter"} />
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function Card({
   )
 }
 const CardStyled = styled.div`
-  ${(props) => props.isHoverable && hoverableStyle}
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
 
@@ -116,10 +116,12 @@ const CardStyled = styled.div`
       justify-content: space-between;
       align-items: center;
     }
-    button {
+    .add-button {
       padding: 12px 26px;
       width: unset;
     }
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `
 
@@ -129,5 +131,56 @@ const hoverableStyle = css`
     transition: ease-out 0.4s;
     cursor: pointer;
     transform: scale(1.05);
+  }
+`
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .add-button {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    &:hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    &:active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+    &.with-focus {
+      border: 1px solid ${theme.colors.white};
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+    &:hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+    }
+    &:active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+  }
+
+  .delete {
+    color: ${theme.colors.white};
+
+    &:active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .left-description {
+    color: ${theme.colors.white};
   }
 `

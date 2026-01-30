@@ -47,7 +47,7 @@ const extraStylePrimary = css`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
-  &:disabled {
+  &.is-disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
