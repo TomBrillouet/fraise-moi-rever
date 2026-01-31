@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../datas/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product"
@@ -14,6 +14,7 @@ export default function OrderPage() {
   const [products, setProducts] = useState(fakeMenu.LARGE)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
 
   const selectTab = (tabSelected) => {
     setIsCollapsed(false)
@@ -63,6 +64,7 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     selectTab,
+    titleEditRef,
   }
 
   return (

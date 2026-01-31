@@ -19,15 +19,17 @@ export default function Catalog() {
     setProductSelected,
     selectTab,
     productSelected,
+    titleEditRef,
   } = useContext(OrderContext)
 
-  const handleClick = (idProductClicked) => {
+  const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
+    selectTab("edit")
     const productClickedOn = products.find(
       (product) => product.id === idProductClicked,
     )
-    setProductSelected(productClickedOn)
-    selectTab("edit")
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
   }
 
   //render

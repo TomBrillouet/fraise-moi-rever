@@ -7,7 +7,7 @@ import { getInputTextsConfig } from "./inputTextsConfig.jsx"
 
 export default function EditForm() {
   //state
-  const { productSelected, setProductSelected, handleEdit } =
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
     useContext(OrderContext)
 
   const inputTexts = getInputTextsConfig(productSelected)
@@ -37,6 +37,7 @@ export default function EditForm() {
             key={input.id}
             onChange={handleChange}
             version={"minimalist"}
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>

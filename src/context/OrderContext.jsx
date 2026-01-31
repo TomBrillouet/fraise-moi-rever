@@ -24,4 +24,6 @@ export default createContext({
   handleEdit: () => {},
 
   selectTab: () => {},
+
+  titleEditRef: {},
 })
