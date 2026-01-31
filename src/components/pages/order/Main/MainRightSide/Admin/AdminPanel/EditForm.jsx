@@ -21,11 +21,8 @@ export default function EditForm() {
 
   //affichage
   return (
-    <Form
-      product={productSelected}
-      onChange={handleChange}
-      ref={titleEditRef}
-      children={<EditInfoMessage />}
-    />
+    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage />
+    </Form>
   )
 }

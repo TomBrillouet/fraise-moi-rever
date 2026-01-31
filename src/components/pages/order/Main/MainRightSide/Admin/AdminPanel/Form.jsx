@@ -1,8 +1,6 @@
 import styled from "styled-components"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
-import Button from "../../../../../../reusable/Button.jsx"
 import ImagePreview from "./ImagePreview.jsx"
-import SubmitMessage from "./SubmitMessage.jsx"
 import { getInputTextsConfig } from "./inputTextsConfig.jsx"
 import React from "react"
 
@@ -28,7 +26,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit">{children}</div>
+        <div className="form-footer">{children}</div>
       </FormStyled>
     )
   },
@@ -49,16 +47,11 @@ const FormStyled = styled.form`
     display: grid;
     grid-row-gap: 8px;
   }
-  .submit {
+  .form-footer {
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
     position: relative;
     top: 3px;
-
-    button {
-      width: 50%;
-      height: 100%;
-    }
   }
 `

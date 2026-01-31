@@ -39,15 +39,14 @@ export default function AddForm() {
       onSubmit={handleSubmit}
       onChange={handleChange}
       isSubmitted={isSubmitted}
-      children={
-        <>
-          <Button
-            label={"Ajouter un nouveau produit au menu"}
-            version={"success"}
-          />
-          {isSubmitted && <SubmitMessage />}
-        </>
-      }
-    />
+    >
+      <>
+        <Button
+          label={"Ajouter un nouveau produit au menu"}
+          version={"success"}
+        />
+        {isSubmitted && <SubmitMessage />}
+      </>
+    </Form>
   )
 }
