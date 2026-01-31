@@ -7,6 +7,7 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import Card from "../../../../../reusable/Card.jsx"
 import { theme } from "../../../../../../theme/index.js"
 import { checkIfProductIsClicked } from "./helper.jsx"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
 
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
@@ -32,15 +33,17 @@ export default function Catalog() {
     titleEditRef.current.focus()
   }
 
+  const handleCardDelete = (e, id) => {
+    e.stopPropagation()
+    handleDelete(id)
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+    titleEditRef.current.focus()
+  }
+
   //render
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
-  }
-
-  const handleCardDelete = (e, id) => {
-    e.stopPropagation(id)
-    handleDelete(id)
   }
 
   return (
