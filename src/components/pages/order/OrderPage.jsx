@@ -2,27 +2,43 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { fakeMenu } from "../../../datas/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm"
+import { EMPTY_PRODUCT } from "../../../enums/product"
+import { deepClone } from "../../../utils/array"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu.LARGE)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
+
+  const selectTab = (tabSelected) => {
+    setIsCollapsed(false)
+    setCurrentTabSelected(tabSelected)
+  }
 
   const handleAdd = (newproduct) => {
-    const productsCopy = [...products]
+    const productsCopy = deepClone(products)
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
   }
 
   const handleDelete = (idOfProductToDelete) => {
-    const productsCopy = [...products]
+    const productsCopy = deepClone(products)
     const productsUpdated = productsCopy.filter(
       (product) => product.id !== idOfProductToDelete,
+    )
+    setProducts(productsUpdated)
+  }
+
+  const handleEdit = (productBeingEdited) => {
+    const productsCopy = deepClone(products)
+    const productsUpdated = productsCopy.map((product) =>
+      product.id === productBeingEdited.id ? productBeingEdited : product,
     )
     setProducts(productsUpdated)
   }
@@ -44,6 +60,11 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
+    handleEdit,
+    selectTab,
+    titleEditRef,
   }
 
   return (

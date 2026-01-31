@@ -47,7 +47,7 @@ const extraStylePrimary = css`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
-  &:disabled {
+  &.is-disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
@@ -66,7 +66,7 @@ const extraStyleSuccess = css`
   background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
   border-radius: ${theme.borderRadius.round};
-  height: 35px;
+  height: 100%;
   padding: 0 1.5em;
   font-weight: ${theme.fonts.weights.semiBold};
   &:hover {

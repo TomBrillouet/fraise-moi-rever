@@ -6,13 +6,41 @@ import EmptyCatalogClient from "./EmptyCatalogClient.jsx"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import Card from "../../../../../reusable/Card.jsx"
 import { theme } from "../../../../../../theme/index.js"
+import { checkIfProductIsClicked } from "./helper.jsx"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
 
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
-  const { products, isAdmin, handleDelete, resetMenu } =
-    useContext(OrderContext)
+  const {
+    products,
+    isAdmin,
+    handleDelete,
+    resetMenu,
+    setProductSelected,
+    selectTab,
+    productSelected,
+    titleEditRef,
+  } = useContext(OrderContext)
 
+  const handleClick = async (idProductClicked) => {
+    if (!isAdmin) return
+    selectTab("edit")
+    const productClickedOn = products.find(
+      (product) => product.id === idProductClicked,
+    )
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
+
+  const handleCardDelete = (e, id) => {
+    e.stopPropagation()
+    handleDelete(id)
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+    titleEditRef.current.focus()
+  }
+
+  //render
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
@@ -28,7 +56,10 @@ export default function Catalog() {
           key={id}
           id={id}
           hasDeleteButton={isAdmin}
-          onDelete={() => handleDelete(id)}
+          onDelete={(e) => handleCardDelete(e, id)}
+          onClick={() => handleClick(id)}
+          isHoverable={isAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         />
       ))}
     </CatalogStyled>

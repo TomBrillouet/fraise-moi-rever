@@ -1,20 +1,25 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
-export default function TextInput({
-  value,
-  onChange,
-  Icon,
-  className,
-  version = "normal",
-  ...extraProps
-}) {
-  return (
-    <TextInputStyled className={className} version={version}>
-      <div className="icon">{Icon && Icon}</div>
-      <input type="text" value={value} onChange={onChange} {...extraProps} />
-    </TextInputStyled>
-  )
-}
+import React from "react"
+const TextInput = React.forwardRef(
+  (
+    { value, onChange, Icon, className, version = "normal", ...extraProps },
+    ref,
+  ) => {
+    return (
+      <TextInputStyled className={className} version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input
+          ref={ref}
+          type="text"
+          value={value}
+          onChange={onChange}
+          {...extraProps}
+        />
+      </TextInputStyled>
+    )
+  },
+)
 
 const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
@@ -73,3 +78,5 @@ const extraStyle = {
   normal: extraStyleNormal,
   minimalist: extraStyleMinimalist,
 }
+
+export default TextInput
