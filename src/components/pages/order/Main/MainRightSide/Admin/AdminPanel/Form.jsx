@@ -4,37 +4,36 @@ import Button from "../../../../../../reusable/Button.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 import SubmitMessage from "./SubmitMessage.jsx"
 import { getInputTextsConfig } from "./inputTextsConfig.jsx"
+import React from "react"
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) {
-  //state
-  //comportements
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, children }, ref) => {
+    //state
+    //comportements
 
-  const inputTexts = getInputTextsConfig(product)
+    const inputTexts = getInputTextsConfig(product)
 
-  //render
-  return (
-    <FormStyled action="submit" onSubmit={onSubmit}>
-      <ImagePreview imageSource={product.imageSource} title={product.title} />
-      <div className="inputs">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={onChange}
-            version={"minimalist"}
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          label={"Ajouter un nouveau produit au menu"}
-          version={"success"}
-        />
-        {isSubmitted && <SubmitMessage />}
-      </div>
-    </FormStyled>
-  )
-}
+    //render
+    return (
+      <FormStyled action="submit" onSubmit={onSubmit}>
+        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <div className="inputs">
+          {inputTexts.map((input) => (
+            <TextInput
+              {...input}
+              key={input.id}
+              onChange={onChange}
+              version={"minimalist"}
+              ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+        </div>
+        <div className="submit">{children}</div>
+      </FormStyled>
+    )
+  },
+)
+export default Form
 
 const FormStyled = styled.form`
   display: grid;
