@@ -30,7 +30,7 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 10fr 1fr;
+  display: flex;
+  flex-direction: column;
   font-family: ${theme.fonts.family.stylish};
 `

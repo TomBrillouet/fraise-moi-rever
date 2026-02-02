@@ -10,6 +10,7 @@ const BasketMainStyled = styled.div`
   box-shadow: 0px 0px 20px 0px #00000033 inset;
   font-size: ${theme.fonts.size.P4};
   color: ${theme.colors.greyBlue};
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;

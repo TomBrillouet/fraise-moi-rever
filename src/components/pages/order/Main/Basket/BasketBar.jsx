@@ -7,6 +7,7 @@ export default function BasketBar({ content, className }) {
 
 const BasketBarStyled = styled.div`
   background-color: ${theme.colors.background_dark};
+  height: 70px;
 
   &.header {
     color: ${theme.colors.primary};
