@@ -1,15 +1,30 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
-import BasketHeader from "./BasketHeader"
+import BasketBar from "./BasketBar"
 import BasketMain from "./BasketMain.jsx"
-import BasketFooter from "./BasketFooter.jsx"
+import { FaReact } from "react-icons/fa"
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <BasketHeader />
+      <BasketBar
+        className="header"
+        content={
+          <>
+            <div className="total">Total</div>
+            <div className="sum">0,00€</div>
+          </>
+        }
+      />
       <BasketMain />
-      <BasketFooter />
+      <BasketBar
+        className="footer"
+        content={
+          <>
+            Codé avec <FaReact /> par Tom Brillouet
+          </>
+        }
+      />
     </BasketStyled>
   )
 }
