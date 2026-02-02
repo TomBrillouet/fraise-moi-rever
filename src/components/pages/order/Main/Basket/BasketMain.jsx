@@ -7,11 +7,11 @@ export default function BasketMain() {
 
 const BasketMainStyled = styled.div`
   background-color: ${theme.colors.background_white};
-  box-shadow: 0px 0px 20px 0px #00000033 inset;
   font-size: ${theme.fonts.size.P4};
   color: ${theme.colors.greyBlue};
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: ${theme.shadows.basket};
 `
