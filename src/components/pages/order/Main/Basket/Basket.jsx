@@ -7,24 +7,19 @@ import { FaReact } from "react-icons/fa"
 export default function Basket() {
   return (
     <BasketStyled>
-      <BasketBar
-        className="header"
-        content={
-          <>
-            <div className="total">Total</div>
-            <div className="sum">0,00€</div>
-          </>
-        }
-      />
+      <BasketBar className="header">
+        <>
+          <div className="total">Total</div>
+          <div className="sum">0,00€</div>
+        </>
+      </BasketBar>
+
       <BasketMain />
-      <BasketBar
-        className="footer"
-        content={
-          <>
-            Codé avec <FaReact /> par Tom Brillouet
-          </>
-        }
-      />
+      <BasketBar className="footer">
+        <>
+          Codé avec <FaReact /> par Tom Brillouet
+        </>
+      </BasketBar>
     </BasketStyled>
   )
 }

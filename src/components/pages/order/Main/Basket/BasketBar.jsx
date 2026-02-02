@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 
-export default function BasketBar({ content, className }) {
-  return <BasketBarStyled className={className}>{content}</BasketBarStyled>
+export default function BasketBar({ className, children }) {
+  return <BasketBarStyled className={className}>{children}</BasketBarStyled>
 }
 
 const BasketBarStyled = styled.div`
