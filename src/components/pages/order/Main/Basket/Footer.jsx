@@ -1,24 +1,32 @@
 import { FaReact } from "react-icons/fa"
 import { theme } from "../../../../../theme"
 import styled from "styled-components"
-
+import Header from "./Header.jsx"
 export default function Footer() {
   return (
-    <FooterStyled>
-      <span>
-        Codé avec <FaReact /> par Tom Brillouet
-      </span>
-    </FooterStyled>
+    <Header>
+      <FooterStyled>
+        <span>
+          Codé avec <FaReact /> par Tom Brillouet
+        </span>
+      </FooterStyled>
+    </Header>
   )
 }
 
 const FooterStyled = styled.div`
-  color: ${theme.colors.white};
-  font-size: ${theme.fonts.size.P2};
-  flex: 1;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  svg {
-    color: #61dbfb;
+  span {
+    font-size: ${theme.fonts.size.P2};
+    color: ${theme.colors.white};
+    font-family: ${theme.fonts.family.stylish};
+
+    svg {
+      color: ${theme.colors.blueReact};
+    }
   }
 `

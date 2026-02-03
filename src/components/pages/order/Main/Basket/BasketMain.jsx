@@ -14,4 +14,5 @@ const BasketMainStyled = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: ${theme.shadows.basket};
+  font-family: ${theme.fonts.family.stylish};
 `

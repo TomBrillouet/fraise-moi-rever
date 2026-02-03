@@ -16,6 +16,7 @@ const colors = {
   greyDark: "#6f737e",
   greyBlue: "#747b91",
   loginLine: "#f56a2c",
+  blueReact: "#61dbfb",
 }
 
 const spacing = {

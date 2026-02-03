@@ -1,21 +1,15 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
-import BasketBar from "./BasketBar"
 import BasketMain from "./BasketMain.jsx"
 import Footer from "./Footer.jsx"
 import Total from "./Total.jsx"
+import { formatPrice } from "../../../../../utils/maths.jsx"
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <BasketBar className="header">
-        <Total />
-      </BasketBar>
-
+      <Total amountToPay={formatPrice(0)} />
       <BasketMain />
-      <BasketBar className="footer">
-        <Footer />
-      </BasketBar>
+      <Footer />
     </BasketStyled>
   )
 }
@@ -23,5 +17,4 @@ export default function Basket() {
 const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: ${theme.fonts.family.stylish};
 `

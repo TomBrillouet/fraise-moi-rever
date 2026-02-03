@@ -8,6 +8,5 @@ export default function BasketBar({ className, children }) {
 const BasketBarStyled = styled.div`
   background-color: ${theme.colors.background_dark};
   height: 70px;
-  display: flex;
-  align-items: center;
+  padding: 0 16px;
 `
