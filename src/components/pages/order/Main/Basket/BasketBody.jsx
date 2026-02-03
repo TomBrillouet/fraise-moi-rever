@@ -7,7 +7,12 @@ import OrderContext from "../../../../../context/OrderContext"
 import { formatPrice } from "../../../../../utils/maths"
 
 export default function BasketBody() {
-  const { productsAdded, handleDeleteFromCart } = useContext(OrderContext)
+  const { productsAdded, removeFromCart } = useContext(OrderContext)
+
+  const handleDeleteFromCart = (id) => {
+    removeFromCart(id)
+  }
+
   return (
     <BasketBodyStyled>
       {productsAdded.length < 1 ? (
@@ -21,7 +26,7 @@ export default function BasketBody() {
             price={formatPrice(price)}
             quantity={quantity}
             isHoverable={true}
-            removeFromCart={handleDeleteFromCart}
+            onClick={() => handleDeleteFromCart(id)}
           />
         ))
       )}

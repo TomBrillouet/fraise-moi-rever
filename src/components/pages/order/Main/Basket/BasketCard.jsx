@@ -8,7 +8,7 @@ export default function BasketCard({
   quantity,
   image,
   isHoverable,
-  removeFromCart,
+  onClick,
 }) {
   return (
     <BasketCardStyled $isHoverable={isHoverable}>
@@ -19,7 +19,7 @@ export default function BasketCard({
           <span className="price">{price}</span>
         </div>
         <span className="quantity">X {quantity}</span>
-        <button onClick={removeFromCart}>
+        <button onClick={onClick}>
           <MdDeleteForever />
         </button>
       </div>
