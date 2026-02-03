@@ -1,0 +1,183 @@
+const LARGE = [
+  {
+    id: "1",
+    imageSource:
+      "/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.png",
+    title: "Smoothie mangue",
+    price: 5.598,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "2",
+    imageSource: "/images/7bf91f94-ae74dzaf3c.png",
+    title: "Smoothie passion",
+    price: 7.4985,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "3",
+    imageSource: "/images/7bf91f94-ae74-4f82fgds-b2d7-e487e2a7cf3c.png",
+    title: "Smoothie orange",
+    price: 3.367,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "4",
+    imageSource: "/images/cd.png",
+    title: "Smoothie fraise",
+    price: 3.568,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "5",
+    imageSource: "/images/7bf91f94-ae74-4f82-b2d7-e487eeza2a7cf3c.png",
+    title: "Smoothie framboise",
+    price: 6.487,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "6",
+    imageSource: "/images/7bf91f94-ae74-4f82-b2d7-e48ea7e2a7cf3c.png",
+    title: "Smoothie kiwi",
+    price: 3.356,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "7",
+    imageSource: "/images/7bf91f94-ae74-4f82-bdfsq2d7-e487e2a7cf3c.png",
+    title: "Smoothie chocolat",
+    price: 2.567,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "8",
+    imageSource: "/images/584fcc806a5ae41a83ddee8c.png",
+    title: "Donuts",
+    price: 3.1678,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "9",
+    imageSource:
+      "/images/vecteezy_ai-generated-chocolate-drizzled-crepes-with-chips-png_41151365.png",
+    title: "Crêpe pâte à tartiner",
+    price: 3.7,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "10",
+    imageSource: "/images/vecteezy_crepe-with_25065282.png",
+    title: "Crêpe caramel",
+    price: 4.678,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+]
+
+const EMPTY = []
+
+const MEDIUM = [
+  {
+    id: "1",
+    imageSource:
+      "/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.png",
+    title: "Smoothie mangue",
+    price: 5.598,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "2",
+    imageSource: "/images/7bf91f94-ae74dzaf3c.png",
+    title: "Smoothie passion",
+    price: 7.4985,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "3",
+    imageSource: "/images/7bf91f94-ae74-4f82fgds-b2d7-e487e2a7cf3c.png",
+    title: "Smoothie orange",
+    price: 3.367,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "4",
+    imageSource: "/images/cd.png",
+    title: "Smoothie fraise",
+    price: 3.568,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "5",
+    imageSource: "/images/7bf91f94-ae74-4f82-b2d7-e487eeza2a7cf3c.png",
+    title: "Smoothie framboise",
+    price: 6.487,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+]
+
+const SMALL = [
+  {
+    id: "1",
+    imageSource:
+      "/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.png",
+    title: "Smoothie mangue",
+    price: 5.598,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "2",
+    imageSource: "/images/7bf91f94-ae74dzaf3c.png",
+    title: "Smoothie passion",
+    price: 7.4985,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "3",
+    imageSource: "/images/7bf91f94-ae74-4f82fgds-b2d7-e487e2a7cf3c.png",
+    title: "Smoothie orange",
+    price: 3.367,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+]
+
+export const fakeBasket = {
+  EMPTY,
+  SMALL,
+  MEDIUM,
+  LARGE,
+}
