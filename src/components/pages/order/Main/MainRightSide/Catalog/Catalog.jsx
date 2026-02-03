@@ -9,7 +9,7 @@ import { theme } from "../../../../../../theme/index.js"
 import { checkIfProductIsClicked } from "./helper.jsx"
 import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
 
-const DEFAULT_IMAGE = "/images/coming-soon.png"
+export const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Catalog() {
   const {
