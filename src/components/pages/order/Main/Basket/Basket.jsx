@@ -3,11 +3,14 @@ import BasketBody from "./BasketBody.jsx"
 import Footer from "./Footer.jsx"
 import Total from "./Total.jsx"
 import { formatPrice } from "../../../../../utils/maths.jsx"
+import { useContext } from "react"
+import OrderContext from "../../../../../context/OrderContext.jsx"
 
 export default function Basket() {
+  const { totalPrice } = useContext(OrderContext)
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(0)} />
+      <Total amountToPay={formatPrice(totalPrice)} />
       <BasketBody />
       <Footer />
     </BasketStyled>

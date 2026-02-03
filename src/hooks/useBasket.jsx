@@ -3,6 +3,7 @@ import { deepClone } from "../utils/array"
 
 export const useBasket = () => {
   const [productsAdded, setProductsAdded] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
 
   const handleAddtoBasket = (newProduct) => {
     const productsAddedCopy = deepClone(productsAdded)
@@ -12,12 +13,18 @@ export const useBasket = () => {
 
     if (existingProduct) {
       existingProduct.quantity++
-      setProductsAdded(productsAddedCopy)
     } else {
-      newProduct.quantity = 1
-      const productsAddedUpdated = [newProduct, ...productsAddedCopy]
-      setProductsAdded(productsAddedUpdated)
+      productsAddedCopy.unshift({ ...newProduct, quantity: 1 })
     }
+
+    setProductsAdded(productsAddedCopy)
+
+    const newTotal = productsAddedCopy.reduce(
+      (acc, o) => acc + o.price * o.quantity,
+      0,
+    )
+    setTotalPrice(newTotal)
   }
-  return { productsAdded, handleAddtoBasket }
+
+  return { productsAdded, handleAddtoBasket, totalPrice }
 }

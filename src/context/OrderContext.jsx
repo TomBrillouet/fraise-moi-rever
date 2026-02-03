@@ -30,4 +30,6 @@ export default createContext({
   productsAdded: [],
 
   handleAddtoBasket: () => {},
+
+  totalPrice: 0,
 })
