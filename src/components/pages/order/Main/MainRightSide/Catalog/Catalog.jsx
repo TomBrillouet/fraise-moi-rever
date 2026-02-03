@@ -18,14 +18,16 @@ export default function Catalog() {
     handleDelete,
     resetMenu,
     setProductSelected,
-    selectTab,
     productSelected,
     titleEditRef,
+    setIsCollapsed,
+    setCurrentTabSelected,
   } = useContext(OrderContext)
 
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
-    selectTab("edit")
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
     const productClickedOn = products.find(
       (product) => product.id === idProductClicked,
     )
@@ -37,7 +39,7 @@ export default function Catalog() {
     e.stopPropagation()
     handleDelete(id)
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
+    productSelected !== EMPTY_PRODUCT && titleEditRef.current.focus()
   }
 
   //render
