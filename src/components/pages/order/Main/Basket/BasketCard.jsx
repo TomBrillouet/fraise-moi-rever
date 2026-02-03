@@ -1,9 +1,17 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../../../theme"
+import { MdDeleteForever } from "react-icons/md"
 
-export default function BasketCard({ title, price, quantity, image }) {
+export default function BasketCard({
+  title,
+  price,
+  quantity,
+  image,
+  isHoverable,
+  removeFromCart,
+}) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled $isHoverable={isHoverable}>
       <img src={image} alt={title} />
       <div className="info">
         <div className="left-info">
@@ -11,17 +19,22 @@ export default function BasketCard({ title, price, quantity, image }) {
           <span className="price">{price}</span>
         </div>
         <span className="quantity">X {quantity}</span>
+        <button onClick={removeFromCart}>
+          <MdDeleteForever />
+        </button>
       </div>
     </BasketCardStyled>
   )
 }
 
 const BasketCardStyled = styled.div`
+  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
   display: flex;
   background-color: ${theme.colors.white};
   padding: 8px 16px;
   border-radius: 5px;
   box-shadow: -4px 4px 15px 0px #00000033;
+  position: relative;
 
   img {
     height: 70px;
@@ -36,12 +49,13 @@ const BasketCardStyled = styled.div`
     align-items: center;
     color: ${theme.colors.primary};
     flex: 1;
+
     font-size: 15px;
     .left-info {
       display: flex;
       flex-direction: column;
       gap: 5px;
-      max-width: 120px;
+      max-width: 119px;
 
       .title {
         font-family: ${theme.fonts.family.stylish};
@@ -52,6 +66,34 @@ const BasketCardStyled = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         height: 32px;
+      }
+    }
+    button {
+      display: none;
+      background-color: ${theme.colors.dark};
+      height: 100%;
+      width: 61px;
+      right: 0;
+      position: absolute;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+  }
+`
+
+const hoverableStyle = css`
+  &:hover {
+    .info {
+      .quantity {
+        display: none;
+      }
+      button {
+        display: block;
+        svg {
+          color: ${theme.colors.white};
+          height: 24px;
+          width: 24px;
+        }
       }
     }
   }
