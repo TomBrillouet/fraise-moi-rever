@@ -35,6 +35,7 @@ const BasketBodyStyled = styled.div`
   flex-direction: column;
   gap: 20px;
   padding: 20px 16px;
+  overflow-y: auto;
 
   .empty-message {
     display: flex;

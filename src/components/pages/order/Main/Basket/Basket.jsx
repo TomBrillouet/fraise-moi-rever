@@ -20,4 +20,5 @@ export default function Basket() {
 const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
 `
