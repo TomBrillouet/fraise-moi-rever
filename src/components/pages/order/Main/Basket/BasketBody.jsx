@@ -4,6 +4,7 @@ import { useContext } from "react"
 import BasketCard from "./BasketCard"
 import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
 import OrderContext from "../../../../../context/OrderContext"
+import { formatPrice } from "../../../../../utils/maths"
 
 export default function BasketBody() {
   const { productsAdded } = useContext(OrderContext)
@@ -14,11 +15,11 @@ export default function BasketBody() {
       ) : (
         productsAdded.map(({ title, imageSource, price, quantity, id }) => (
           <BasketCard
+            key={id}
             image={imageSource ? imageSource : DEFAULT_IMAGE}
             title={title}
-            price={price}
+            price={formatPrice(price)}
             quantity={quantity}
-            key={id}
           />
         ))
       )}
