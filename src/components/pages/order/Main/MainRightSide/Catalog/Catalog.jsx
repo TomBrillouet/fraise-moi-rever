@@ -23,6 +23,7 @@ export default function Catalog() {
     setIsCollapsed,
     setCurrentTabSelected,
     handleAddtoBasket,
+    removeFromCart,
   } = useContext(OrderContext)
 
   const handleClick = async (idProductClicked) => {
@@ -39,6 +40,7 @@ export default function Catalog() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation()
     handleDelete(id)
+    removeFromCart(id)
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
     productSelected !== EMPTY_PRODUCT && titleEditRef.current.focus()
   }
