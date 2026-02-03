@@ -1,24 +1,27 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
-import { useState } from "react"
-import { fakeBasket } from "../../../../../datas/fakeBasket"
+import { useContext } from "react"
 import BasketCard from "./BasketCard"
 import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
+import OrderContext from "../../../../../context/OrderContext"
 
 export default function BasketBody() {
-  const [productsAdded] = useState(fakeBasket.SMALL)
-
+  const { productsAdded } = useContext(OrderContext)
   return (
     <BasketBodyStyled>
-      {/* <span className="empty-message">Votre commande est vide.</span> */}
-      {productsAdded.map(({ title, imageSource, price, quantity }) => (
-        <BasketCard
-          image={imageSource ? imageSource : DEFAULT_IMAGE}
-          title={title}
-          price={price}
-          quantity={quantity}
-        />
-      ))}
+      {productsAdded.length < 1 ? (
+        <span className="empty-message">Votre commande est vide.</span>
+      ) : (
+        productsAdded.map(({ title, imageSource, price, quantity, id }) => (
+          <BasketCard
+            image={imageSource ? imageSource : DEFAULT_IMAGE}
+            title={title}
+            price={price}
+            quantity={quantity}
+            key={id}
+          />
+        ))
+      )}
     </BasketBodyStyled>
   )
 }

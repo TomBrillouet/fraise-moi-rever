@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useCatalog } from "../../../hooks/useCatalog"
+import { useBasket } from "../../../hooks/useBasket"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -15,6 +16,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
     useCatalog()
+  const { productsAdded, handleAddtoBasket } = useBasket()
 
   const OrderContextValue = {
     isAdmin,
@@ -33,6 +35,8 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     titleEditRef,
+    productsAdded,
+    handleAddtoBasket,
   }
 
   return (

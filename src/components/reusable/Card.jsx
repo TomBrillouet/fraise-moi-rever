@@ -9,6 +9,7 @@ export default function Card({
   leftDescription,
   hasDeleteButton,
   onDelete,
+  onAdd,
   onClick,
   isHoverable,
   isSelected,
@@ -34,11 +35,7 @@ export default function Card({
           <span className="title">{title}</span>
           <div className="addcart">
             <span className="left-description">{leftDescription}</span>
-            <Button
-              className="add-button"
-              label={"Ajouter"}
-              onClick={(event) => event.stopPropagation()}
-            />
+            <Button className="add-button" label={"Ajouter"} onClick={onAdd} />
           </div>
         </div>
       </div>

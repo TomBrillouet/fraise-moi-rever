@@ -22,6 +22,7 @@ export default function Catalog() {
     titleEditRef,
     setIsCollapsed,
     setCurrentTabSelected,
+    handleAddtoBasket,
   } = useContext(OrderContext)
 
   const handleClick = async (idProductClicked) => {
@@ -42,6 +43,12 @@ export default function Catalog() {
     productSelected !== EMPTY_PRODUCT && titleEditRef.current.focus()
   }
 
+  const handleAddtoCart = (e, id) => {
+    e.stopPropagation()
+    const newProduct = products.find((product) => product.id === id)
+    handleAddtoBasket(newProduct)
+  }
+
   //render
   if (products.length === 0) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
@@ -59,6 +66,7 @@ export default function Catalog() {
           id={id}
           hasDeleteButton={isAdmin}
           onDelete={(e) => handleCardDelete(e, id)}
+          onAdd={(e) => handleAddtoCart(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
