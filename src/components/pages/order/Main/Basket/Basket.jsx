@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import BasketBody from "./BasketBody.jsx"
+import BasketBody from "./BasketBody/BasketBody.jsx"
 import Footer from "./Footer.jsx"
 import Total from "./Total.jsx"
 import { formatPrice } from "../../../../../utils/maths.jsx"
