@@ -16,11 +16,6 @@ export default function OrderPage() {
   const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
     useCatalog()
 
-  const selectTab = (tabSelected) => {
-    setIsCollapsed(false)
-    setCurrentTabSelected(tabSelected)
-  }
-
   const OrderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -37,7 +32,6 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     handleEdit,
-    selectTab,
     titleEditRef,
   }
 

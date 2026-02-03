@@ -6,8 +6,13 @@ import OrderContext from "../../../../../../context/OrderContext"
 import { getTabsConfig } from "./getTabsConfig"
 
 export default function AdminTabs() {
-  const { isCollapsed, setIsCollapsed, currentTabSelected, selectTab } =
+  const { isCollapsed, setIsCollapsed, currentTabSelected } =
     useContext(OrderContext)
+
+  const selectTab = (tabSelected) => {
+    setIsCollapsed(false)
+    setCurrentTabSelected(tabSelected)
+  }
 
   const tabs = getTabsConfig(currentTabSelected)
 
