@@ -4,10 +4,9 @@ import { formatPrice } from "../../../../../../utils/maths"
 import { DEFAULT_IMAGE } from "../../MainRightSide/Catalog/Catalog"
 import OrderContext from "../../../../../../context/OrderContext"
 import { useContext } from "react"
-import { theme } from "../../../../../../theme"
 
-export default function BasketProducts() {
-  const { basket, removeFromCart } = useContext(OrderContext)
+export default function BasketProducts({ basket }) {
+  const { removeFromCart } = useContext(OrderContext)
   const handleDeleteFromCart = (id) => {
     removeFromCart(id)
   }
@@ -29,14 +28,12 @@ export default function BasketProducts() {
 }
 
 const BasketProductsStyled = styled.div`
-  background-color: ${theme.colors.background_white};
   flex: 1;
-  box-shadow: ${theme.shadows.basket};
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   gap: 20px;
   padding: 20px 16px;
-  overflow-y: auto;
   scrollbar-color: transparent transparent;
   &:hover {
     scrollbar-color: initial;
