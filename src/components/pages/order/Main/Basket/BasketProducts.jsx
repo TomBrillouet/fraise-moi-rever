@@ -5,7 +5,7 @@ import { useContext } from "react"
 
 export default function BasketProducts({ basket, isAdmin }) {
   const { removeFromCart } = useContext(OrderContext)
-  const handleDeleteFromCart = (id) => {
+  const handleOnDelete = (id) => {
     removeFromCart(id)
   }
   return (
@@ -14,7 +14,7 @@ export default function BasketProducts({ basket, isAdmin }) {
         <BasketCard
           key={basketProduct.id}
           {...basketProduct}
-          onClick={() => handleDeleteFromCart(basketProduct.id)}
+          onClick={() => handleOnDelete(basketProduct.id)}
           isAdmin={isAdmin}
         />
       ))}
