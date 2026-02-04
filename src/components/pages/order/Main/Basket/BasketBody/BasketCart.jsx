@@ -27,4 +27,9 @@ export default function BasketCart() {
   )
 }
 
-const BasketCartStyled = styled.div``
+const BasketCartStyled = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
