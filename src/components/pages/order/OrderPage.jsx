@@ -16,8 +16,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
     useCatalog()
-  const { productsAdded, handleAddtoBasket, totalPrice, removeFromCart } =
-    useBasket()
+  const { basket, handleAddtoBasket, totalPrice, removeFromCart } = useBasket()
 
   const OrderContextValue = {
     isAdmin,
@@ -36,7 +35,7 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     titleEditRef,
-    productsAdded,
+    basket,
     handleAddtoBasket,
     totalPrice,
     removeFromCart,
@@ -55,7 +54,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background: red;
+  background: #fe636345;
   height: 100vh;
   display: flex;
   justify-content: center;

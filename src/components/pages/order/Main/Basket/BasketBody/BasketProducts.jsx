@@ -6,13 +6,13 @@ import OrderContext from "../../../../../../context/OrderContext"
 import { useContext } from "react"
 
 export default function BasketProducts() {
-  const { productsAdded, removeFromCart } = useContext(OrderContext)
+  const { basket, removeFromCart } = useContext(OrderContext)
   const handleDeleteFromCart = (id) => {
     removeFromCart(id)
   }
   return (
     <BasketProductsStyled>
-      {productsAdded.map(({ title, imageSource, price, quantity, id }) => (
+      {basket.map(({ title, imageSource, price, quantity, id }) => (
         <BasketCard
           key={id}
           image={imageSource ? imageSource : DEFAULT_IMAGE}

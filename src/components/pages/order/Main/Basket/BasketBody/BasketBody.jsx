@@ -6,11 +6,11 @@ import OrderContext from "../../../../../../context/OrderContext"
 import { useContext } from "react"
 
 export default function BasketBody() {
-  const { productsAdded } = useContext(OrderContext)
+  const { basket } = useContext(OrderContext)
 
   return (
     <BasketBodyStyled>
-      {productsAdded.length < 1 ? <HintMessage /> : <BasketProducts />}
+      {basket.length < 1 ? <HintMessage /> : <BasketProducts />}
     </BasketBodyStyled>
   )
 }
