@@ -12,6 +12,7 @@ export default function BasketProducts({ basket }) {
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
         <BasketCard
+          key={basketProduct.id}
           {...basketProduct}
           onClick={() => handleDeleteFromCart(basketProduct.id)}
           isHoverable={true}
