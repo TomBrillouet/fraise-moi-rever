@@ -4,8 +4,8 @@ import Total from "./Total.jsx"
 import { formatPrice } from "../../../../../utils/maths.jsx"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
-import EmptyBasket from "./BasketBody/EmptyBasket.jsx"
-import BasketProducts from "./BasketBody/BasketProducts.jsx"
+import EmptyBasket from "./EmptyBasket.jsx"
+import BasketProducts from "./BasketProducts.jsx"
 
 export default function Basket() {
   const { totalPrice, basket } = useContext(OrderContext)

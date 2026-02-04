@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
-import { formatPrice } from "../../../../../../utils/maths"
-import { DEFAULT_IMAGE } from "../../MainRightSide/Catalog/Catalog"
-import OrderContext from "../../../../../../context/OrderContext"
+import { formatPrice } from "../../../../../utils/maths"
+import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
+import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
 
 export default function BasketProducts({ basket }) {
