@@ -24,4 +24,8 @@ const BasketBodyStyled = styled.div`
   gap: 20px;
   padding: 20px 16px;
   overflow-y: auto;
+  scrollbar-color: transparent transparent;
+  &:hover {
+    scrollbar-color: initial;
+  }
 `
