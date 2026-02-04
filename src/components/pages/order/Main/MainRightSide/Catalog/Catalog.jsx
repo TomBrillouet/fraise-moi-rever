@@ -11,6 +11,7 @@ import {
   DEFAULT_IMAGE,
   EMPTY_PRODUCT,
 } from "../../../../../../enums/product.jsx"
+import { findInArray } from "../../../../../../utils/array.js"
 
 export default function Catalog() {
   const {
@@ -32,9 +33,7 @@ export default function Catalog() {
     if (!isAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = products.find(
-      (product) => product.id === idProductClicked,
-    )
+    const productClickedOn = findInArray(idProductClicked, products)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -52,8 +51,8 @@ export default function Catalog() {
 
   const handleAddButton = (e, id) => {
     e.stopPropagation()
-    const newProduct = products.find((product) => product.id === id)
-    handleAddtoBasket(newProduct)
+    const productToAdd = findInArray(id, products)
+    handleAddtoBasket(productToAdd)
   }
 
   //render

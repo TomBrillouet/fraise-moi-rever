@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deepClone } from "../utils/array"
+import { deepClone, findInArray } from "../utils/array"
 
 export const useBasket = () => {
   const [basket, setbasket] = useState([])
@@ -7,9 +7,7 @@ export const useBasket = () => {
 
   const handleAddtoBasket = (newProduct) => {
     const basketCopy = deepClone(basket)
-    const existingProduct = basketCopy.find(
-      (product) => product.id === newProduct.id,
-    )
+    const existingProduct = findInArray(newProduct.id, basketCopy)
 
     if (existingProduct) {
       existingProduct.quantity++
