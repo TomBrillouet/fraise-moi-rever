@@ -31,7 +31,5 @@ export default createContext({
 
   handleAddtoBasket: () => {},
 
-  totalPrice: 0,
-
   removeFromCart: () => {},
 })

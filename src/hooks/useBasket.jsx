@@ -1,27 +1,35 @@
 import { useState } from "react"
-import { deepClone, findInArray } from "../utils/array"
+import { deepClone, findInArray, findIndex } from "../utils/array"
+import { fakeBasket } from "../datas/fakeBasket"
 
 export const useBasket = () => {
-  const [basket, setbasket] = useState([])
-  const [totalPrice, setTotalPrice] = useState(0)
+  const [basket, setbasket] = useState(fakeBasket.EMPTY)
 
-  const handleAddtoBasket = (newProduct) => {
+  const handleAddtoBasket = (productToAdd) => {
     const basketCopy = deepClone(basket)
-    const existingProduct = findInArray(newProduct.id, basketCopy)
+    const isProductAlreadyInBasket = findInArray(productToAdd.id, basketCopy)
 
-    if (existingProduct) {
-      existingProduct.quantity++
-    } else {
-      basketCopy.unshift({ ...newProduct, quantity: 1 })
+    if (!isProductAlreadyInBasket) {
+      createNewProductInBasket(productToAdd, basketCopy, setbasket)
+      return
     }
 
-    setbasket(basketCopy)
+    incrementProductAlreadyInBasket(productToAdd, basketCopy)
+  }
 
-    const newTotal = basketCopy.reduce(
-      (acc, o) => acc + o.price * o.quantity,
-      0,
+  const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+    const indexOfBasketProductToIncrement = findIndex(
+      productToAdd.id,
+      basketCopy,
     )
-    setTotalPrice(newTotal)
+
+    basketCopy[indexOfBasketProductToIncrement].quantity++
+    setbasket(basketCopy)
+  }
+  const createNewProductInBasket = (productToAdd, basketCopy, setbasket) => {
+    const newBasketProduct = { ...productToAdd, quantity: 1 }
+    const basketUpdated = [newBasketProduct, ...basketCopy]
+    setbasket(basketUpdated)
   }
 
   const removeFromCart = (id) => {
@@ -35,5 +43,5 @@ export const useBasket = () => {
     setTotalPrice(newTotal)
   }
 
-  return { basket, handleAddtoBasket, totalPrice, removeFromCart }
+  return { basket, handleAddtoBasket, removeFromCart }
 }
