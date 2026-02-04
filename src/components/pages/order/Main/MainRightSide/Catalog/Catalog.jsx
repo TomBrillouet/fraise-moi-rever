@@ -21,6 +21,7 @@ export default function Catalog() {
     productSelected,
     titleEditRef,
     setIsCollapsed,
+    currentTabSelected,
     setCurrentTabSelected,
     handleAddtoBasket,
     removeFromCart,
@@ -41,8 +42,11 @@ export default function Catalog() {
     e.stopPropagation()
     handleDelete(id)
     removeFromCart(id)
-    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    productSelected !== EMPTY_PRODUCT && titleEditRef.current.focus()
+    id === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT)(
+        productSelected !== EMPTY_PRODUCT && currentTabSelected === "edit",
+      ) &&
+      titleEditRef.current.focus()
   }
 
   const handleAddtoCart = (e, id) => {
