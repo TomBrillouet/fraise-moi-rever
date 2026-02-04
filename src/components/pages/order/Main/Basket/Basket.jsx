@@ -9,7 +9,7 @@ import BasketProducts from "./BasketProducts.jsx"
 import { theme } from "../../../../../theme/index.js"
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext)
+  const { basket, isAdmin } = useContext(OrderContext)
   const isBasketEmpty = basket.length === 0
 
   const sumToPay = basket.reduce((total, basketProduct) => {
@@ -19,7 +19,11 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(sumToPay)} />
-      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
+      {isBasketEmpty ? (
+        <EmptyBasket />
+      ) : (
+        <BasketProducts basket={basket} isAdmin={isAdmin} />
+      )}
       <Footer />
     </BasketStyled>
   )

@@ -9,11 +9,11 @@ export default function BasketCard({
   price,
   quantity,
   imageSource,
-  isHoverable,
   onClick,
+  isAdmin,
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable}>
+    <BasketCardStyled $isAdmin={isAdmin}>
       <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
       <div className="info">
         <div className="left-info">
@@ -30,7 +30,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+  ${({ $isAdmin }) => $isAdmin && hoverableStyle}
   display: flex;
   background-color: ${theme.colors.white};
   padding: 8px 16px;
