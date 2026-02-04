@@ -5,13 +5,13 @@ import { DEFAULT_IMAGE } from "../../MainRightSide/Catalog/Catalog"
 import OrderContext from "../../../../../../context/OrderContext"
 import { useContext } from "react"
 
-export default function BasketCart() {
+export default function BasketProducts() {
   const { productsAdded, removeFromCart } = useContext(OrderContext)
   const handleDeleteFromCart = (id) => {
     removeFromCart(id)
   }
   return (
-    <BasketCartStyled>
+    <BasketProductsStyled>
       {productsAdded.map(({ title, imageSource, price, quantity, id }) => (
         <BasketCard
           key={id}
@@ -23,11 +23,11 @@ export default function BasketCart() {
           onClick={() => handleDeleteFromCart(id)}
         />
       ))}
-    </BasketCartStyled>
+    </BasketProductsStyled>
   )
 }
 
-const BasketCartStyled = styled.div`
+const BasketProductsStyled = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
