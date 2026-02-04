@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 
-export default function HintMessage() {
-  return <HintMessageStyled>Votre commande est vide.</HintMessageStyled>
+export default function EmptyBasket() {
+  return <EmptyBasketStyled>Votre commande est vide.</EmptyBasketStyled>
 }
 
-const HintMessageStyled = styled.span`
+const EmptyBasketStyled = styled.span`
   display: flex;
   flex: 1;
   justify-content: center;

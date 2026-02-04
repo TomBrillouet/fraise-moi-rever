@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme"
-import HintMessage from "./HintMessage"
+import EmptyBasket from "./EmptyBasket"
 import BasketProducts from "./BasketProducts"
 import OrderContext from "../../../../../../context/OrderContext"
 import { useContext } from "react"
@@ -10,7 +10,7 @@ export default function BasketBody() {
 
   return (
     <BasketBodyStyled>
-      {basket.length < 1 ? <HintMessage /> : <BasketProducts />}
+      {basket.length < 1 ? <EmptyBasket /> : <BasketProducts />}
     </BasketBodyStyled>
   )
 }
