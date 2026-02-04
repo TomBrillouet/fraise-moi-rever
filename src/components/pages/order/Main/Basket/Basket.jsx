@@ -6,6 +6,7 @@ import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import EmptyBasket from "./EmptyBasket.jsx"
 import BasketProducts from "./BasketProducts.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 export default function Basket() {
   const { totalPrice, basket } = useContext(OrderContext)
@@ -24,4 +25,5 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+  box-shadow: ${theme.shadows.basket};
 `
