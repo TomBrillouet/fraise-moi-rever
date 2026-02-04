@@ -50,7 +50,7 @@ export default function Catalog() {
       titleEditRef.current.focus()
   }
 
-  const handleAddtoCart = (e, id) => {
+  const handleAddButton = (e, id) => {
     e.stopPropagation()
     const newProduct = products.find((product) => product.id === id)
     handleAddtoBasket(newProduct)
@@ -73,7 +73,7 @@ export default function Catalog() {
           id={id}
           hasDeleteButton={isAdmin}
           onDelete={(e) => handleCardDelete(e, id)}
-          onAdd={(e) => handleAddtoCart(e, id)}
+          onAdd={(e) => handleAddButton(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
