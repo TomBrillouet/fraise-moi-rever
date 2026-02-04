@@ -24,6 +24,7 @@ const FooterStyled = styled.div`
     font-size: ${theme.fonts.size.P2};
     color: ${theme.colors.white};
     font-family: ${theme.fonts.family.stylish};
+    font-weight: bold;
 
     svg {
       color: ${theme.colors.blueReact};

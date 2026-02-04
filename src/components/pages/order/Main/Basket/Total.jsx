@@ -20,4 +20,5 @@ const TotalStyled = styled.div`
   height: 100%;
   font-size: ${theme.fonts.size.P4};
   font-family: ${theme.fonts.family.stylish};
+  font-weight: bold;
 `
