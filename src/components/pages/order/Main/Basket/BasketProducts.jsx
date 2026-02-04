@@ -1,7 +1,5 @@
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
-import { formatPrice } from "../../../../../utils/maths"
-import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
 import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
 
@@ -12,15 +10,11 @@ export default function BasketProducts({ basket }) {
   }
   return (
     <BasketProductsStyled>
-      {basket.map(({ title, imageSource, price, quantity, id }) => (
+      {basket.map((basketProduct) => (
         <BasketCard
-          key={id}
-          image={imageSource ? imageSource : DEFAULT_IMAGE}
-          title={title}
-          price={formatPrice(price)}
-          quantity={quantity}
+          {...basketProduct}
+          onClick={() => handleDeleteFromCart(basketProduct.id)}
           isHoverable={true}
-          onClick={() => handleDeleteFromCart(id)}
         />
       ))}
     </BasketProductsStyled>
@@ -33,7 +27,7 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   gap: 20px;
-  padding: 20px 16px;
+  padding: 20px 0 20px 16px;
   scrollbar-color: transparent transparent;
   &:hover {
     scrollbar-color: initial;

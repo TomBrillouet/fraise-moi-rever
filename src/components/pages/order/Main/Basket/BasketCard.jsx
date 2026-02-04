@@ -1,22 +1,24 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../../../../theme"
 import { MdDeleteForever } from "react-icons/md"
+import { formatPrice } from "../../../../../utils/maths"
+import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
 
 export default function BasketCard({
   title,
   price,
   quantity,
-  image,
+  imageSource,
   isHoverable,
   onClick,
 }) {
   return (
     <BasketCardStyled $isHoverable={isHoverable}>
-      <img src={image} alt={title} />
+      <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
       <div className="info">
         <div className="left-info">
           <span className="title">{title}</span>
-          <span className="price">{price}</span>
+          <span className="price">{formatPrice(price)}</span>
         </div>
         <span className="quantity">X {quantity}</span>
         <button onClick={onClick}>
@@ -33,7 +35,7 @@ const BasketCardStyled = styled.div`
   background-color: ${theme.colors.white};
   padding: 8px 16px;
   border-radius: 5px;
-  box-shadow: -4px 4px 15px 0px #00000033;
+  box-shadow: ${theme.shadows.cardBasket};
   position: relative;
 
   img {
