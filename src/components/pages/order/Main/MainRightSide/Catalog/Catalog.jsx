@@ -7,9 +7,10 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import Card from "../../../../../reusable/Card.jsx"
 import { theme } from "../../../../../../theme/index.js"
 import { checkIfProductIsClicked } from "./helper.jsx"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
-
-export const DEFAULT_IMAGE = "/images/coming-soon.png"
+import {
+  DEFAULT_IMAGE,
+  EMPTY_PRODUCT,
+} from "../../../../../../enums/product.jsx"
 
 export default function Catalog() {
   const {

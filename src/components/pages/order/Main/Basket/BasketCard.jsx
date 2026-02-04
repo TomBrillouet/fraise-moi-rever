@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { theme } from "../../../../../theme"
 import { MdDeleteForever } from "react-icons/md"
 import { formatPrice } from "../../../../../utils/maths"
-import { DEFAULT_IMAGE } from "../MainRightSide/Catalog/Catalog"
+import { DEFAULT_IMAGE } from "../../../../../enums/product.jsx"
 
 export default function BasketCard({
   title,
