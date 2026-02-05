@@ -26,4 +26,10 @@ export default createContext({
   selectTab: () => {},
 
   titleEditRef: {},
+
+  basket: [],
+
+  handleAddtoBasket: () => {},
+
+  handleRemoveFromBasket: () => {},
 })

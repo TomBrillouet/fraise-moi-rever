@@ -7,9 +7,11 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import Card from "../../../../../reusable/Card.jsx"
 import { theme } from "../../../../../../theme/index.js"
 import { checkIfProductIsClicked } from "./helper.jsx"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
-
-const DEFAULT_IMAGE = "/images/coming-soon.png"
+import {
+  DEFAULT_IMAGE,
+  EMPTY_PRODUCT,
+} from "../../../../../../enums/product.jsx"
+import { findInArray } from "../../../../../../utils/array.js"
 
 export default function Catalog() {
   const {
@@ -21,16 +23,17 @@ export default function Catalog() {
     productSelected,
     titleEditRef,
     setIsCollapsed,
+    currentTabSelected,
     setCurrentTabSelected,
+    handleAddtoBasket,
+    handleRemoveFromBasket,
   } = useContext(OrderContext)
 
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = products.find(
-      (product) => product.id === idProductClicked,
-    )
+    const productClickedOn = findInArray(idProductClicked, products)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -38,8 +41,17 @@ export default function Catalog() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation()
     handleDelete(id)
-    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    productSelected !== EMPTY_PRODUCT && titleEditRef.current.focus()
+    handleRemoveFromBasket(id)
+    id === productSelected.id &&
+      currentTabSelected === "edit" &&
+      setProductSelected(EMPTY_PRODUCT)
+    currentTabSelected === "edit" && titleEditRef.current.focus()
+  }
+
+  const handleAddButton = (e, id) => {
+    e.stopPropagation()
+    const productToAdd = findInArray(id, products)
+    handleAddtoBasket(productToAdd)
   }
 
   //render
@@ -59,6 +71,7 @@ export default function Catalog() {
           id={id}
           hasDeleteButton={isAdmin}
           onDelete={(e) => handleCardDelete(e, id)}
+          onAdd={(e) => handleAddButton(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}

@@ -4,7 +4,7 @@ const colors = {
   white: "#fff",
   background_white: "#f5f5f7",
   background_dark: "#292729",
-  primary: "#ff231b",
+  primary: "#ff1b1b",
   green: "green",
   success: "#60bd4f",
   red: "#e25549",
@@ -68,6 +68,7 @@ const shadows = {
   strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
   primaryHighlight: "0px 0px 8px 0px #ff231b",
   basket: "inset 0px 0px 20px rgba(0, 0, 0, 0.2)",
+  cardBasket: "-4px 4px 15px 0px #00000033",
 }
 
 export const theme = {
