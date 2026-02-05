@@ -3,7 +3,7 @@ import BasketCard from "./BasketCard"
 import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
 
-export default function BasketProducts({ basket, isAdmin }) {
+export default function BasketProducts({ basket }) {
   const { removeFromCart } = useContext(OrderContext)
   const handleOnDelete = (id) => {
     removeFromCart(id)
@@ -15,7 +15,7 @@ export default function BasketProducts({ basket, isAdmin }) {
           key={basketProduct.id}
           {...basketProduct}
           onClick={() => handleOnDelete(basketProduct.id)}
-          isAdmin={isAdmin}
+          isHoverable={true}
         />
       ))}
     </BasketProductsStyled>

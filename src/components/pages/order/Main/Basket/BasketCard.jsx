@@ -10,10 +10,10 @@ export default function BasketCard({
   quantity,
   imageSource,
   onClick,
-  isAdmin,
+  isHoverable,
 }) {
   return (
-    <BasketCardStyled $isAdmin={isAdmin}>
+    <BasketCardStyled $isHoverable={isHoverable}>
       <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
       <div className="info">
         <div className="left-info">
@@ -81,7 +81,7 @@ const BasketCardStyled = styled.div`
       cursor: pointer;
     }
   }
-  ${({ $isAdmin }) => $isAdmin && hoverableStyle}
+  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 `
 
 const hoverableStyle = css`
@@ -92,6 +92,16 @@ const hoverableStyle = css`
       }
       button {
         display: block;
+        &:hover {
+          svg {
+            color: ${theme.colors.primary};
+          }
+        }
+        &:active {
+          svg {
+            color: ${theme.colors.white};
+          }
+        }
         svg {
           color: ${theme.colors.white};
           height: 24px;
