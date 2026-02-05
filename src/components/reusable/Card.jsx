@@ -59,6 +59,7 @@ const CardStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
     box-shadow: ${theme.shadows.medium};
     background-color: ${theme.colors.white};
+    user-select: none;
 
     .delete {
       align-self: flex-end;

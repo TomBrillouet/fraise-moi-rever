@@ -50,6 +50,7 @@ const BasketCardStyled = styled.div`
     align-items: center;
     color: ${theme.colors.primary};
     flex: 1;
+    user-select: none;
 
     font-size: 15px;
     .left-info {
