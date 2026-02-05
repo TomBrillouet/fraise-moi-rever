@@ -32,16 +32,11 @@ export const useBasket = () => {
     setbasket(basketUpdated)
   }
 
-  const removeFromCart = (id) => {
+  const handleRemoveFromBasket = (id) => {
     const basketCopy = deepClone(basket)
     const basketUpdated = basketCopy.filter((p) => p.id !== id)
     setbasket(basketUpdated)
-    const newTotal = basketUpdated.reduce(
-      (acc, o) => acc + o.price * o.quantity,
-      0,
-    )
-    setTotalPrice(newTotal)
   }
 
-  return { basket, handleAddtoBasket, removeFromCart }
+  return { basket, handleAddtoBasket, handleRemoveFromBasket }
 }

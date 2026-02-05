@@ -4,9 +4,9 @@ import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
 
 export default function BasketProducts({ basket }) {
-  const { removeFromCart } = useContext(OrderContext)
+  const { handleRemoveFromBasket } = useContext(OrderContext)
   const handleOnDelete = (id) => {
-    removeFromCart(id)
+    handleRemoveFromBasket(id)
   }
   return (
     <BasketProductsStyled>
