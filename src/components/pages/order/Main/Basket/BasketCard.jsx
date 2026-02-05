@@ -30,7 +30,6 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  ${({ $isAdmin }) => $isAdmin && hoverableStyle}
   display: flex;
   background-color: ${theme.colors.white};
   padding: 8px 16px;
@@ -81,6 +80,7 @@ const BasketCardStyled = styled.div`
       cursor: pointer;
     }
   }
+  ${({ $isAdmin }) => $isAdmin && hoverableStyle}
 `
 
 const hoverableStyle = css`
