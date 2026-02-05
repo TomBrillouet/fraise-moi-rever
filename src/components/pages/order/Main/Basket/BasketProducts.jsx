@@ -1,18 +1,49 @@
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
+import { useContext } from "react"
+import OrderContext from "../../../../../context/OrderContext"
+import { findInArray } from "../../../../../utils/array"
+import { checkIfProductIsClicked } from "../MainRightSide/Catalog/helper"
 
-export default function BasketProducts({ basket, handleRemoveFromBasket }) {
+export default function BasketProducts() {
+  const {
+    setIsCollapsed,
+    setCurrentTabSelected,
+    setProductSelected,
+    titleEditRef,
+    isAdmin,
+    handleRemoveFromBasket,
+    basket,
+    productSelected,
+  } = useContext(OrderContext)
+
   const handleOnDelete = (id) => {
     handleRemoveFromBasket(id)
   }
+
+  const handleClick = async (idProductClicked) => {
+    if (!isAdmin) return
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = findInArray(idProductClicked, basket)
+    console.log(productClickedOn)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
+
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
         <BasketCard
           key={basketProduct.id}
           {...basketProduct}
-          onClick={() => handleOnDelete(basketProduct.id)}
-          isHoverable={true}
+          onDelete={() => handleOnDelete(basketProduct.id)}
+          isAdmin={isAdmin}
+          onClick={() => handleClick(basketProduct.id)}
+          isSelected={checkIfProductIsClicked(
+            basketProduct.id,
+            productSelected.id,
+          )}
         />
       ))}
     </BasketProductsStyled>

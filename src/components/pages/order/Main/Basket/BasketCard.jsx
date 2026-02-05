@@ -9,11 +9,17 @@ export default function BasketCard({
   price,
   quantity,
   imageSource,
+  onDelete,
+  isAdmin,
   onClick,
-  isHoverable,
+  isSelected,
 }) {
   return (
-    <BasketCardStyled $isHoverable={isHoverable}>
+    <BasketCardStyled
+      $isAdmin={isAdmin}
+      onClick={onClick}
+      $isSelected={isSelected}
+    >
       <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
       <div className="info">
         <div className="left-info">
@@ -21,7 +27,7 @@ export default function BasketCard({
           <span className="price">{formatPrice(price)}</span>
         </div>
         <span className="quantity">X {quantity}</span>
-        <button onClick={onClick}>
+        <button onClick={onDelete}>
           <MdDeleteForever />
         </button>
       </div>
@@ -36,6 +42,32 @@ const BasketCardStyled = styled.div`
   border-radius: 5px;
   box-shadow: ${theme.shadows.cardBasket};
   position: relative;
+
+  &:hover {
+    .info {
+      .quantity {
+        display: none;
+      }
+      button {
+        display: block;
+        &:hover {
+          svg {
+            color: ${theme.colors.primary};
+          }
+        }
+        &:active {
+          svg {
+            color: ${theme.colors.white};
+          }
+        }
+        svg {
+          color: ${theme.colors.white};
+          height: 24px;
+          width: 24px;
+        }
+      }
+    }
+  }
 
   img {
     height: 70px;
@@ -81,33 +113,23 @@ const BasketCardStyled = styled.div`
       cursor: pointer;
     }
   }
-  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+
+  ${({ $isAdmin }) => $isAdmin && AdminStyle}
+  ${({ $isSelected }) => $isSelected && SelectedStyle}
 `
 
-const hoverableStyle = css`
+const AdminStyle = css`
   &:hover {
-    .info {
-      .quantity {
-        display: none;
-      }
-      button {
-        display: block;
-        &:hover {
-          svg {
-            color: ${theme.colors.primary};
-          }
-        }
-        &:active {
-          svg {
-            color: ${theme.colors.white};
-          }
-        }
-        svg {
-          color: ${theme.colors.white};
-          height: 24px;
-          width: 24px;
-        }
-      }
+    cursor: pointer;
+  }
+`
+
+const SelectedStyle = css`
+  background-color: ${theme.colors.primary};
+  .info {
+    color: ${theme.colors.white};
+    .title {
+      color: ${theme.colors.dark};
     }
   }
 `
