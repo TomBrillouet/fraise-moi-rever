@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deepClone, filter, findInArray, findIndex } from "../utils/array"
+import { deepClone, filter, findObjectByID, findIndex } from "../utils/array"
 import { fakeBasket } from "../datas/fakeBasket"
 
 export const useBasket = () => {
@@ -7,7 +7,7 @@ export const useBasket = () => {
 
   const handleAddtoBasket = (productToAdd) => {
     const basketCopy = deepClone(basket)
-    const isProductAlreadyInBasket = findInArray(productToAdd.id, basketCopy)
+    const isProductAlreadyInBasket = findObjectByID(productToAdd.id, basketCopy)
 
     if (!isProductAlreadyInBasket) {
       createNewProductInBasket(productToAdd, basketCopy, setbasket)
