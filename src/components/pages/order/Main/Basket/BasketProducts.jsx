@@ -1,10 +1,7 @@
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
-import OrderContext from "../../../../../context/OrderContext"
-import { useContext } from "react"
 
-export default function BasketProducts({ basket }) {
-  const { handleRemoveFromBasket } = useContext(OrderContext)
+export default function BasketProducts({ basket, handleRemoveFromBasket }) {
   const handleOnDelete = (id) => {
     handleRemoveFromBasket(id)
   }
