@@ -27,13 +27,16 @@ export default function Catalog() {
     setCurrentTabSelected,
     handleAddtoBasket,
     handleRemoveFromBasket,
+    basket,
   } = useContext(OrderContext)
 
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = findInArray(idProductClicked, products)
+    const productClickedOn =
+      findInArray(idProductClicked, basket) ||
+      findInArray(idProductClicked, products)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }

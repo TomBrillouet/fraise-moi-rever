@@ -38,5 +38,13 @@ export const useBasket = () => {
     setbasket(basketUpdated)
   }
 
-  return { basket, handleAddtoBasket, handleRemoveFromBasket }
+  const handleEditBasket = (productBeingEdited) => {
+    const basketCopy = deepClone(basket)
+    const basketUpdated = basketCopy.map((product) =>
+      product.id === productBeingEdited.id ? productBeingEdited : product,
+    )
+    setbasket(basketUpdated)
+  }
+
+  return { basket, handleAddtoBasket, handleRemoveFromBasket, handleEditBasket }
 }

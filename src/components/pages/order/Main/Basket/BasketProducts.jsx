@@ -26,7 +26,6 @@ export default function BasketProducts() {
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
     const productClickedOn = findInArray(idProductClicked, basket)
-    console.log(productClickedOn)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
