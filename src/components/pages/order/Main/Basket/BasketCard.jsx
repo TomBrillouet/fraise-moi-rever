@@ -126,10 +126,8 @@ const AdminStyle = css`
 
 const SelectedStyle = css`
   background-color: ${theme.colors.primary};
-  .info {
+  .price,
+  .quantity {
     color: ${theme.colors.white};
-    .title {
-      color: ${theme.colors.dark};
-    }
   }
 `
