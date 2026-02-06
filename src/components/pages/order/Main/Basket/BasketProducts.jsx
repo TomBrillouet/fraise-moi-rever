@@ -37,7 +37,7 @@ export default function BasketProducts() {
           key={basketProduct.id}
           {...basketProduct}
           onDelete={() => handleOnDelete(basketProduct.id)}
-          isAdmin={isAdmin}
+          isClickable={isAdmin}
           onClick={() => handleClick(basketProduct.id)}
           isSelected={checkIfProductIsClicked(
             basketProduct.id,

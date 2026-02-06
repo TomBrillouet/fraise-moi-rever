@@ -10,13 +10,13 @@ export default function BasketCard({
   quantity,
   imageSource,
   onDelete,
-  isAdmin,
+  isClickable,
   onClick,
   isSelected,
 }) {
   return (
     <BasketCardStyled
-      $isAdmin={isAdmin}
+      $isClickable={isClickable}
       onClick={onClick}
       $isSelected={isSelected}
     >
@@ -114,7 +114,7 @@ const BasketCardStyled = styled.div`
     }
   }
 
-  ${({ $isAdmin }) => $isAdmin && AdminStyle}
+  ${({ $isClickable }) => $isClickable && AdminStyle}
   ${({ $isSelected }) => $isSelected && SelectedStyle}
 `
 
