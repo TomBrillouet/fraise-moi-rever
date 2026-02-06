@@ -17,7 +17,7 @@ export const useBasket = () => {
       incrementProductAlreadyInBasket(idProductToAdd, basketCopy)
       return
     }
-    createNewBasketProduct(idProductToAdd, basketCopy, setbasket)
+    createNewBasketProduct(idProductToAdd, basketCopy)
   }
 
   const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
@@ -29,7 +29,7 @@ export const useBasket = () => {
     setbasket(basketCopy)
   }
 
-  const createNewBasketProduct = (idProductToAdd, basketCopy, setbasket) => {
+  const createNewBasketProduct = (idProductToAdd, basketCopy) => {
     //on ajoute juste id et quantité on ne créer pas un objet complet
     const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const basketUpdated = [newBasketProduct, ...basketCopy]
@@ -37,8 +37,7 @@ export const useBasket = () => {
   }
 
   const handleRemoveFromBasket = (id) => {
-    const basketCopy = deepClone(basket)
-    const basketUpdated = removeObjectbyId(id, basketCopy)
+    const basketUpdated = removeObjectbyId(id, basket)
     setbasket(basketUpdated)
   }
 
