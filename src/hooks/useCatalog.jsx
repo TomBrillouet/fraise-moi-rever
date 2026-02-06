@@ -13,7 +13,7 @@ export const useCatalog = () => {
 
   const handleDelete = (idOfProductToDelete) => {
     const productsCopy = deepClone(products)
-    const productsUpdated = productsCopy.filter(
+    const productsUpdated = productsCopy.removeObjectbyId(
       (product) => product.id !== idOfProductToDelete,
     )
     setProducts(productsUpdated)

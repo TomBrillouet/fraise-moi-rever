@@ -2,7 +2,7 @@ import styled from "styled-components"
 import BasketCard from "./BasketCard"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
-import { findObjectByID } from "../../../../../utils/array"
+import { findObjectById } from "../../../../../utils/array"
 import { checkIfProductIsClicked } from "../MainRightSide/Catalog/helper"
 
 export default function BasketProducts() {
@@ -25,7 +25,7 @@ export default function BasketProducts() {
     if (!isAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = findObjectByID(idProductClicked, basket)
+    const productClickedOn = findObjectById(idProductClicked, basket)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }

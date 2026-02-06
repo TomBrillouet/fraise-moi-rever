@@ -1,5 +1,10 @@
 import { useState } from "react"
-import { deepClone, filter, findObjectByID, findIndex } from "../utils/array"
+import {
+  deepClone,
+  removeObjectbyId,
+  findObjectById,
+  findIndex,
+} from "../utils/array"
 import { fakeBasket } from "../datas/fakeBasket"
 
 export const useBasket = () => {
@@ -7,7 +12,7 @@ export const useBasket = () => {
 
   const handleAddtoBasket = (productToAdd) => {
     const basketCopy = deepClone(basket)
-    const isProductAlreadyInBasket = findObjectByID(productToAdd.id, basketCopy)
+    const isProductAlreadyInBasket = findObjectById(productToAdd.id, basketCopy)
 
     if (!isProductAlreadyInBasket) {
       createNewProductInBasket(productToAdd, basketCopy, setbasket)
@@ -34,7 +39,7 @@ export const useBasket = () => {
 
   const handleRemoveFromBasket = (id) => {
     const basketCopy = deepClone(basket)
-    const basketUpdated = filter(id, basketCopy)
+    const basketUpdated = removeObjectbyId(id, basketCopy)
     setbasket(basketUpdated)
   }
 
