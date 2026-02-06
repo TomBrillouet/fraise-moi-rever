@@ -51,10 +51,9 @@ export default function Catalog() {
     currentTabSelected === "edit" && titleEditRef.current.focus()
   }
 
-  const handleAddButton = (e, id) => {
+  const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation()
-    const productToAdd = findObjectById(id, products)
-    handleAddtoBasket(productToAdd)
+    handleAddtoBasket(idProductToAdd)
   }
 
   //render

@@ -10,29 +10,28 @@ import { fakeBasket } from "../datas/fakeBasket"
 export const useBasket = () => {
   const [basket, setbasket] = useState(fakeBasket.EMPTY)
 
-  const handleAddtoBasket = (productToAdd) => {
+  const handleAddtoBasket = (idProductToAdd) => {
     const basketCopy = deepClone(basket)
-    const isProductAlreadyInBasket = findObjectById(productToAdd.id, basketCopy)
-
-    if (!isProductAlreadyInBasket) {
-      createNewProductInBasket(productToAdd, basketCopy, setbasket)
+    const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
+    if (productAlreadyInBasket) {
+      incrementProductAlreadyInBasket(idProductToAdd, basketCopy)
       return
     }
-
-    incrementProductAlreadyInBasket(productToAdd, basketCopy)
+    createNewBasketProduct(idProductToAdd, basketCopy, setbasket)
   }
 
-  const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+  const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
     const indexOfBasketProductToIncrement = findIndexbyId(
-      productToAdd.id,
+      idProductToAdd,
       basketCopy,
     )
-
     basketCopy[indexOfBasketProductToIncrement].quantity++
     setbasket(basketCopy)
   }
-  const createNewProductInBasket = (productToAdd, basketCopy, setbasket) => {
-    const newBasketProduct = { ...productToAdd, quantity: 1 }
+
+  const createNewBasketProduct = (idProductToAdd, basketCopy, setbasket) => {
+    //on ajoute juste id et quantité on ne créer pas un objet complet
+    const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const basketUpdated = [newBasketProduct, ...basketCopy]
     setbasket(basketUpdated)
   }
