@@ -8,28 +8,21 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
 export default function BasketProducts() {
   const {
-    setIsCollapsed,
-    setCurrentTabSelected,
-    setProductSelected,
-    titleEditRef,
     isAdmin,
     handleRemoveFromBasket,
     basket,
     productSelected,
     products,
+    handleProductSelected,
   } = useContext(OrderContext)
 
-  const handleOnDelete = (id) => {
+  const handleOnDelete = (e, id) => {
+    e.stopPropagation()
     handleRemoveFromBasket(id)
   }
 
-  const handleClick = async (idProductClicked) => {
-    if (!isAdmin) return
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = findObjectById(idProductClicked, basket)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
+  const handleClick = (idProductClicked) => {
+    handleProductSelected(idProductClicked)
   }
 
   return (
@@ -46,7 +39,7 @@ export default function BasketProducts() {
                 : DEFAULT_IMAGE
             }
             quantity={basketProduct.quantity}
-            onDelete={() => handleOnDelete(basketProduct.id)}
+            onDelete={(e) => handleOnDelete(e, basketProduct.id)}
             isClickable={isAdmin}
             onClick={() => handleClick(basketProduct.id)}
             isSelected={checkIfProductIsClicked(

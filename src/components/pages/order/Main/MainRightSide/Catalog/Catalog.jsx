@@ -11,7 +11,7 @@ import {
   DEFAULT_IMAGE,
   EMPTY_PRODUCT,
 } from "../../../../../../enums/product.jsx"
-import { findObjectById, isEmpty } from "../../../../../../utils/array.js"
+import { isEmpty } from "../../../../../../utils/array.js"
 
 export default function Catalog() {
   const {
@@ -22,20 +22,14 @@ export default function Catalog() {
     setProductSelected,
     productSelected,
     titleEditRef,
-    setIsCollapsed,
     currentTabSelected,
-    setCurrentTabSelected,
     handleAddtoBasket,
     handleRemoveFromBasket,
+    handleProductSelected,
   } = useContext(OrderContext)
 
-  const handleClick = async (idProductClicked) => {
-    if (!isAdmin) return
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = findObjectById(idProductClicked, products)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
+  const handleClick = (idProductClicked) => {
+    handleProductSelected(idProductClicked)
   }
 
   const handleCardDelete = (e, id) => {
