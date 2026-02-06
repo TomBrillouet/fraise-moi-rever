@@ -4,6 +4,7 @@ import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx"
 import Form from "./Form.jsx"
 import SubmitButton from "./SubmitButton.jsx"
 import { useSucessMessage } from "../../../../../../../hooks/useSuccessMessage.jsx"
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths.jsx"
 
 export default function AddForm() {
   //state
@@ -13,8 +14,11 @@ export default function AddForm() {
   //comportements
   const handleSubmit = (e) => {
     e.preventDefault()
-    const id = crypto.randomUUID()
-    const newProductToAdd = { ...newProduct, id }
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot(newProduct.price),
+    }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
     displaySucessMessage()

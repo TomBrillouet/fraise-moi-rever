@@ -1,40 +1,43 @@
 import { useState } from "react"
-import { deepClone, filter, findInArray, findIndex } from "../utils/array"
+import {
+  deepClone,
+  removeObjectbyId,
+  findObjectById,
+  findIndexbyId,
+} from "../utils/array"
 import { fakeBasket } from "../datas/fakeBasket"
 
 export const useBasket = () => {
   const [basket, setbasket] = useState(fakeBasket.EMPTY)
 
-  const handleAddtoBasket = (productToAdd) => {
+  const handleAddtoBasket = (idProductToAdd) => {
     const basketCopy = deepClone(basket)
-    const isProductAlreadyInBasket = findInArray(productToAdd.id, basketCopy)
-
-    if (!isProductAlreadyInBasket) {
-      createNewProductInBasket(productToAdd, basketCopy, setbasket)
+    const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
+    if (productAlreadyInBasket) {
+      incrementProductAlreadyInBasket(idProductToAdd, basketCopy)
       return
     }
-
-    incrementProductAlreadyInBasket(productToAdd, basketCopy)
+    createNewBasketProduct(idProductToAdd, basketCopy)
   }
 
-  const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
-    const indexOfBasketProductToIncrement = findIndex(
-      productToAdd.id,
+  const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
+    const indexOfBasketProductToIncrement = findIndexbyId(
+      idProductToAdd,
       basketCopy,
     )
-
     basketCopy[indexOfBasketProductToIncrement].quantity++
     setbasket(basketCopy)
   }
-  const createNewProductInBasket = (productToAdd, basketCopy, setbasket) => {
-    const newBasketProduct = { ...productToAdd, quantity: 1 }
+
+  const createNewBasketProduct = (idProductToAdd, basketCopy) => {
+    //on ajoute juste id et quantité on ne créer pas un objet complet
+    const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const basketUpdated = [newBasketProduct, ...basketCopy]
     setbasket(basketUpdated)
   }
 
   const handleRemoveFromBasket = (id) => {
-    const basketCopy = deepClone(basket)
-    const basketUpdated = filter(id, basketCopy)
+    const basketUpdated = removeObjectbyId(id, basket)
     setbasket(basketUpdated)
   }
 

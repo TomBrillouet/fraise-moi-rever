@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useCatalog } from "../../../hooks/useCatalog"
 import { useBasket } from "../../../hooks/useBasket"
+import { findObjectById } from "../../../utils/array"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -17,6 +18,15 @@ export default function OrderPage() {
   const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
     useCatalog()
   const { basket, handleAddtoBasket, handleRemoveFromBasket } = useBasket()
+
+  const handleProductSelected = async (idProductClicked) => {
+    if (!isAdmin) return
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = findObjectById(idProductClicked, products)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
 
   const OrderContextValue = {
     isAdmin,
@@ -38,6 +48,7 @@ export default function OrderPage() {
     basket,
     handleAddtoBasket,
     handleRemoveFromBasket,
+    handleProductSelected,
   }
 
   return (

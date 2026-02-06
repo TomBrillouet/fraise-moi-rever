@@ -2,7 +2,7 @@ const LARGE = [
   {
     id: "1",
     imageSource:
-      "/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.png",
+      "/images/vecteezy_free-isolated-on-transparent-background-refreshing-smoothie_59371624.webp",
     title: "Smoothie mangue",
     price: 5.598,
     quantity: 0,
@@ -75,7 +75,7 @@ const LARGE = [
   {
     id: "9",
     imageSource:
-      "/images/vecteezy_ai-generated-chocolate-drizzled-crepes-with-chips-png_41151365.png",
+      "/images/vecteezy_ai-generated-chocolate-drizzled-crepes-with-chips-png_41151365.webp",
     title: "Crêpe pâte à tartiner",
     price: 3.7,
     quantity: 0,
@@ -84,7 +84,7 @@ const LARGE = [
   },
   {
     id: "10",
-    imageSource: "/images/vecteezy_crepe-with_25065282.png",
+    imageSource: "/images/vecteezy_crepe-with_25065282.webp",
     title: "Crêpe caramel",
     price: 4.678,
     quantity: 0,
