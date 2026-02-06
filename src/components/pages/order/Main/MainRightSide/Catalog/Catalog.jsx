@@ -11,7 +11,7 @@ import {
   DEFAULT_IMAGE,
   EMPTY_PRODUCT,
 } from "../../../../../../enums/product.jsx"
-import { findObjectById } from "../../../../../../utils/array.js"
+import { findObjectById, isEmpty } from "../../../../../../utils/array.js"
 
 export default function Catalog() {
   const {
@@ -58,7 +58,7 @@ export default function Catalog() {
   }
 
   //render
-  if (products.length === 0) {
+  if (isEmpty(products)) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
   }

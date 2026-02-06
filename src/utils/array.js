@@ -13,3 +13,7 @@ export const findIndexbyId = (id, array) => {
 export const removeObjectbyId = (id, array) => {
   return array.filter((item) => item.id !== id)
 }
+
+export const isEmpty = (array) => {
+  return array.length === 0
+}
