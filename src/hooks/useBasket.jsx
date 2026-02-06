@@ -3,7 +3,7 @@ import {
   deepClone,
   removeObjectbyId,
   findObjectById,
-  findIndex,
+  findIndexbyId,
 } from "../utils/array"
 import { fakeBasket } from "../datas/fakeBasket"
 
@@ -23,7 +23,7 @@ export const useBasket = () => {
   }
 
   const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
-    const indexOfBasketProductToIncrement = findIndex(
+    const indexOfBasketProductToIncrement = findIndexbyId(
       productToAdd.id,
       basketCopy,
     )
