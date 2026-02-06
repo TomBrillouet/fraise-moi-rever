@@ -13,8 +13,7 @@ export default function AddForm() {
   //comportements
   const handleSubmit = (e) => {
     e.preventDefault()
-    const id = crypto.randomUUID()
-    const newProductToAdd = { ...newProduct, id }
+    const newProductToAdd = { ...newProduct, id: crypto.randomUUID() }
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
     displaySucessMessage()
