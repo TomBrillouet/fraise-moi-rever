@@ -43,7 +43,6 @@ export default function OrderPage() {
     basket,
     handleAddtoBasket,
     handleRemoveFromBasket,
-    handleEditBasket,
   }
 
   return (

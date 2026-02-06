@@ -5,13 +5,8 @@ import Form from "./Form.jsx"
 
 export default function EditForm() {
   //state
-  const {
-    productSelected,
-    setProductSelected,
-    handleEdit,
-    titleEditRef,
-    handleEditBasket,
-  } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
+    useContext(OrderContext)
 
   //comportements
   const handleChange = (e) => {
@@ -22,7 +17,6 @@ export default function EditForm() {
     }
     setProductSelected(productBeingUpdated)
     handleEdit(productBeingUpdated)
-    handleEditBasket(productBeingUpdated)
   }
 
   //affichage

@@ -4,6 +4,7 @@ import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
 import { findObjectById } from "../../../../../utils/array"
 import { checkIfProductIsClicked } from "../MainRightSide/Catalog/helper"
+import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
 export default function BasketProducts() {
   const {
@@ -15,6 +16,7 @@ export default function BasketProducts() {
     handleRemoveFromBasket,
     basket,
     productSelected,
+    products,
   } = useContext(OrderContext)
 
   const handleOnDelete = (id) => {
@@ -32,19 +34,28 @@ export default function BasketProducts() {
 
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <BasketCard
-          key={basketProduct.id}
-          {...basketProduct}
-          onDelete={() => handleOnDelete(basketProduct.id)}
-          isClickable={isAdmin}
-          onClick={() => handleClick(basketProduct.id)}
-          isSelected={checkIfProductIsClicked(
-            basketProduct.id,
-            productSelected.id,
-          )}
-        />
-      ))}
+      {basket.map((basketProduct) => {
+        const catalogProduct = findObjectById(basketProduct.id, products)
+        return (
+          <BasketCard
+            key={basketProduct.id}
+            {...catalogProduct}
+            imageSource={
+              catalogProduct.imageSource
+                ? catalogProduct.imageSource
+                : DEFAULT_IMAGE
+            }
+            quantity={basketProduct.quantity}
+            onDelete={() => handleOnDelete(basketProduct.id)}
+            isClickable={isAdmin}
+            onClick={() => handleClick(basketProduct.id)}
+            isSelected={checkIfProductIsClicked(
+              basketProduct.id,
+              productSelected.id,
+            )}
+          />
+        )
+      })}
     </BasketProductsStyled>
   )
 }

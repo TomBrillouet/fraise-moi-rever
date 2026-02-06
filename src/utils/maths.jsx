@@ -1,3 +1,5 @@
+import { findObjectById } from "./array"
+
 export function formatPrice(priceToFormat) {
   let price = priceToFormat
 
@@ -15,4 +17,12 @@ export function formatPrice(priceToFormat) {
 export function replaceFrenchCommaWithDot(price) {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."))
   return price
+}
+
+export const calculateSumToPay = (basket, products) => {
+  return basket.reduce((total, basketProduct) => {
+    const catalogProduct = findObjectById(basketProduct.id, products)
+
+    return total + basketProduct.quantity * catalogProduct.price
+  }, 0)
 }
