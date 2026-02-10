@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { fakeMenu } from "../datas/fakeMenu"
 import { deepClone, removeObjectbyId } from "../utils/array"
+import { syncBothCatalogs } from "../api/catalog"
 
 export const useCatalog = () => {
   const [products, setProducts] = useState(fakeMenu.LARGE)
 
-  const handleAdd = (newproduct) => {
+  const handleAdd = (newproduct, username) => {
     const productsCopy = deepClone(products)
     const productsUpdated = [newproduct, ...productsCopy]
     setProducts(productsUpdated)
+    syncBothCatalogs(username, productsUpdated)
   }
 
   const handleDelete = (idOfProductToDelete) => {
@@ -26,7 +28,8 @@ export const useCatalog = () => {
   }
 
   const resetMenu = () => {
-    setProducts(fakeMenu.LARGE)
+    const fakeMenuLargeCopy = deepClone(fakeMenu.LARGE)
+    setProducts(fakeMenuLargeCopy)
   }
 
   return {

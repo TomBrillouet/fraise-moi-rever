@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useCatalog } from "../../../hooks/useCatalog"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
+import { useParams } from "react-router"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -18,6 +19,7 @@ export default function OrderPage() {
   const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
     useCatalog()
   const { basket, handleAddtoBasket, handleRemoveFromBasket } = useBasket()
+  const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
     if (!isAdmin) return
@@ -49,6 +51,7 @@ export default function OrderPage() {
     handleAddtoBasket,
     handleRemoveFromBasket,
     handleProductSelected,
+    username,
   }
 
   return (
