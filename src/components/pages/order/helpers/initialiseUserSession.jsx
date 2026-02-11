@@ -1,7 +1,7 @@
 import { getCatalog } from "../../../../api/catalog"
 import { getLocalStorage } from "../../../../utils/window"
 
-const initialiseMenu = async (username, setCatalog) => {
+const initialiseCatalog = async (username, setCatalog) => {
   const catalogReceived = await getCatalog(username)
   setCatalog(catalogReceived)
 }
@@ -16,6 +16,6 @@ export const initialiseUserSession = async (
   setCatalog,
   setBasket,
 ) => {
-  await initialiseMenu(username, setCatalog)
+  await initialiseCatalog(username, setCatalog)
   initialiseBasket(username, setBasket)
 }

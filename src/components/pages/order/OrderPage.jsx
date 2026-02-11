@@ -17,9 +17,16 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { catalog, handleAdd, handleDelete, handleEdit, resetMenu } =
-    useCatalog()
-  const { basket, handleAddtoBasket, handleRemoveFromBasket } = useBasket()
+  const {
+    catalog,
+    setCatalog,
+    handleAdd,
+    handleDelete,
+    handleEdit,
+    resetMenu,
+  } = useCatalog()
+  const { basket, setBasket, handleAddtoBasket, handleRemoveFromBasket } =
+    useBasket()
   const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
@@ -32,7 +39,7 @@ export default function OrderPage() {
   }
 
   useEffect(() => {
-    initialiseUserSession()
+    initialiseUserSession(username, setCatalog, setBasket)
   }, [])
 
   const OrderContextValue = {
