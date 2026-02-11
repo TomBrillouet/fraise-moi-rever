@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { useParams } from "react-router"
 import { getCatalog } from "../../../api/catalog"
+import { getLocalStorage } from "../../../utils/window"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -25,7 +26,8 @@ export default function OrderPage() {
     handleEdit,
     resetMenu,
   } = useCatalog()
-  const { basket, handleAddtoBasket, handleRemoveFromBasket } = useBasket()
+  const { basket, setBasket, handleAddtoBasket, handleRemoveFromBasket } =
+    useBasket()
   const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
@@ -42,8 +44,17 @@ export default function OrderPage() {
     setCatalog(catalogReceived)
   }
 
+  const initialiseBasket = () => {
+    const basketReceived = getLocalStorage(username)
+    setBasket(basketReceived)
+  }
+
   useEffect(() => {
     initialiseMenu()
+  }, [])
+
+  useEffect(() => {
+    initialiseBasket()
   }, [])
 
   const OrderContextValue = {

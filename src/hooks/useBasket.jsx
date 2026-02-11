@@ -5,11 +5,10 @@ import {
   findObjectById,
   findIndexbyId,
 } from "../utils/array"
-import { fakeBasket } from "../datas/fakeBasket"
 import { setLocalStorage } from "../utils/window.jsx"
 
 export const useBasket = () => {
-  const [basket, setbasket] = useState(fakeBasket.EMPTY)
+  const [basket, setBasket] = useState([])
 
   const handleAddtoBasket = (idProductToAdd, username) => {
     const basketCopy = deepClone(basket)
@@ -31,7 +30,7 @@ export const useBasket = () => {
       basketCopy,
     )
     basketCopy[indexOfBasketProductToIncrement].quantity++
-    setbasket(basketCopy)
+    setBasket(basketCopy)
     setLocalStorage(username, basketCopy)
   }
 
@@ -39,14 +38,14 @@ export const useBasket = () => {
     //on ajoute juste id et quantité on ne créer pas un objet complet
     const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const basketUpdated = [newBasketProduct, ...basketCopy]
-    setbasket(basketUpdated)
+    setBasket(basketUpdated)
     setLocalStorage(username, basketUpdated)
   }
 
   const handleRemoveFromBasket = (id) => {
     const basketUpdated = removeObjectbyId(id, basket)
-    setbasket(basketUpdated)
+    setBasket(basketUpdated)
   }
 
-  return { basket, handleAddtoBasket, handleRemoveFromBasket }
+  return { basket, setBasket, handleAddtoBasket, handleRemoveFromBasket }
 }

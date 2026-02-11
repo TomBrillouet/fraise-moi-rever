@@ -9,7 +9,9 @@ import { theme } from "../../../../../theme/index.js"
 import { isEmpty } from "../../../../../utils/array.js"
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext)
+  const { basket, catalog } = useContext(OrderContext)
+
+  if (catalog === undefined) return <span>chargement</span>
 
   return (
     <BasketStyled>
