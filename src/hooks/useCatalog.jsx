@@ -20,12 +20,13 @@ export const useCatalog = () => {
     syncBothCatalogs(username, catalogUpdated)
   }
 
-  const handleEdit = (productBeingEdited) => {
+  const handleEdit = (productBeingEdited, username) => {
     const catalogCopy = deepClone(catalog)
     const catalogUpdated = catalogCopy.map((product) =>
       product.id === productBeingEdited.id ? productBeingEdited : product,
     )
     setCatalog(catalogUpdated)
+    syncBothCatalogs(username, catalogUpdated)
   }
 
   const resetMenu = (username) => {
