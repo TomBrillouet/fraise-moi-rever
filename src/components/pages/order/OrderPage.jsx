@@ -2,13 +2,14 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import NavBar from "./Navbar/NavBar"
 import Main from "./Main/Main"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useCatalog } from "../../../hooks/useCatalog"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { useParams } from "react-router"
+import { getCatalog } from "../../../api/catalog"
 export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -16,8 +17,14 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { products, handleAdd, handleDelete, handleEdit, resetMenu } =
-    useCatalog()
+  const {
+    products,
+    setProducts,
+    handleAdd,
+    handleDelete,
+    handleEdit,
+    resetMenu,
+  } = useCatalog()
   const { basket, handleAddtoBasket, handleRemoveFromBasket } = useBasket()
   const { username } = useParams()
 
@@ -29,6 +36,15 @@ export default function OrderPage() {
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
+
+  const initialiseMenu = async () => {
+    const catalogReceived = await getCatalog(username)
+    setProducts(catalogReceived)
+  }
+
+  useEffect(() => {
+    initialiseMenu()
+  }, [])
 
   const OrderContextValue = {
     isAdmin,

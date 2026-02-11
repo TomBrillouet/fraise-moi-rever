@@ -12,15 +12,13 @@ export const syncBothCatalogs = (userId, catalogUpdated) => {
   setDoc(docRef, newDoc) //chemin, nouvelle entrée en param
 }
 
-export const getUserCatalog = async (userId) => {
+export const getCatalog = async (userId) => {
   //chemin
   const docRef = doc(db, "users", userId)
 
   const docSnapshot = await getDoc(docRef)
-
   if (docSnapshot.exists()) {
-    const userCatalogReceivced = docSnapshot.data()
-    console.log(userCatalogReceivced)
-    return userCatalogReceivced
+    const { catalog } = docSnapshot.data()
+    return catalog
   }
 }
