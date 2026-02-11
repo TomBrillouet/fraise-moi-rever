@@ -12,6 +12,7 @@ import {
   EMPTY_PRODUCT,
 } from "../../../../../../enums/product.jsx"
 import { isEmpty } from "../../../../../../utils/array.js"
+import Loader from "./Loader.jsx"
 
 export default function Catalog() {
   const {
@@ -47,6 +48,8 @@ export default function Catalog() {
     e.stopPropagation()
     handleAddtoBasket(idProductToAdd)
   }
+
+  if (catalog === undefined) return <Loader />
 
   //render
   if (isEmpty(catalog)) {
