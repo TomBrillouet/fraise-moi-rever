@@ -6,29 +6,29 @@ import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from "../../reusable/TextInput"
 import Button from "../../reusable/Button"
+import { authenticateUser } from "../../../api/user"
+import Welcome from "./Welcome"
 
 export default function LoginForm() {
   //state
-  const [inputValue, setInputValue] = useState("")
+  const [username, setUsername] = useState("")
   const navigate = useNavigate()
   //comportements
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate(`order/${inputValue}`)
-    setInputValue("")
+    const userReceived = await authenticateUser(username)
+    setUsername("")
+    navigate(`order/${userReceived.username}`)
   }
 
   const handleChange = (e) => {
-    setInputValue(e.target.value)
+    setUsername(e.target.value)
   }
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <h1 className="amatic-sc-bold">Bienvenue chez nous ! </h1>
-      <br />
-      <hr />
-      <h2 className="amatic-sc-bold">Connectez vous</h2>
+      <Welcome />
       <TextInput
-        value={inputValue}
+        value={username}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required
@@ -48,17 +48,4 @@ const LoginFormStyled = styled.form`
   border-radius: ${theme.borderRadius.round};
   text-align: center;
   font-family: "Amatic SC", cursive;
-  h1 {
-    font-size: ${theme.fonts.size.P5};
-    color: ${theme.colors.white};
-  }
-  hr {
-    margin-bottom: ${theme.gridUnit * 5}px;
-    border: 1.5px solid ${theme.colors.primary};
-  }
-  h2 {
-    margin: 20px 10px 10px;
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
-  }
 `

@@ -3,13 +3,14 @@ import OrderContext from "../../../../../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx"
 import Form from "./Form.jsx"
 import SubmitButton from "./SubmitButton.jsx"
-import { useSucessMessage } from "../../../../../../../hooks/useSuccessMessage.jsx"
+import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage.jsx"
 import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths.jsx"
 
 export default function AddForm() {
   //state
-  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
-  const { isSubmitted, displaySucessMessage } = useSucessMessage()
+  const { username, handleAdd, newProduct, setNewProduct } =
+    useContext(OrderContext)
+  const { isSubmitted, displaySucessMessage } = useSuccessMessage()
 
   //comportements
   const handleSubmit = (e) => {
@@ -19,7 +20,7 @@ export default function AddForm() {
       id: crypto.randomUUID(),
       price: replaceFrenchCommaWithDot(newProduct.price),
     }
-    handleAdd(newProductToAdd)
+    handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
     displaySucessMessage()
   }

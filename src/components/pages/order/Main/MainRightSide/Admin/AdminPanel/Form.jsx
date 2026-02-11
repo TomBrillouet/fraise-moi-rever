@@ -5,7 +5,7 @@ import { getInputTextsConfig } from "./inputTextsConfig.jsx"
 import React from "react"
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     //state
     //comportements
 
@@ -21,6 +21,8 @@ const Form = React.forwardRef(
               {...input}
               key={input.id}
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               version={"minimalist"}
               ref={ref && input.name === "title" ? ref : null}
             />

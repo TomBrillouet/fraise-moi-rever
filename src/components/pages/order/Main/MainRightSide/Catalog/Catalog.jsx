@@ -12,10 +12,12 @@ import {
   EMPTY_PRODUCT,
 } from "../../../../../../enums/product.jsx"
 import { isEmpty } from "../../../../../../utils/array.js"
+import Loader from "./Loader.jsx"
 
 export default function Catalog() {
   const {
-    products,
+    username,
+    catalog,
     isAdmin,
     handleDelete,
     resetMenu,
@@ -34,8 +36,8 @@ export default function Catalog() {
 
   const handleCardDelete = (e, id) => {
     e.stopPropagation()
-    handleDelete(id)
-    handleRemoveFromBasket(id)
+    handleDelete(id, username)
+    handleRemoveFromBasket(id, username)
     id === productSelected.id &&
       currentTabSelected === "edit" &&
       setProductSelected(EMPTY_PRODUCT)
@@ -44,18 +46,21 @@ export default function Catalog() {
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation()
-    handleAddtoBasket(idProductToAdd)
+    handleAddtoBasket(idProductToAdd, username)
   }
 
+  if (catalog === undefined) return <Loader />
+
   //render
-  if (isEmpty(products)) {
-    if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
+  if (isEmpty(catalog)) {
+    if (isAdmin)
+      return <EmptyCatalogAdmin onReset={() => resetMenu(username)} />
     return <EmptyCatalogClient />
   }
 
   return (
     <CatalogStyled>
-      {products.map(({ imageSource, title, price, id }) => (
+      {catalog.map(({ imageSource, title, price, id }) => (
         <Card
           image={imageSource ? imageSource : DEFAULT_IMAGE}
           title={title}

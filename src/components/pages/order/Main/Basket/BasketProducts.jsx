@@ -8,17 +8,18 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
 export default function BasketProducts() {
   const {
+    username,
     isAdmin,
     handleRemoveFromBasket,
     basket,
     productSelected,
-    products,
+    catalog,
     handleProductSelected,
   } = useContext(OrderContext)
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation()
-    handleRemoveFromBasket(id)
+    handleRemoveFromBasket(id, username)
   }
 
   const handleClick = (idProductClicked) => {
@@ -28,7 +29,7 @@ export default function BasketProducts() {
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => {
-        const catalogProduct = findObjectById(basketProduct.id, products)
+        const catalogProduct = findObjectById(basketProduct.id, catalog)
         return (
           <BasketCard
             key={basketProduct.id}
