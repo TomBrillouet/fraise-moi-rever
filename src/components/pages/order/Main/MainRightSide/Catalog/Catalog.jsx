@@ -15,7 +15,8 @@ import { isEmpty } from "../../../../../../utils/array.js"
 
 export default function Catalog() {
   const {
-    products,
+    username,
+    catalog,
     isAdmin,
     handleDelete,
     resetMenu,
@@ -34,7 +35,7 @@ export default function Catalog() {
 
   const handleCardDelete = (e, id) => {
     e.stopPropagation()
-    handleDelete(id)
+    handleDelete(id, username)
     handleRemoveFromBasket(id)
     id === productSelected.id &&
       currentTabSelected === "edit" &&
@@ -48,14 +49,14 @@ export default function Catalog() {
   }
 
   //render
-  if (isEmpty(products)) {
+  if (isEmpty(catalog)) {
     if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
     return <EmptyCatalogClient />
   }
 
   return (
     <CatalogStyled>
-      {products.map(({ imageSource, title, price, id }) => (
+      {catalog.map(({ imageSource, title, price, id }) => (
         <Card
           image={imageSource ? imageSource : DEFAULT_IMAGE}
           title={title}

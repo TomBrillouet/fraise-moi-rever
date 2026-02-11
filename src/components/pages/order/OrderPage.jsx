@@ -18,8 +18,8 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const {
-    products,
-    setProducts,
+    catalog,
+    setCatalog,
     handleAdd,
     handleDelete,
     handleEdit,
@@ -32,14 +32,14 @@ export default function OrderPage() {
     if (!isAdmin) return
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = findObjectById(idProductClicked, products)
+    const productClickedOn = findObjectById(idProductClicked, catalog)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
 
   const initialiseMenu = async () => {
     const catalogReceived = await getCatalog(username)
-    setProducts(catalogReceived)
+    setCatalog(catalogReceived)
   }
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
-    products,
+    catalog,
     handleAdd,
     handleDelete,
     resetMenu,

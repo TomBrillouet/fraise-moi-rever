@@ -12,7 +12,7 @@ export default function BasketProducts() {
     handleRemoveFromBasket,
     basket,
     productSelected,
-    products,
+    catalog,
     handleProductSelected,
   } = useContext(OrderContext)
 
@@ -28,7 +28,7 @@ export default function BasketProducts() {
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => {
-        const catalogProduct = findObjectById(basketProduct.id, products)
+        const catalogProduct = findObjectById(basketProduct.id, catalog)
         return (
           <BasketCard
             key={basketProduct.id}

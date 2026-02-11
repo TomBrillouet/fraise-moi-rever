@@ -6,8 +6,8 @@ import OrderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import { calculateSumToPay } from "./helper.jsx"
 export default function Total() {
-  const { basket, products } = useContext(OrderContext)
-  const sumToPay = calculateSumToPay(basket, products)
+  const { basket, catalog } = useContext(OrderContext)
+  const sumToPay = calculateSumToPay(basket, catalog)
 
   return (
     <Header>

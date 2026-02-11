@@ -4,37 +4,38 @@ import { deepClone, removeObjectbyId } from "../utils/array"
 import { syncBothCatalogs } from "../api/catalog"
 
 export const useCatalog = () => {
-  const [products, setProducts] = useState(fakeMenu.LARGE)
+  const [catalog, setCatalog] = useState()
 
   const handleAdd = (newproduct, username) => {
-    const productsCopy = deepClone(products)
-    const productsUpdated = [newproduct, ...productsCopy]
-    setProducts(productsUpdated)
-    syncBothCatalogs(username, productsUpdated)
+    const catalogCopy = deepClone(catalog)
+    const catalogUpdated = [newproduct, ...catalogCopy]
+    setCatalog(catalogUpdated)
+    syncBothCatalogs(username, catalogUpdated)
   }
 
-  const handleDelete = (idOfProductToDelete) => {
-    const productsCopy = deepClone(products)
-    const productsUpdated = removeObjectbyId(idOfProductToDelete, productsCopy)
-    setProducts(productsUpdated)
+  const handleDelete = (idOfProductToDelete, username) => {
+    const catalogCopy = deepClone(catalog)
+    const catalogUpdated = removeObjectbyId(idOfProductToDelete, catalogCopy)
+    setCatalog(catalogUpdated)
+    syncBothCatalogs(username, catalogUpdated)
   }
 
   const handleEdit = (productBeingEdited) => {
-    const productsCopy = deepClone(products)
-    const productsUpdated = productsCopy.map((product) =>
+    const catalogCopy = deepClone(catalog)
+    const catalogUpdated = catalogCopy.map((product) =>
       product.id === productBeingEdited.id ? productBeingEdited : product,
     )
-    setProducts(productsUpdated)
+    setCatalog(catalogUpdated)
   }
 
   const resetMenu = () => {
     const fakeMenuLargeCopy = deepClone(fakeMenu.LARGE)
-    setProducts(fakeMenuLargeCopy)
+    setCatalog(fakeMenuLargeCopy)
   }
 
   return {
-    products,
-    setProducts,
+    catalog,
+    setCatalog,
     handleAdd,
     handleDelete,
     handleEdit,
