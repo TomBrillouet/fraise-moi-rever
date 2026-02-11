@@ -46,7 +46,7 @@ export default function Catalog() {
 
   const handleAddButton = (e, idProductToAdd) => {
     e.stopPropagation()
-    handleAddtoBasket(idProductToAdd)
+    handleAddtoBasket(idProductToAdd, username)
   }
 
   if (catalog === undefined) return <Loader />
