@@ -28,9 +28,9 @@ export const useCatalog = () => {
     setCatalog(catalogUpdated)
   }
 
-  const resetMenu = () => {
-    const fakeMenuLargeCopy = deepClone(fakeMenu.LARGE)
-    setCatalog(fakeMenuLargeCopy)
+  const resetMenu = (username) => {
+    setCatalog(fakeMenu.LARGE)
+    syncBothCatalogs(username, fakeMenu.LARGE)
   }
 
   return {

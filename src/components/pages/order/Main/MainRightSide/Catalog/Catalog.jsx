@@ -53,7 +53,8 @@ export default function Catalog() {
 
   //render
   if (isEmpty(catalog)) {
-    if (isAdmin) return <EmptyCatalogAdmin onReset={resetMenu} />
+    if (isAdmin)
+      return <EmptyCatalogAdmin onReset={() => resetMenu(username)} />
     return <EmptyCatalogClient />
   }
 
