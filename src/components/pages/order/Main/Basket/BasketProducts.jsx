@@ -8,6 +8,7 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
 export default function BasketProducts() {
   const {
+    username,
     isAdmin,
     handleRemoveFromBasket,
     basket,
@@ -18,7 +19,7 @@ export default function BasketProducts() {
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation()
-    handleRemoveFromBasket(id)
+    handleRemoveFromBasket(id, username)
   }
 
   const handleClick = (idProductClicked) => {

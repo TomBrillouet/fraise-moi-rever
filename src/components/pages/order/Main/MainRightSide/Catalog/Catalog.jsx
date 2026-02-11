@@ -37,7 +37,7 @@ export default function Catalog() {
   const handleCardDelete = (e, id) => {
     e.stopPropagation()
     handleDelete(id, username)
-    handleRemoveFromBasket(id)
+    handleRemoveFromBasket(id, username)
     id === productSelected.id &&
       currentTabSelected === "edit" &&
       setProductSelected(EMPTY_PRODUCT)
