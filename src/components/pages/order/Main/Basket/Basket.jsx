@@ -11,12 +11,14 @@ import { isEmpty } from "../../../../../utils/array.js"
 export default function Basket() {
   const { basket, catalog } = useContext(OrderContext)
 
-  if (catalog === undefined) return <span>chargement</span>
-
   return (
     <BasketStyled>
       <Total />
-      {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts />}
+      {isEmpty(basket) ? (
+        <EmptyBasket isLoading={catalog === undefined} />
+      ) : (
+        <BasketProducts />
+      )}
       <Footer />
     </BasketStyled>
   )
