@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../../utils/maths.jsx"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import { calculateSumToPay } from "./helper.jsx"
+import CasinoEffect from "../../../../reusable/CasinoEffect.jsx"
 export default function Total() {
   const { basket, catalog } = useContext(OrderContext)
   const sumToPay = calculateSumToPay(basket, catalog)
@@ -13,7 +14,7 @@ export default function Total() {
     <Header>
       <TotalStyled>
         <span className="total">Total</span>
-        <span className="amount">{formatPrice(sumToPay)}</span>
+        <CasinoEffect count={formatPrice(sumToPay)} className={"amount"} />
       </TotalStyled>
     </Header>
   )
