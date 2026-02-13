@@ -71,6 +71,13 @@ const shadows = {
   cardBasket: "-4px 4px 15px 0px #00000033",
 }
 
+const animations = {
+  speed: {
+    quick: "0.3s",
+    medium: "0.5s",
+  },
+}
+
 export const theme = {
   colors,
   fonts,
@@ -78,4 +85,5 @@ export const theme = {
   borderRadius,
   shadows,
   spacing,
+  animations,
 }

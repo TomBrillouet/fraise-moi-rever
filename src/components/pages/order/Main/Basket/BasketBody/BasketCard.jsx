@@ -1,39 +1,51 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../../../../theme"
 import { MdDeleteForever } from "react-icons/md"
-import { formatPrice } from "../../../../../utils/maths"
-import { DEFAULT_IMAGE } from "../../../../../enums/product.jsx"
+import React from "react"
+import { theme } from "../../../../../../theme/index.js"
+import { formatPrice } from "../../../../../../utils/maths.jsx"
+import { DEFAULT_IMAGE } from "../../../../../../enums/product.jsx"
+import CasinoEffect from "../../../../../reusable/CasinoEffect.jsx"
 
-export default function BasketCard({
-  title,
-  price,
-  quantity,
-  imageSource,
-  onDelete,
-  isClickable,
-  onClick,
-  isSelected,
-}) {
-  return (
-    <BasketCardStyled
-      $isClickable={isClickable}
-      onClick={onClick}
-      $isSelected={isSelected}
-    >
-      <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
-      <div className="info">
-        <div className="left-info">
-          <span className="title">{title}</span>
-          <span className="price">{formatPrice(price)}</span>
+const BasketCard = React.forwardRef(
+  (
+    {
+      title,
+      price,
+      quantity,
+      imageSource,
+      onDelete,
+      isClickable,
+      onClick,
+      isSelected,
+      className,
+    },
+    ref,
+  ) => {
+    return (
+      <BasketCardStyled
+        ref={ref}
+        $isClickable={isClickable}
+        onClick={onClick}
+        $isSelected={isSelected}
+        className={className}
+      >
+        <img src={imageSource ? imageSource : DEFAULT_IMAGE} alt={title} />
+        <div className="info">
+          <div className="left-info">
+            <span className="title">{title}</span>
+            <span className="price">{formatPrice(price)}</span>
+          </div>
+          <CasinoEffect count={`x ${quantity}`} className={"quantity"} />
+          <button onClick={onDelete}>
+            <MdDeleteForever />
+          </button>
         </div>
-        <span className="quantity">X {quantity}</span>
-        <button onClick={onDelete}>
-          <MdDeleteForever />
-        </button>
-      </div>
-    </BasketCardStyled>
-  )
-}
+      </BasketCardStyled>
+    )
+  },
+)
+
+export default BasketCard
 
 const BasketCardStyled = styled.div`
   display: flex;

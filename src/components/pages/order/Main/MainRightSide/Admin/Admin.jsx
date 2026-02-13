@@ -1,19 +1,19 @@
 import styled from "styled-components"
-import { useContext } from "react"
+import React, { useContext } from "react"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import AdminPanel from "./AdminPanel/AdminPanel.jsx"
 import AdminTabs from "./AdminTabs.jsx"
 
-export default function Admin() {
+const Admin = React.forwardRef((_, ref) => {
   const { isCollapsed } = useContext(OrderContext)
   return (
-    <AdminStyled>
+    <AdminStyled ref={ref}>
       <AdminTabs />
       {!isCollapsed && <AdminPanel />}
     </AdminStyled>
   )
-}
-
+})
+export default Admin
 const AdminStyled = styled.div`
   position: absolute;
   left: 0;

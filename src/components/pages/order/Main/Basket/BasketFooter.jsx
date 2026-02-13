@@ -1,16 +1,16 @@
 import { FaReact } from "react-icons/fa"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../theme/index.js"
 import styled from "styled-components"
-import Header from "./Header.jsx"
-export default function Footer() {
+import BasketHeader from "./BasketHeader/BasketHeader.jsx"
+export default function BasketFooter() {
   return (
-    <Header>
+    <BasketHeader>
       <FooterStyled>
         <span>
           Codé avec <FaReact /> par Tom Brillouet
         </span>
       </FooterStyled>
-    </Header>
+    </BasketHeader>
   )
 }
 

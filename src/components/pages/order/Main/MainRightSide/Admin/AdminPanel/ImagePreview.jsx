@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../../theme"
+import React from "react"
 
-export default function ImagePreview({ imageSource, title }) {
+const ImagePreview = React.forwardRef(({ imageSource, title }, ref) => {
   return (
-    <ImagePreviewStyled>
+    <ImagePreviewStyled ref={ref}>
       {imageSource ? (
         <img src={imageSource} alt={title} />
       ) : (
@@ -11,8 +12,8 @@ export default function ImagePreview({ imageSource, title }) {
       )}
     </ImagePreviewStyled>
   )
-}
-
+})
+export default ImagePreview
 const ImagePreviewStyled = styled.div`
   grid-area: 1 / 1 / 4 / 2;
   border: 1px solid #e4e5e9;
