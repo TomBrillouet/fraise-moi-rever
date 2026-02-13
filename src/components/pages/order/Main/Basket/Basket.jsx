@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import BasketFooter from "./BasketFooter.jsx"
-import Total from "./Total.jsx"
+import Total from "./BasketHeader/Total.jsx"
 import { theme } from "../../../../../theme/index.js"
 import BasketBody from "./BasketBody/BasketBody.jsx"
 

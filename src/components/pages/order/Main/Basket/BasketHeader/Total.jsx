@@ -1,22 +1,22 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
-import Header from "./Header.jsx"
-import { formatPrice } from "../../../../../utils/maths.jsx"
-import OrderContext from "../../../../../context/OrderContext.jsx"
+import { theme } from "../../../../../../theme/index.js"
+import BasketHeader from "./BasketHeader.jsx"
+import { formatPrice } from "../../../../../../utils/maths.jsx"
+import OrderContext from "../../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import { calculateSumToPay } from "./helper.jsx"
-import CasinoEffect from "../../../../reusable/CasinoEffect.jsx"
+import CasinoEffect from "../../../../../reusable/CasinoEffect.jsx"
 export default function Total() {
   const { basket, catalog } = useContext(OrderContext)
   const sumToPay = calculateSumToPay(basket, catalog)
 
   return (
-    <Header>
+    <BasketHeader>
       <TotalStyled>
         <span className="total">Total</span>
         <CasinoEffect count={formatPrice(sumToPay)} className={"amount"} />
       </TotalStyled>
-    </Header>
+    </BasketHeader>
   )
 }
 
