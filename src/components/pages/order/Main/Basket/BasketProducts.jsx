@@ -69,7 +69,7 @@ const BasketProductsStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px 0 20px 16px;
+  padding: 20px 16px 20px 16px;
   &:hover {
     scrollbar-color: initial;
   }
