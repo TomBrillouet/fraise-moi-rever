@@ -6,7 +6,7 @@ export default function HintMessage() {
   return (
     <HintMessageStyled>
       <span className="hint">
-        Cliquer sur un menu de produit pour le modifier
+        Cliquer sur un produit du menu pour le modifier
       </span>
       <HiCursorClick />
     </HintMessageStyled>
