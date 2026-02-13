@@ -1,8 +1,8 @@
 import { FaReact } from "react-icons/fa"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../theme/index.js"
 import styled from "styled-components"
 import Header from "./Header.jsx"
-export default function Footer() {
+export default function BasketFooter() {
   return (
     <Header>
       <FooterStyled>
