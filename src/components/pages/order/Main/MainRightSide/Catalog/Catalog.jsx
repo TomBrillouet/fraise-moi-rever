@@ -43,7 +43,9 @@ export default function Catalog() {
     id === productSelected.id &&
       currentTabSelected === "edit" &&
       setProductSelected(EMPTY_PRODUCT)
-    currentTabSelected === "edit" && titleEditRef.current.focus()
+    currentTabSelected === "edit" &&
+      titleEditRef.current &&
+      titleEditRef.current.focus()
   }
 
   const handleAddButton = (e, idProductToAdd) => {
