@@ -6,6 +6,7 @@ import { findObjectById } from "../../../../../utils/array"
 import { checkIfProductIsClicked } from "../MainRightSide/Catalog/helper"
 import { DEFAULT_IMAGE } from "../../../../../enums/product"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { basketCardAnimation } from "../../../../../theme/animation"
 
 export default function BasketProducts() {
   const {
@@ -38,8 +39,8 @@ export default function BasketProducts() {
             appear
             key={basketProduct.id}
             nodeRef={nodeRef}
-            classNames="animate"
-            timeout={500}
+            classNames="animate-basket"
+            timeout={300}
           >
             <BasketCard
               ref={nodeRef}
@@ -73,27 +74,6 @@ const BasketProductsStyled = styled.div`
   &:hover {
     scrollbar-color: initial;
   }
-  .animate-enter,
-  .animate-appear {
-    transform: translateX(100px);
-    opacity: 0;
-  }
 
-  .animate-enter-active,
-  .animate-appear-active {
-    transform: translateX(0);
-    opacity: 1;
-    transition: 0.5s;
-  }
-
-  .animate-exit {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  .animate-exit-active {
-    transform: translateX(-100px);
-    opacity: 0;
-    transition: 0.5s;
-  }
+  ${basketCardAnimation}
 `
