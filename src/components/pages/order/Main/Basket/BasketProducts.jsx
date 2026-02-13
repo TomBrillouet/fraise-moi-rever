@@ -35,7 +35,7 @@ export default function BasketProducts() {
 
         return (
           <CSSTransition
-            appear={true}
+            appear
             key={basketProduct.id}
             nodeRef={nodeRef}
             classNames="animate"

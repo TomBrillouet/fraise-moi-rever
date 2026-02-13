@@ -13,7 +13,7 @@ const Form = React.forwardRef(
       <FormStyled action="submit" onSubmit={onSubmit}>
         <TransitionGroup component={Fragment}>
           <CSSTransition
-            appear={true}
+            appear
             nodeRef={nodeRef}
             classNames="animate-image"
             timeout={500}

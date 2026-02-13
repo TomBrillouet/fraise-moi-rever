@@ -14,7 +14,7 @@ export default function MainRightSide() {
     <MainRightSideStyled>
       <Catalog />
       <CSSTransition
-        appear={true}
+        appear
         in={isAdmin}
         nodeRef={nodeRef}
         classNames="animate-admin"

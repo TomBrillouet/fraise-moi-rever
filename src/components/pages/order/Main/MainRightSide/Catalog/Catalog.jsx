@@ -65,7 +65,7 @@ export default function Catalog() {
         const nodeRef = React.createRef()
         return (
           <CSSTransition
-            appear={true}
+            appear
             key={id}
             nodeRef={nodeRef}
             classNames="animate"

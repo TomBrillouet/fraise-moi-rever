@@ -32,7 +32,7 @@ const Card = React.forwardRef(
           {hasDeleteButton && (
             <TransitionGroup component={Fragment}>
               <CSSTransition
-                appear={true}
+                appear
                 nodeRef={nodeRef}
                 classNames="animate-button"
                 timeout={500}
