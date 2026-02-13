@@ -4,6 +4,7 @@ import { MdDeleteForever } from "react-icons/md"
 import { formatPrice } from "../../../../../utils/maths"
 import { DEFAULT_IMAGE } from "../../../../../enums/product.jsx"
 import React from "react"
+import CasinoEffect from "../../../../reusable/CasinoEffect.jsx"
 
 const BasketCard = React.forwardRef(
   (
@@ -34,7 +35,7 @@ const BasketCard = React.forwardRef(
             <span className="title">{title}</span>
             <span className="price">{formatPrice(price)}</span>
           </div>
-          <span className="quantity">X {quantity}</span>
+          <CasinoEffect count={`X ${quantity}`} className={"quantity"} />
           <button onClick={onDelete}>
             <MdDeleteForever />
           </button>
