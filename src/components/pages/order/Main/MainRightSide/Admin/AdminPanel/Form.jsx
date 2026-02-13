@@ -2,19 +2,29 @@ import styled from "styled-components"
 import TextInput from "../../../../../../reusable/TextInput.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 import { getInputTextsConfig } from "./inputTextsConfig.jsx"
-import React from "react"
+import React, { Fragment, useRef } from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
-    //state
-    //comportements
-
     const inputTexts = getInputTextsConfig(product)
-
-    //render
+    const nodeRef = useRef()
     return (
       <FormStyled action="submit" onSubmit={onSubmit}>
-        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <TransitionGroup component={Fragment}>
+          <CSSTransition
+            appear={true}
+            nodeRef={nodeRef}
+            classNames="animate-image"
+            timeout={500}
+          >
+            <ImagePreview
+              ref={nodeRef}
+              imageSource={product.imageSource}
+              title={product.title}
+            />
+          </CSSTransition>
+        </TransitionGroup>
         <div className="inputs">
           {inputTexts.map((input) => (
             <TextInput
@@ -43,6 +53,27 @@ const FormStyled = styled.form`
   width: 70%;
   grid-row-gap: 8px;
   grid-column-gap: 20px;
+
+  .animate-image-enter,
+  .animate-image-appear {
+    opacity: 0;
+  }
+
+  .animate-image-enter-active,
+  .animate-image-appear-active {
+    opacity: 1;
+    transition: 0.5s;
+  }
+
+  .animate-image-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .animate-image-exit-active {
+    opacity: 0;
+    transition: 0.5s;
+  }
 
   .inputs {
     grid-area: 1 / 2 / -2 / -1;
