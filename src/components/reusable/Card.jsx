@@ -2,8 +2,8 @@ import styled, { css } from "styled-components"
 import Button from "./Button.jsx"
 import { theme } from "../../theme/index.js"
 import { TiDelete } from "react-icons/ti"
-import React, { createRef, Fragment } from "react"
-import { CSSTransition, TransitionGroup } from "react-transition-group"
+import React from "react"
+import { fadeInFromRight } from "../../theme/animation.js"
 
 const Card = React.forwardRef(
   (
@@ -20,7 +20,6 @@ const Card = React.forwardRef(
     },
     ref,
   ) => {
-    const nodeRef = createRef()
     return (
       <CardStyled
         ref={ref}
@@ -30,23 +29,13 @@ const Card = React.forwardRef(
       >
         <div className="card">
           {hasDeleteButton && (
-            <TransitionGroup component={Fragment}>
-              <CSSTransition
-                appear
-                nodeRef={nodeRef}
-                classNames="animate-button"
-                timeout={500}
-              >
-                <button
-                  ref={nodeRef}
-                  className="delete"
-                  onClick={onDelete}
-                  aria-label="delete-button"
-                >
-                  <TiDelete className="icon" />
-                </button>
-              </CSSTransition>
-            </TransitionGroup>
+            <button
+              className="delete"
+              onClick={onDelete}
+              aria-label="delete-button"
+            >
+              <TiDelete className="icon" />
+            </button>
           )}
           <img src={image} alt={title} />
           <div className="info">
@@ -85,29 +74,6 @@ const CardStyled = styled.div`
     background-color: ${theme.colors.white};
     user-select: none;
 
-    .animate-button-enter,
-    .animate-button-appear {
-      transform: translateX(20px);
-      opacity: 0;
-    }
-
-    .animate-button-enter-active,
-    .animate-button-appear-active {
-      transform: translateX(0);
-      opacity: 1;
-      transition: 0.5s;
-    }
-
-    .animate-button-exit {
-      transform: translateX(0);
-      opacity: 1;
-    }
-
-    .animate-button-exit-active {
-      opacity: 0;
-      transition: 0.5s;
-    }
-
     .delete {
       align-self: flex-end;
       height: 30px;
@@ -121,7 +87,7 @@ const CardStyled = styled.div`
       color: ${theme.colors.primary};
       border: none;
       cursor: pointer;
-
+      animation: ${fadeInFromRight} ${theme.animations.speed.medium} ease-out;
       .icon {
         height: 100%;
         width: 100%;

@@ -6,7 +6,7 @@ import { findObjectById } from "../../../../../utils/array"
 import { checkIfProductIsClicked } from "../MainRightSide/Catalog/helper"
 import { DEFAULT_IMAGE } from "../../../../../enums/product"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
-import { basketCardAnimation } from "../../../../../theme/animation"
+import { basketCardAnimations } from "../../../../../theme/animation"
 
 export default function BasketProducts() {
   const {
@@ -75,5 +75,5 @@ const BasketProductsStyled = styled.div`
     scrollbar-color: initial;
   }
 
-  ${basketCardAnimation}
+  ${basketCardAnimations}
 `
