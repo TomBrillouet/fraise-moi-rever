@@ -35,7 +35,7 @@ const BasketCard = React.forwardRef(
             <span className="title">{title}</span>
             <span className="price">{formatPrice(price)}</span>
           </div>
-          <CasinoEffect count={`X ${quantity}`} className={"quantity"} />
+          <CasinoEffect count={`x ${quantity}`} className={"quantity"} />
           <button onClick={onDelete}>
             <MdDeleteForever />
           </button>
