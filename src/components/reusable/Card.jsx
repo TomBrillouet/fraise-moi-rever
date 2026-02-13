@@ -87,7 +87,7 @@ const CardStyled = styled.div`
       color: ${theme.colors.primary};
       border: none;
       cursor: pointer;
-      animation: ${fadeInFromRight} ${theme.animations.speed.medium} ease-out;
+      animation: ${fadeInFromRight} ${theme.animations.speed.quick} ease-out;
       .icon {
         height: 100%;
         width: 100%;

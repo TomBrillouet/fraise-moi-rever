@@ -14,6 +14,7 @@ import {
 import { isEmpty } from "../../../../../../utils/array.js"
 import Loader from "./Loader.jsx"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
+import { CardAnimations } from "../../../../../../theme/animation.js"
 
 export default function Catalog() {
   const {
@@ -68,8 +69,8 @@ export default function Catalog() {
             appear
             key={id}
             nodeRef={nodeRef}
-            classNames="animate"
-            timeout={500}
+            classNames="animate-card"
+            timeout={300}
           >
             <Card
               image={imageSource ? imageSource : DEFAULT_IMAGE}
@@ -101,26 +102,5 @@ const CatalogStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
-  .animate-enter,
-  .animate-appear {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-
-  .animate-enter-active,
-  .animate-appear-active {
-    transform: translateX(0);
-    opacity: 1;
-    transition: 0.5s;
-  }
-
-  .animate-exit {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  .animate-exit-active {
-    opacity: 0;
-    transition: 0.5s;
-  }
+  ${CardAnimations}
 `

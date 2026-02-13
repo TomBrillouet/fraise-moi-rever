@@ -23,7 +23,7 @@ export const adminAnimation = css`
   .animate-admin-enter-active {
     transform: translateY(0);
     opacity: 1;
-    transition: ${theme.animations.speed.medium};
+    transition: ${theme.animations.speed.medium} ease-out;
   }
 
   .animate-admin-exit {
@@ -59,6 +59,30 @@ export const basketCardAnimations = css`
 
   .animate-basket-exit-active {
     transform: translateX(-100px);
+    opacity: 0;
+    transition: ${theme.animations.speed.quick};
+  }
+`
+export const CardAnimations = css`
+  .animate-card-enter,
+  .animate-card-appear {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  .animate-card-enter-active,
+  .animate-card-appear-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: ${theme.animations.speed.quick};
+  }
+
+  .animate-card-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .animate-card-exit-active {
     opacity: 0;
     transition: ${theme.animations.speed.quick};
   }
