@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../../../../theme"
 import { MdDeleteForever } from "react-icons/md"
-import { formatPrice } from "../../../../../utils/maths"
-import { DEFAULT_IMAGE } from "../../../../../enums/product.jsx"
 import React from "react"
-import CasinoEffect from "../../../../reusable/CasinoEffect.jsx"
+import { theme } from "../../../../../../theme/index.js"
+import { formatPrice } from "../../../../../../utils/maths.jsx"
+import { DEFAULT_IMAGE } from "../../../../../../enums/product.jsx"
+import CasinoEffect from "../../../../../reusable/CasinoEffect.jsx"
 
 const BasketCard = React.forwardRef(
   (
