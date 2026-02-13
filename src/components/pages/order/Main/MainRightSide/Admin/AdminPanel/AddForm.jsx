@@ -10,7 +10,7 @@ export default function AddForm() {
   //state
   const { username, handleAdd, newProduct, setNewProduct } =
     useContext(OrderContext)
-  const { isSubmitted, displaySucessMessage } = useSuccessMessage()
+  const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
   //comportements
   const handleSubmit = (e) => {
@@ -22,7 +22,7 @@ export default function AddForm() {
     }
     handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
-    displaySucessMessage()
+    displaySuccessMessage()
   }
 
   const handleChange = (event) => {
