@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import Button from "./Button.jsx"
 import { theme } from "../../theme/index.js"
 import { TiDelete } from "react-icons/ti"
-import React, { createRef } from "react"
+import React, { createRef, Fragment } from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 const Card = React.forwardRef(
@@ -30,7 +30,7 @@ const Card = React.forwardRef(
       >
         <div className="card">
           {hasDeleteButton && (
-            <TransitionGroup>
+            <TransitionGroup component={Fragment}>
               <CSSTransition
                 appear={true}
                 nodeRef={nodeRef}
@@ -87,7 +87,7 @@ const CardStyled = styled.div`
 
     .animate-button-enter,
     .animate-button-appear {
-      transform: translateX(50px);
+      transform: translateX(20px);
       opacity: 0;
     }
 
