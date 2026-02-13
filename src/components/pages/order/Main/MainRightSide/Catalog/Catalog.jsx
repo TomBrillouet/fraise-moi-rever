@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { formatPrice } from "../../../../../../utils/maths.jsx"
-import { useContext } from "react"
+import React, { useContext } from "react"
 import EmptyCatalogAdmin from "./EmptyCatalogAdmin.jsx"
 import EmptyCatalogClient from "./EmptyCatalogClient.jsx"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
@@ -13,6 +13,7 @@ import {
 } from "../../../../../../enums/product.jsx"
 import { isEmpty } from "../../../../../../utils/array.js"
 import Loader from "./Loader.jsx"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 export default function Catalog() {
   const {
@@ -59,23 +60,35 @@ export default function Catalog() {
   }
 
   return (
-    <CatalogStyled>
-      {catalog.map(({ imageSource, title, price, id }) => (
-        <Card
-          image={imageSource ? imageSource : DEFAULT_IMAGE}
-          title={title}
-          leftDescription={formatPrice(price)}
-          key={id}
-          id={id}
-          hasDeleteButton={isAdmin}
-          onDelete={(e) => handleCardDelete(e, id)}
-          onAdd={(e) => handleAddButton(e, id)}
-          onClick={() => handleClick(id)}
-          isHoverable={isAdmin}
-          isSelected={checkIfProductIsClicked(id, productSelected.id)}
-        />
-      ))}
-    </CatalogStyled>
+    <TransitionGroup component={CatalogStyled}>
+      {catalog.map(({ imageSource, title, price, id }) => {
+        const nodeRef = React.createRef()
+        return (
+          <CSSTransition
+            appear={true}
+            key={id}
+            nodeRef={nodeRef}
+            classNames="animate"
+            timeout={500}
+          >
+            <Card
+              image={imageSource ? imageSource : DEFAULT_IMAGE}
+              title={title}
+              leftDescription={formatPrice(price)}
+              key={id}
+              ref={nodeRef}
+              id={id}
+              hasDeleteButton={isAdmin}
+              onDelete={(e) => handleCardDelete(e, id)}
+              onAdd={(e) => handleAddButton(e, id)}
+              onClick={() => handleClick(id)}
+              isHoverable={isAdmin}
+              isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            />
+          </CSSTransition>
+        )
+      })}
+    </TransitionGroup>
   )
 }
 
@@ -88,4 +101,26 @@ const CatalogStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+  .animate-enter,
+  .animate-appear {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  .animate-enter-active,
+  .animate-appear-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: 0.5s;
+  }
+
+  .animate-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .animate-exit-active {
+    opacity: 0;
+    transition: 0.5s;
+  }
 `

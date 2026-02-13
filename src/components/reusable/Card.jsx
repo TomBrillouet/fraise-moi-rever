@@ -2,46 +2,58 @@ import styled, { css } from "styled-components"
 import Button from "./Button.jsx"
 import { theme } from "../../theme/index.js"
 import { TiDelete } from "react-icons/ti"
+import React from "react"
 
-export default function Card({
-  title,
-  image,
-  leftDescription,
-  hasDeleteButton,
-  onDelete,
-  onAdd,
-  onClick,
-  isHoverable,
-  isSelected,
-}) {
-  return (
-    <CardStyled
-      onClick={onClick}
-      $isHoverable={isHoverable}
-      $isSelected={isSelected}
-    >
-      <div className="card">
-        {hasDeleteButton && (
-          <button
-            className="delete"
-            onClick={onDelete}
-            aria-label="delete-button"
-          >
-            <TiDelete className="icon" />
-          </button>
-        )}
-        <img src={image} alt={title} />
-        <div className="info">
-          <span className="title">{title}</span>
-          <div className="addcart">
-            <span className="left-description">{leftDescription}</span>
-            <Button className="add-button" label={"Ajouter"} onClick={onAdd} />
+const Card = React.forwardRef(
+  (
+    {
+      title,
+      image,
+      leftDescription,
+      hasDeleteButton,
+      onDelete,
+      onAdd,
+      onClick,
+      isHoverable,
+      isSelected,
+    },
+    ref,
+  ) => {
+    return (
+      <CardStyled
+        ref={ref}
+        onClick={onClick}
+        $isHoverable={isHoverable}
+        $isSelected={isSelected}
+      >
+        <div className="card">
+          {hasDeleteButton && (
+            <button
+              className="delete"
+              onClick={onDelete}
+              aria-label="delete-button"
+            >
+              <TiDelete className="icon" />
+            </button>
+          )}
+          <img src={image} alt={title} />
+          <div className="info">
+            <span className="title">{title}</span>
+            <div className="addcart">
+              <span className="left-description">{leftDescription}</span>
+              <Button
+                className="add-button"
+                label={"Ajouter"}
+                onClick={onAdd}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </CardStyled>
-  )
-}
+      </CardStyled>
+    )
+  },
+)
+export default Card
 const CardStyled = styled.div`
   ${({ $isHoverable }) => $isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
